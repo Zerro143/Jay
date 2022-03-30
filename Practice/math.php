@@ -18,6 +18,10 @@ echo "<br>";
 echo"rand() will print the random number: ".rand(); 
 echo "<br>"; 
 echo"rand($c,$a) will print the random number between $c and $a: ".rand($c,$a); 
+echo "<br>"; 
+echo"base_convert($c,10,2) will convert the base of the given value from decimal to binary: ".base_convert($c,10,2);
+echo "<br>"; 
+echo"decbin($c) will convert the base of the given value from decimal to binary: ".decbin($c);
 
 
 ?>  
