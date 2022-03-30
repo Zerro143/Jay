@@ -19,7 +19,7 @@ function active($currect_page){
   <a href="http://localhost/Jay/index.php" class="logo">Game Mania</a>
   <div class="header-right">
     <a class="<?php active('index.php');?>"href="http://localhost/Jay/index.php">Home</a>
-    <a class="<?php active('contact.php');?>"href="#contact">Contact</a>
+    <a class="<?php active('contact.php');?>"href="http://localhost/Jay/Practice/">PHP Practice</a>
     <a class="<?php active('about.php');?>"href="#about">About</a>
     <a class="<?php active('#Login');?>"href="#login" class="open-button" onclick="openForm()">Login</a>
     <a class="<?php active('regform.php');?>"href="http://localhost/Jay/assets/regform.php">Registration</a>
