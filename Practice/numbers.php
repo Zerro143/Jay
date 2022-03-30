@@ -1,6 +1,6 @@
 <?php
 
-
+echo "<h1> Numbers </h1>";
 $x = 5985;
 print "Here we will check the number is $x or not Integer: ";
 var_dump(is_int($x));
@@ -63,5 +63,3 @@ echo "<br>";
 echo "Here is the value of ".(int)$x." after casting it to Float: ".(float)$x;
 
 ?> 
-
-

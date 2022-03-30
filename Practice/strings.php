@@ -1,6 +1,8 @@
 <?php
-$str ="Hello World";
+echo "<h1> Strings</h1>";
 
+echo "<br>";
+$str ="Hello World";
 echo "Orginal string is $str";
 echo "<br>";
 echo "Length of a string is ".strlen($str);

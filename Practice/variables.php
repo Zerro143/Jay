@@ -1,4 +1,7 @@
 <?php
+echo "<h1> variables</h1>";
+
+
 //see here i created a varible a to store a data "Hello Everyone"
 $a ="Hello Everyone";
 echo "$a<p>";#here i called he variable a 
