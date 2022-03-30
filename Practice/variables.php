@@ -8,7 +8,7 @@ echo "$a<p>";#here i called he variable a
 
 echo $a;#here is other way to call the variable 
 
-$a = 1;# i overide the variable a and store 1 in a 
+$a = 10;# i overide the variable a and store 1 in a 
 $b = 2;# we can also asign a number 
 
 # here we will perform some arthmatic operation
@@ -23,7 +23,9 @@ echo $a * $b;
 echo"<br>";
 echo $a / $b;
 echo"<br>";
-echo $a | $b;
+echo $a % $b;
+echo"<br>";
+echo $a ** $b;
 
 
 
