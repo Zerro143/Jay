@@ -5,7 +5,7 @@
 </head>
 <body>
 <link rel="stylesheet" href="assets/main.css">
-<section id="header">
+<section id="header">    
     <?php include 'assets/header.php';?>
 </section>
 <center><h1>Arcade Game</h1></center>
