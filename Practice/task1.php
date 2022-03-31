@@ -1,4 +1,5 @@
 <?php
+#Task 1 make a loop which runs till 100 and  store odd number in $odd array and Even number in $even array 
 include 'need.php';
 $odd = array();
 $even= array();
