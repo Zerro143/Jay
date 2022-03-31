@@ -127,6 +127,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         
         }
     } 
+}
+else{
+  echo 'insert.php';
 }  
 function test_input($data) {
   $data = trim($data);
@@ -192,7 +195,7 @@ echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"  enctype="multipar
     </div>    
     <div class="row">
         <div class="col-25">
-            <label for="psw-repeat">Re-Enter Your Password: </label>
+            <label for="psw_repeat">Re-Enter Your Password: </label>
         </div>
         <div class="col-75">
             <input type="password" placeholder="Re-Enter Your Password" name="psw_repeat" id="psw_repeat" >
