@@ -128,9 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     } 
 }
-else{
-  echo 'insert.php';
-}  
+  
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
