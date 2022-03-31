@@ -23,10 +23,13 @@ echo count($even);
 space();
 $arrlength = count($odd);
 
-for($x = 0; $x < $arrlength; $x++) {
+/*for($x = 0; $x < $arrlength; $x++) {
     echo "This is Odd Number ".$odd[$x];
     echo " This is Even Number ".$even[$x];
     space();
-}
+}*/
+echo "<pre>";
+print_r($odd);
+print_r($even);
 
 ?>
