@@ -55,7 +55,12 @@ session_start();
 </script>
 
 <?php
-$fnameErr = $lnameErr = $genderErr = $mailErr  = $pswErr = $psw_repeatErr = "";
+
+    
+?>
+<div class="container">
+  <form name="regform"  action="<?php 
+  $fnameErr = $lnameErr = $genderErr = $mailErr  = $pswErr = $psw_repeatErr = "";
 $fname = $lname = $gender =$mail  = $psw = $psw_repeat = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -101,10 +106,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     }
   }
    
- /*if (empty($_POST["psw"])) {
+ if (empty($_POST["psw"])) {
    $pswErr= "Please Enter Your Password";
    
-  } else {
+  } /*else {
     $psw = test_input($_POST["psw"]);
    // check if URL address syntax is valid
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$psw)) {
@@ -123,10 +128,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     } 
 }  
-    
-?>
-<div class="container">
-  <form name="regform"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"  enctype="multipart/form-data">
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"  enctype="multipart/form-data">
     <div class="row">
         <h2><i class="fa fa-user icon"></i> Registration Form </h2>
         <hr> 
@@ -137,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <label for="fname">First Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="fname" name="fname" placeholder="Your name.."required>
+        <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $fname;?>">
         <span class="error">* <?php echo $fnameErr;?></span>
       </div>
    
@@ -147,7 +156,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <label for="lname">Last Name</label>
       </div>
       <div class="col-75">
-        <input type="text" id="lname" name="lname" placeholder="Your last name.." required>
+        <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $lname;?>">
         <span class="error">* <?php echo $lnameErr;?></span>
       </div>
     </div>
@@ -168,7 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
       <label for="mail">Email:</label>
       </div>
       <div class="col-75">
-      <input type="email" id="mail" name="mail"placeholder="Email" required>  
+      <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo $mail;?>">  
       <span class="error">* <?php echo $mailErr;?></span>
       </div>
     </div>
@@ -177,7 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="psw">Password:</label>
         </div>
         <div class="col-75">
-        <input type="password" placeholder="Enter Password" name="psw" id="psw" required > 
+        <input type="password" placeholder="Enter Password" name="psw" id="psw"  > 
         <span class="error">* <?php echo $pswErr;?></span>
       </div>
     </div>    
@@ -186,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <label for="psw-repeat">Re-Enter Your Password: </label>
         </div>
         <div class="col-75">
-            <input type="password" placeholder="Re-Enter Your Password" name="psw_repeat" id="psw_repeat" required>
+            <input type="password" placeholder="Re-Enter Your Password" name="psw_repeat" id="psw_repeat" >
             <span class="error">* <?php echo $psw_repeatErr;?></span>
       </div>
     </div>    
@@ -203,4 +212,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
   </form>
 </div>
+<?php echo $data;?>
 </body>
