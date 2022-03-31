@@ -63,16 +63,18 @@ session_start();
   $fnameErr = $lnameErr = $genderErr = $mailErr  = $pswErr = $psw_repeatErr = "";
 $fname = $lname = $gender =$mail  = $psw = $psw_repeat = "";
 
+$errcount=0;
+
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
   if (empty($_POST["fname"])) {
     $fnameErr = "Please Enter Your First Name";
-    
+   
   } else {
     $fname = test_input($_POST["fname"]);
     // check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
       $fnameErr = "Only letters and white space allowed";
-      
+      $errcount++;
     }
   }
 
@@ -84,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
       $lnameErr = "Only letters and white space allowed";
-      
+      $errcount++;
     }
   }
 
@@ -102,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // check if e-mail address is well-formed
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
       $mailErr = "Please enter a valid Email Address";
-      
+      $errcount++;
     }
   }
    
@@ -125,19 +127,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         // check if URL address syntax is valid
         if ($psw_repeat!=$psw) {
         $psw_repeatErr = "Password Does Not Match";
-        
+        $errcount++;
         }
     } 
 }
-  
+
 function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
   return $data;
 }
-
-echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"  enctype="multipart/form-data">
+if($errcount==0){
+include 'insert.php';
+}else{
+echo htmlspecialchars($_SERVER["PHP_SELF"]);}?>" method="post"  enctype="multipart/form-data">
     <div class="row">
         <h2><i class="fa fa-user icon"></i> Registration Form </h2>
         <hr> 
