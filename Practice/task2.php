@@ -5,7 +5,7 @@ include 'need.php';
 
 for ($a = 1; $a < 11; $a++){
 
-    for ($b=1; $b<11;$b++){
+    for ($b=1; $b<$a+1;$b++){
         $x = $a * $b; 
         echo "$a X $b = $x" ;
           space();
