@@ -121,6 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     
   } else {
         $psw_repeat= test_input($_POST["psw_repeat"]);
+        $psw = test_input($_POST["psw"]);
         // check if URL address syntax is valid
         if ($psw_repeat!=$psw) {
         $psw_repeatErr = "Password Does Not Match";
