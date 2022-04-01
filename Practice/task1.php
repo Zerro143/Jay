@@ -5,11 +5,11 @@ $odd = array();
 $even= array();
 for ($a = 0; $a < 100; $a++) {
 
-    if ($a % 2 == 0) {
-        $even[]=$a;
+    if ($a & 1) {
+        $odd[]=$a;
       continue;
     }
-    $odd[]=$a;
+    $even[]=$a;
 }  
 
  /*for ($b = 0; $b < 100; $b++) {
