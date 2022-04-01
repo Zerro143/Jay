@@ -54,16 +54,13 @@ session_start();
         }    */
 </script>
 
-<?php
 
-    
-?>
 <div class="container">
   <form name="regform"  action="<?php 
   $fnameErr = $lnameErr = $genderErr = $mailErr  = $pswErr = $psw_repeatErr = "";
-$fname = $lname = $gender =$mail  = $psw = $psw_repeat = "";
+$fname = $lname = $gender =$mail  = $psw = $psw_repeat = $errcount= "";
 
-$errcount=0;
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
   if (empty($_POST["fname"])) {
@@ -74,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
       $fnameErr = "Only letters and white space allowed";
-      $errcount++;
+      $errcount=1;
     }
   }
 
@@ -86,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // check if name only contains letters and whitespace
     if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
       $lnameErr = "Only letters and white space allowed";
-      $errcount++;
+      $errcount=1;
     }
   }
 
@@ -104,7 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     // check if e-mail address is well-formed
     if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
       $mailErr = "Please enter a valid Email Address";
-      $errcount++;
+      $errcount=1;
     }
   }
    
@@ -127,9 +124,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         // check if URL address syntax is valid
         if ($psw_repeat!=$psw) {
         $psw_repeatErr = "Password Does Not Match";
-        $errcount++;
+        $errcount=1;
         }
     } 
+    
+    if(empty($errcount)){
+      echo htmlspecialchars($_SERVER["PHP_SELF"]);
+    }
 }
 
 function test_input($data) {
@@ -138,10 +139,9 @@ function test_input($data) {
   $data = htmlspecialchars($data);
   return $data;
 }
-if($errcount==0){
-include 'insert.php';
-}else{
-echo htmlspecialchars($_SERVER["PHP_SELF"]);}?>" method="post"  enctype="multipart/form-data">
+
+
+?>" method="post"  enctype="multipart/form-data">
     <div class="row">
         <h2><i class="fa fa-user icon"></i> Registration Form </h2>
         <hr> 
@@ -214,7 +214,7 @@ echo htmlspecialchars($_SERVER["PHP_SELF"]);}?>" method="post"  enctype="multipa
     <div class="row">
     <hr><center>
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-      <input type="submit" value="Submit"></center>
+      <input name = "submit" type="submit" value="Submit"></center>
     </div>
   </form>
 </div>
