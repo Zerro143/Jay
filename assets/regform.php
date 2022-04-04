@@ -56,20 +56,21 @@ session_start();
 
 <?php
  $fnameErr = $lnameErr = $genderErr = $mailErr  = $pswErr = $psw_repeatErr = "";
- $fname = $lname = $gender =$mail  = $psw = $psw_repeat = $errcount= "";
+ $fname = $lname = $gender =$mail  = $psw = $psw_repeat = "";
  
+ $errcount="0";
  
  
  if ($_SERVER["REQUEST_METHOD"] == "POST"){
    if (empty($_POST["fname"])) {
      $fnameErr = "Please Enter Your First Name";
-    
+    $errcount = "1";
    } else {
      $fname = test_input($_POST["fname"]);
      // check if name only contains letters and whitespace
      if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
        $fnameErr = "Only letters and white space allowed";
-       $errcount=1;
+       $errcount = "1";
      }
    }
  
@@ -81,7 +82,7 @@ session_start();
      // check if name only contains letters and whitespace
      if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
        $lnameErr = "Only letters and white space allowed";
-       $errcount=1;
+       $errcount = "1";
      }
    }
  
@@ -99,13 +100,13 @@ session_start();
      // check if e-mail address is well-formed
      if (!filter_var($mail, FILTER_VALIDATE_EMAIL)) {
        $mailErr = "Please enter a valid Email Address";
-       $errcount=1;
+       $errcount = "1";
      }
    }
     
   if (empty($_POST["psw"])) {
     $pswErr= "Please Enter Your Password";
-    
+    $errcount = "1";
    } /*else {
      $psw = test_input($_POST["psw"]);
     // check if URL address syntax is valid
@@ -122,12 +123,10 @@ session_start();
          // check if URL address syntax is valid
          if ($psw_repeat!=$psw) {
          $psw_repeatErr = "Password Does Not Match";
-         $errcount=1;
+         $errcount = "1";
          }
      } 
-     
-     
- }
+}
  
  function test_input($data) {
    $data = trim($data);
@@ -135,17 +134,79 @@ session_start();
    $data = htmlspecialchars($data);
    return $data;
  }
+ if ($_SERVER["REQUEST_METHOD"] == "POST"){
+ if ($errcount==0){
+
+  $servername = "localhost";
+		$username = "root";
+		$password = "Admin@123";
+		$dbname = "jay";
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		$msg = '';
+		// Check connection
+		if($conn === false){
+			die("ERROR: Could not connect. "
+				. mysqli_connect_error());
+		}
+    		// File upload path
+		$targetDir = "/Jay/images/";
+		$fileName = basename($_FILES["file"]["name"]);
+		$targetFilePath = $targetDir . $fileName;
+		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+		
+		/*if(move_uploaded_file($_FILES["file"]["tmp_name"],$targetFilePath)){
+			//Insert image file name into database
+			$fname = $_REQUEST['fname'];
+			$lname = $_REQUEST['lname'];
+			$gender = $_REQUEST['gender'];
+			$mail = $_REQUEST['mail'];
+			$psw= $_REQUEST['psw'];
+		
+			$insert = "INSERT into reg VALUES ('$fname',
+			'$lname','$gender','$mail','$psw','.$fileName.')";
+			if($insert){
+                $msg = "The file ".$fileName. " has been uploaded successfully.";
+            }
+			else{
+                $msg = "File upload failed, please try again.";
+            } 
+		}
+		else{
+			$msg = "File upload failed, please try again.";
+		} */
+		
+		$fname = $_REQUEST['fname'];
+		$lname = $_REQUEST['lname'];
+		$gender = $_REQUEST['gender'];
+		$mail = $_REQUEST['mail'];
+		$psw= $_REQUEST['psw'];
+	
+		
+		
+		$sql = "INSERT INTO reg VALUES ('$fname',
+			'$lname','$gender','$mail','$psw','$fileName')";
+		
+		
+		
+		if(mysqli_query($conn, $sql)){
+		  unset($psw_repeat);
+      $fname = $lname = $gender =$mail  = $psw = $psw_repeat;
+      echo '<script>alert("Thanks for submitting your form ")</script>';
+
+		} else{
+			$sta = "Sorry there was and Error";
+		}
 
 
+		// Close connection
+		mysqli_close($conn);
+		
+
+ }
+ }
 ?>
 <div class="container">
-  <form name="regform"  action="<?php 
- 
-if(empty($errcount)){
-  echo htmlspecialchars($_SERVER["PHP_SELF"]);
-}
-
-?>" method="post"  enctype="multipart/form-data">
+  <form name="regform"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post"  enctype="multipart/form-data">
     <div class="row">
         <h2><i class="fa fa-user icon"></i> Registration Form </h2>
         <hr> 
@@ -218,7 +279,14 @@ if(empty($errcount)){
     <div class="row">
     <hr><center>
             <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-      <input name = "submit" type="submit" value="Submit"></center>
+            
+      <input name = "submit" type="submit" value="Submit">
+      <p>
+    	
+
+    </center>
+
+		
     </div>
   </form>
 </div>
