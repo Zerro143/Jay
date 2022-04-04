@@ -154,27 +154,7 @@ session_start();
 		$targetFilePath = $targetDir . $fileName;
 		$fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
 		
-		/*if(move_uploaded_file($_FILES["file"]["tmp_name"],$targetFilePath)){
-			//Insert image file name into database
-			$fname = $_REQUEST['fname'];
-			$lname = $_REQUEST['lname'];
-			$gender = $_REQUEST['gender'];
-			$mail = $_REQUEST['mail'];
-			$psw= $_REQUEST['psw'];
-		
-			$insert = "INSERT into reg VALUES ('$fname',
-			'$lname','$gender','$mail','$psw','.$fileName.')";
-			if($insert){
-                $msg = "The file ".$fileName. " has been uploaded successfully.";
-            }
-			else{
-                $msg = "File upload failed, please try again.";
-            } 
-		}
-		else{
-			$msg = "File upload failed, please try again.";
-		} */
-		
+	
 		$fname = $_REQUEST['fname'];
 		$lname = $_REQUEST['lname'];
 		$gender = $_REQUEST['gender'];
