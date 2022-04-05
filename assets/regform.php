@@ -252,7 +252,7 @@ session_start();
     </div>    
     <div class="row">
         <div class="col-75">
-          <center>  <br><input type="file" name="file" multiple></center>
+          <center>  <br><input type="file" name="file[]" multiple></center>
         </div>
 
     </div>  
