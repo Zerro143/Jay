@@ -34,7 +34,7 @@ for ($a = 1; $a < 11; $a++){
 
     for ($b=1; $b<11;$b++){
         $x = $b * $a; 
-        if($b == 5){
+        if($b == 8){
             continue;
         }
         echo "<td class=row>$b X $a = $x</td>" ;
