@@ -49,6 +49,8 @@ echo "Employee: ".$jay-> name. " has Vehical:".$jay -> vh;
 space();
 echo "Employee: ".$ritesh-> name. " has Vehical:".$ritesh -> vh;
 space();
+echo"<pre>";
+print_r($jay);
+var_dump($ritesh);
 ln();
-
 ?>
