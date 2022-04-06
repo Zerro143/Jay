@@ -53,4 +53,20 @@ echo"<pre>";
 print_r($jay);
 var_dump($ritesh);
 ln();
+
+class pet1{
+    //Properties
+    public $name;
+    public $owner;
+    public $breed;
+
+    //Methods 
+    public static function set_pet($name,$owner,$breed){
+        echo $name." ".$owner." ".$breed;
+        space();
+    }    
+}
+
+
+pet1::set_pet('a','b','c');
 ?>
