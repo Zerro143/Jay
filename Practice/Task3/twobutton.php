@@ -1,2 +1,0 @@
-<button onclick="location.href = 'record.php';" id="myButton" class="float-right submit-button" >Create Record</button>
-<button onclick="location.href = 'main.php';" id="myButton" class="float-right submit-button" >Show Record</button>
