@@ -99,17 +99,16 @@ function closeForm() {
       </div>
       <div class="row">
         <div class="col-4">
-          <a class="btn btn-primary" onclick="openForm()">Add</a>
+          <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
           <div style="padding-left:20px">
-            <div class="form-popup" id="myForm">
+            <div class="form" id="myForm">
               <form action="upcr.php" class="form-container" method="POSt">
-                Add course
-                <hr>
+                
                 <div class="row">
                   <label for="course"><b>Couse Name</b></label>
-                  <input type="text" placeholder="Enter course" name="course" >
+                  <input type="text" placeholder="Enter course" name="course" value="<?php echo $course;?>" >
                 </div>
-                <button type="submit" class="btn btn-primary" name="add">Add</button>
+                <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
                 <button type="button" class="btn btn-primary" onclick="closeForm()">Close</button>
               </form>
             </div>

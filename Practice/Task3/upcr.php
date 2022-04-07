@@ -18,12 +18,25 @@ if (isset($_POST['add'])) {
 
 if (isset($_GET['delete'])) {
     $course_id = $_GET['delete'];
-    $sql = "DELETE FROM course WHERE course_id = $course_id"or die("ERROR: Data no stored in database.".mysqli_error($conn));
+    $sql = "DELETE FROM course WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
 
    $_SESSION['message'] = "Course has been deleted";
    $_SESSION['msg_type'] = "Danger";
     
-   header("location:course.php");
+   //header("location:course.php");
+}
+
+if (isset($_GET['edit'])){
+    $course_id = $_GET['edit'];
+    $sql = "SELECT * FROM course WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn)); 
+    $result = $conn->query($sql);  
+    if ($result->num_rows > 0){
+        $row = $result->fetch_array();
+        $course_id = $row['course_id'];
+        $course = $row['course']; 
+        
+    }
+ 
 }
  
 mysqli_query($conn, $sql);
