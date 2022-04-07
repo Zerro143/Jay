@@ -1,0 +1,32 @@
+<?php 
+session_start();
+include 'conn.php';
+#$_SESSION['message']="";
+#$_SESSION['msg_type']="";
+
+if (isset($_POST['add'])) {
+    
+    $course = $_POST['course'];
+    $sql = "INSERT INTO course(course) VALUES ('$course')"or die("ERROR: Data no stored in database.".mysqli_error($conn));
+   
+    
+    $_SESSION['message'] = "Course has been Added";
+    $_SESSION['msg_type'] = "Success";
+    
+    header("location:course.php");
+}
+
+if (isset($_GET['delete'])) {
+    $course_id = $_GET['delete'];
+    $sql = "DELETE FROM course WHERE course_id = $course_id"or die("ERROR: Data no stored in database.".mysqli_error($conn));
+
+   $_SESSION['message'] = "Course has been deleted";
+   $_SESSION['msg_type'] = "Danger";
+    
+   header("location:course.php");
+}
+ 
+mysqli_query($conn, $sql);
+
+mysqli_close($conn);
+?>
