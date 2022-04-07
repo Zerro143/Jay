@@ -11,7 +11,7 @@ include 'conn.php';
 //  //$_SESSION['course']=$row['course'];
 //  $course=$row['course'];    
 //}
-mysqli_query($conn, $sql);
+//mysqli_query($conn, $sql);
 ?>
 
 <style>
