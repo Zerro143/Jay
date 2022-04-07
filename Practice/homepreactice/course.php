@@ -1,53 +1,7 @@
-<?php  
+<?php
+include 'conn.php';
 session_start();
-//include 'conn.php';
-//$course="";
-//if (isset($_GET['edit'])){
-//  $id = $_GET['edit'];
-//  $_SESSION['update']=true;
-//  $sql = "SELECT * FROM course WHERE course_id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn)); 
-//  $result = $conn->query($sql);  
-//  $row = $result->fetch_array();
-//  //$_SESSION['course']=$row['course'];
-//  $course=$row['course'];    
-//}
-mysqli_query($conn, $sql);
 ?>
-
-<style>
-
-.col-2{
-  text-align: center;
-  margin-top: 6px;
-  
-}
-.col-1{
-  text-align: center;
-  margin-top: 6px;
-}
-.form-popup {
-    display: none;
-    position: relative;
-    right: 15px;
-   
-    z-index: 9;
-  }
-  .form-container {
-    max-width: 400px;
-   
-    text-align: center;
-    
-  }
-  .form-container input[type=text] {
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
-
-</style>
 <script>
 function openForm() {
   document.getElementById("myForm").style.display = "block";
@@ -57,15 +11,12 @@ function closeForm() {
   document.getElementById("myForm").style.display = "none";
 }
 </script>
-
 <html>
-    <head>
-        <title>Student Grid</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    </head>
-
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  </head>
   <body>
+    <div class="container">
     <?php
     if(isset($_SESSION['message'])):
     ?>
@@ -109,8 +60,8 @@ function closeForm() {
 
                 
       </div>
-      <div class="row">
-        <div class="col-4">
+    <div class="row">
+      <div class="col-4">
           <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
           <div style="padding-left:20px">
             <div class="form" id="myForm">
@@ -118,7 +69,7 @@ function closeForm() {
                 <input type="hidden" name="id" value="<?php echo $id = $_SESSION['id'];?>">
                 <div class="row">
                   <label for="course"><b>Couse Name</b></label>
-                  <input type="text" placeholder="Enter course" name="course" value="<?php echo /*$course;*/$_SESSION['course'];  unset($_SESSION['course']);?>" >
+                  <input type="text" placeholder="Enter course" name="course" value="<?php //echo /*$course;*/$_SESSION['course'];  unset($_SESSION['course']);?>">
                 </div>
                 <?php
                   if($_SESSION['update']==true):
@@ -134,7 +85,8 @@ function closeForm() {
           </div>
         </div>
       </div>
-        <?php echo $id;?>       
+
     </div>
+  
   </body>
 </html>
