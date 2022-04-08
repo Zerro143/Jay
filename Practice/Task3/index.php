@@ -14,7 +14,7 @@ include 'conn.php';?>
            
             
             <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
-            <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Record</button>
+            <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Students Record</button>
             <?php /*
             <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
         </div>            
@@ -43,7 +43,7 @@ include 'conn.php';?>
                         <td><?php echo $row['lname'];?></td>
                         <td><?php echo $row['email'];?></td>
                         <td>   
-                          <a href="ups.php?edit=<?php echo $row['id'];?>"class="btn btn-info" >Edit</a>
+                          <a class="btn btn-info" onclick="window.open('ups.php?edit=<?php echo $row['id'];?>','popup','width=600,height=600'); return false;">Edit</a>
                           <a href="ups.php?delete=<?php echo $row['id'];?>"class="btn btn-danger">Delete</a>
                         </td>
                     

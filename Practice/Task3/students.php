@@ -57,17 +57,15 @@ function closeForm() {
     <section id="header">
       <?php   include 'nav.php';?>
     </section>
-    <?php
-    if(isset($_SESSION['message'])):
-    ?>
-    <div class="alert alert-<?=$_SESSION['msg_type']?>">
-        <?php
-          echo $_SESSION['message'];
-          unset($_SESSION['message']);
-        ?>
-
-    </div>
-    <?php endif ?>
+    <?php   include 'alert.php';?>
+    <div class="container" >
+           
+            
+            <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
+            <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course Data</button>
+            <?php /*
+            <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
+        </div> 
     <section id=main>
 
    
@@ -113,7 +111,7 @@ function closeForm() {
                       <td><?php echo $row['created_date'];?></td>
                       <td><?php echo $row['update_date'];?></td>
                       <td>   
-                        <a href="students.php?edit=<?php echo $row['id'];?>"class="btn btn-info" onclick="openForm()">Edit</a>
+                        <a class="btn btn-info" onclick="window.open('ups.php?edit=<?php echo $row['id'];?>','popup','width=600,height=600'); return false;">Edit</a>
                         <a href="ups.php?delete=<?php echo $row['id'];?>"class="btn btn-danger">Delete</a>
                       </td>
                           

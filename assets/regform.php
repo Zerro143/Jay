@@ -192,7 +192,7 @@ session_start();
         <hr> 
     </div>
     <div class="row">
-    
+    <input type="hidden" name="id" value="<?php echo $id = $_SESSION['sid'];?>">
       <div class="col-25">
         <label for="fname">First Name</label>
       </div>

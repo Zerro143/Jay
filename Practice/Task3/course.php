@@ -67,20 +67,18 @@ function closeForm() {
     </head>
 
   <body>
-<section id="header">
-  <?php   include 'nav.php';?>
-</section>
-    <?php
-    if(isset($_SESSION['message'])):
-    ?>
-    <div class="alert alert-<?=$_SESSION['msg_type']?>">
-        <?php
-          echo $_SESSION['message'];
-          unset($_SESSION['message']);
-        ?>
-
-    </div>
-    <?php endif ?>
+    <section id="header">
+      <?php   include 'nav.php';?>
+    </section>
+    <?php   include 'alert.php';?>
+    <div class="container" >
+               
+                
+      <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
+      <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Students Record</button>
+      <?php /*
+      <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
+    </div> 
 
     <div class="container">
 
@@ -119,16 +117,16 @@ function closeForm() {
           <div style="padding-left:20px">
             <div class="form" id="myForm">
               <form action="upcr.php" class="form-container" method="POSt">
-                <input type="hidden" name="id" value="<?php echo $id = $_SESSION['id'];?>">
+                <input type="hidden" name="id" value="<?php echo $id = $_SESSION['cid'];?>">
                 <div class="row">
                   <label for="course"><b>Couse Name</b></label>
                   <input type="text" placeholder="Enter course" name="course" value="<?php echo /*$course;*/$_SESSION['course'];  unset($_SESSION['course']);?>" >
                 </div>
                 <?php
-                  if($_SESSION['update']==true):
+                  if($_SESSION['crupdate']==true):
                 ?>
                   <button type="submit" class="btn btn-info" placeholder="update" name="update">Update</button>
-                <?php unset($_SESSION['update']); ?>  
+                <?php unset($_SESSION['crupdate']); ?>  
                 <?php else:?>
                   <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
                 <?php endif;?>  
@@ -138,7 +136,7 @@ function closeForm() {
           </div>
         </div>
       </div>
-        <?php echo $id;?>       
+      <?php echo $id;?>       
     </div>
   </body>
 </html>
