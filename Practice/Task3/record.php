@@ -1,41 +1,41 @@
-<style>
-.container {
-  
-  border-radius: 70px;
-  
-  padding: 20px;
-  margin: 20%; 
-  
-  margin-top: 0%;
-}
-.col-25 {
-  text-align: center;
-  float: Left;
-  width: 25%;
-  margin-top: 6px;
-}
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-form{
-    align-self: center;
-}
-</style>
 <?php 
+  session_start();
   include 'conn.php';
   $sql = "SELECT * FROM `course`;"; 
   $result = $conn->query($sql); 
   // output data of each row
 
-?> 
-         
+?>
+<style>
+  .container {
+
+    border-radius: 70px;
+
+    padding: 20px;
+    margin: 20%; 
+
+    margin-top: 0%;
+  }
+  .col-25 {
+    text-align: center;
+    float: Left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  form{
+      align-self: center;
+  }
+</style>
 
 <html>
   <head>
@@ -49,7 +49,7 @@ form{
       </section>
       <div class="container">
       <div class="form">
-        <form name="student"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+        <form name="student"  action="ups.php" method="POST">
           <div class="row justify-content-center">
 
           </div>
@@ -60,7 +60,7 @@ form{
             </div>
             <div class="col-75">
               <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $fname;?>">
-              <span class="error">* <?php echo $fnameErr;?></span>
+              <span class="error">* <?php echo $_SESSION['fnameErr'];?></span>
             </div>
 
           </div>
@@ -70,7 +70,7 @@ form{
             </div>
             <div class="col-75">
               <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $lname;?>">
-              <span class="error">* <?php echo $lnameErr;?></span>
+              <span class="error">* <?php echo $_SESSION['lnameErr'];?></span>
             </div>
           </div>
           <div class="row">
@@ -79,6 +79,7 @@ form{
             </div>
             <div class="col-75">
               <input type="date" name="bdate" id="bdate">
+              <span class="error">* <?php echo $_SESSION['bdateErr'] ;?></span>
 
             </div>
           </div>
@@ -87,8 +88,8 @@ form{
             <label for="mail">Mobile no:</label>
             </div>
             <div class="col-75">
-            <input type="phone" id="mail" name="mail"placeholder="Mobile no." value="<?php echo $mail;?>">  
-            <span class="error">* <?php echo $mailErr;?></span>
+            <input type="phone" id="mail" name="m"placeholder="Mobile no." value="<?php echo $mail;?>">  
+            <span class="error">* <?php echo $_SESSION['mErr'];?></span>
             </div>
           </div>
           <div class="row">
@@ -97,7 +98,7 @@ form{
             </div>
             <div class="col-75">
             <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo $mail;?>">  
-            <span class="error">* <?php echo $mailErr;?></span>
+            <span class="error">* <?php echo $_SESSION['mailErr'];?></span>
             </div>
           </div>
           <div class="row">
@@ -111,7 +112,7 @@ form{
 
                       <?php endwhile;?>
                   </select> 
-              <span class="error">* <?php echo $pswErr;?></span>
+              <span class="error">* <?php echo $_SESSION['course_idErr'];?></span>
             </div>
           </div>    
           <div class="row">
@@ -120,6 +121,7 @@ form{
             </div>
             <div class="col-75">
               <input type="date" name="cdate" id="cdate">
+              <span class="error">* <?php echo $_SESSION['bdateErr'] ;?></span>
 
             </div>
           </div>
@@ -143,4 +145,3 @@ form{
       </div>
   </body>
 </html>      
-
