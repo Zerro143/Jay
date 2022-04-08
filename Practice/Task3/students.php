@@ -54,6 +54,9 @@ function closeForm() {
     </head>
 
   <body>
+    <section id="header">
+      <?php   include 'nav.php';?>
+    </section>
     <?php
     if(isset($_SESSION['message'])):
     ?>
@@ -65,71 +68,74 @@ function closeForm() {
 
     </div>
     <?php endif ?>
+    <section id=main>
 
-    <div class="container">
+   
+      <div class="container">
 
-      <div class="row justify-content-center">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Student ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Mobile No.</th>
-                <th>Course</th>
-                <th>Birthdate</th>
-                <th>Created Date</th>
-                <th>Updated Date</th>
-                <th colspan="4">Action</th>
-              </tr>
-            </thead>
-              <?php $sql = "SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id;"; 
-                  $result = $conn->query($sql); 
-                  
-                  // output data of each row
-                while($row = $result->fetch_assoc()):?> 
-                <div class="row" justify-content-center>
-                  <tr>
-                    <td><?php echo $row['id'];?></td>
-                    <td><?php echo $row['fname'];?></td>
-                    <td><?php echo $row['lname'];?></td>
-                    <td><?php echo $row['email'];?></td>
-                    <td><?php echo $row['m'];?></td>
-                    <td><?php echo $row['course'];
-                              //echo $course_id;
-                         //$sql2 = "SELECT * FROM course WHERE id = $course_id";
-                         //$result2 = $conn->query($sql2); 
-                         //while($row1 = $result2->fetch_assoc())
-                         //{
-                         //     echo $row1['course']; 
-                         //}  ?></td>
-                    <td><?php echo $row['bdate'];?></td>
-                    <td><?php echo $row['created_date'];?></td>
-                    <td><?php echo $row['update_date'];?></td>
-                    <td>   
-                      <a href="students.php?edit=<?php echo $row['id'];?>"class="btn btn-info" onclick="openForm()">Edit</a>
-                      <a href="ups.php?delete=<?php echo $row['id'];?>"class="btn btn-danger">Delete</a>
-                    </td>
-                
-                  </tr>
-                </div>  
-              <?php endwhile;?>
-          </table>
+        <div class="row justify-content-center">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                  <th>Mobile No.</th>
+                  <th>Course</th>
+                  <th>Birthdate</th>
+                  <th>Created Date</th>
+                  <th>Updated Date</th>
+                  <th colspan="4">Action</th>
+                </tr>
+              </thead>
+                <?php $sql = "SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id;"; 
+                    $result = $conn->query($sql); 
 
-                
-      </div>
-      <div class="row">
-        <div class="col-4">
-          <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
-          <div style="padding-left:20px">
-            <div class="form" id="myForm">
-            <?php //include 'record.php';?>
+                    // output data of each row
+                  while($row = $result->fetch_assoc()):?> 
+                  <div class="row" justify-content-center>
+                    <tr>
+                      <td><?php echo $row['id'];?></td>
+                      <td><?php echo $row['fname'];?></td>
+                      <td><?php echo $row['lname'];?></td>
+                      <td><?php echo $row['email'];?></td>
+                      <td><?php echo $row['m'];?></td>
+                      <td><?php echo $row['course'];
+                                //echo $course_id;
+                           //$sql2 = "SELECT * FROM course WHERE id = $course_id";
+                           //$result2 = $conn->query($sql2); 
+                           //while($row1 = $result2->fetch_assoc())
+                           //{
+                           //     echo $row1['course']; 
+                           //}  ?></td>
+                      <td><?php echo $row['bdate'];?></td>
+                      <td><?php echo $row['created_date'];?></td>
+                      <td><?php echo $row['update_date'];?></td>
+                      <td>   
+                        <a href="students.php?edit=<?php echo $row['id'];?>"class="btn btn-info" onclick="openForm()">Edit</a>
+                        <a href="ups.php?delete=<?php echo $row['id'];?>"class="btn btn-danger">Delete</a>
+                      </td>
+                          
+                    </tr>
+                  </div>  
+                <?php endwhile;?>
+            </table>
+
+                          
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
+            <div style="padding-left:20px">
+              <div class="form" id="myForm">
+              <?php //include 'record.php';?>
+              </div>
             </div>
           </div>
         </div>
+                          
       </div>
-                
-    </div>
+    </section>  
   </body>
 </html>

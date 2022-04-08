@@ -28,6 +28,14 @@ form{
     align-self: center;
 }
 </style>
+<?php 
+            include 'conn.php';
+                $sql = "SELECT * FROM `course`;"; 
+                $result = $conn->query($sql); 
+                // output data of each row
+              
+            ?> 
+         
 
 <html>
     <head>
@@ -37,6 +45,9 @@ form{
 
     </head>
   <body>
+  <section id="header">
+      <?php   include 'nav.php';?>
+    </section>
     <div class="container">
     <div class="form">
       <form name="student"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
@@ -95,14 +106,12 @@ form{
                 <label for="browser">Course:</label>
             </div>
             <div class="col-75">
-            <input list="browsers" name="browser"> 
-                <datalist id="browsers">
-                    <option value="Internet Explorer">
-                    <option value="Firefox">
-                    <option value="Chrome">
-                    <option value="Opera">
-                    <option value="Safari">
-                </datalist>
+            <select>
+                    <?php while($row = $result->fetch_assoc()): ?>
+                    <option value="<?php echo $row['course'];?>"><?php echo $row['course'];?> </option>
+                                                        
+                    <?php endwhile;?>
+                </select> 
             <span class="error">* <?php echo $pswErr;?></span>
           </div>
         </div>    
@@ -122,7 +131,7 @@ form{
         <hr>
                
 
-                <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
+          <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
           <p>
 
 

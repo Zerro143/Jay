@@ -1,6 +1,6 @@
 <?php  
 session_start();
-//include 'conn.php';
+include 'conn.php';
 //$course="";
 //if (isset($_GET['edit'])){
 //  $id = $_GET['edit'];
@@ -11,6 +11,7 @@ session_start();
 //  //$_SESSION['course']=$row['course'];
 //  $course=$row['course'];    
 //}
+$id="";
 mysqli_query($conn, $sql);
 ?>
 
@@ -66,6 +67,9 @@ function closeForm() {
     </head>
 
   <body>
+<section id="header">
+  <?php   include 'nav.php';?>
+</section>
     <?php
     if(isset($_SESSION['message'])):
     ?>
