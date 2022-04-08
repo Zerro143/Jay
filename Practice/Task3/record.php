@@ -46,13 +46,23 @@
   <body>
     <section id="header">
         <?php   include 'nav.php';?>
-      </section>
-      <div class="container">
-      <div class="form">
-        <form name="student"  action="ups.php" method="POST">
-          <div class="row justify-content-center">
+    </section>
+    <?php
+      if(isset($_SESSION['message'])):
+    ?>
+    <div class="alert alert-<?=$_SESSION['msg_type']?>">
+      <?php
+        echo $_SESSION['message'];
+        unset($_SESSION['message']);
+        unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr']);
+      ?>
 
-          </div>
+    </div>
+    <?php endif; ?>
+    <div class="container">
+      <div class="form">
+        <form name="student"  action="ups.php" method="post">
+          
           <div class="row">
 
             <div class="col-25">
@@ -85,10 +95,10 @@
           </div>
           <div class="row">
             <div class="col-25">
-            <label for="mail">Mobile no:</label>
+            <label for="m">Mobile no:</label>
             </div>
             <div class="col-75">
-            <input type="phone" id="mail" name="m"placeholder="Mobile no." value="<?php echo $mail;?>">  
+            <input type="phone" id="m" name="m"placeholder="Mobile no." value="<?php echo $m;?>">  
             <span class="error">* <?php echo $_SESSION['mErr'];?></span>
             </div>
           </div>
@@ -103,10 +113,10 @@
           </div>
           <div class="row">
               <div class="col-25">
-                  <label for="browser">Course:</label>
+                  <label for="course">Course:</label>
               </div>
               <div class="col-75">
-              <select>
+              <select name = "course">
                       <?php while($row = $result->fetch_assoc()): ?>
                       <option value="<?php echo $row['course'];?>"><?php echo $row['course'];?> </option>
 
@@ -121,7 +131,7 @@
             </div>
             <div class="col-75">
               <input type="date" name="cdate" id="cdate">
-              <span class="error">* <?php echo $_SESSION['bdateErr'] ;?></span>
+              <span class="error">* <?php echo $_SESSION['cdateErr'] ;?></span>
 
             </div>
           </div>
