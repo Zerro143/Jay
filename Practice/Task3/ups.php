@@ -74,7 +74,9 @@
                     $errcount = "1";
                 }
             }
+            header("location:record.php");
         }
+
         if($errcount==0){
         
             //$_SESSION['fname']= $fname; 
@@ -148,7 +150,7 @@
                     if (!preg_match("/^[a-zA-Z-' ]*$/",$fname)) {
                         $_SESSION['fnameErr']  = "Only letters and white space allowed";
                         $errcount = "1";
-                    }
+                }
             }
           
             if (empty($_POST['lname'])) {
@@ -161,7 +163,7 @@
                     if (!preg_match("/^[a-zA-Z-' ]*$/",$lname)) {
                         $_SESSION['lnameErr'] = "Only letters and white space allowed";
                         $errcount = "1";
-                    }
+                }
             }
           
 
@@ -176,20 +178,22 @@
                     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
                         $_SESSION['mailErr'] = "Please enter a valid Email Address";
                         $errcount = "1";
-                    }
+                }
             }
+
             if (empty($_POST['m'])){
                     $_SESSION['mErr']= "Please Enter Your phone number";
                     $errcount = "1";
             }else{
                 $m = test_input($_POST['m']);
                 if (!preg_match('/^[0-9]{10}+$/',$m)) {
-                    $_SESSION['mErr'] = "Only letters and white space allowed";
+                    $_SESSION['mErr'] = "Only phone numbers are allowed";
                     $errcount = "1";
                 }
             }
+            header("location:record.php");
         }
-
+        
         if($errcount==0){
         
             //$_SESSION['fname']= $fname; 
@@ -215,7 +219,7 @@
             
         }
         //echo $errcount;
-        header("location:record.php");
+        
 
         
     }
