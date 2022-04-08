@@ -29,118 +29,118 @@ form{
 }
 </style>
 <?php 
-            include 'conn.php';
-                $sql = "SELECT * FROM `course`;"; 
-                $result = $conn->query($sql); 
-                // output data of each row
-              
-            ?> 
+  include 'conn.php';
+  $sql = "SELECT * FROM `course`;"; 
+  $result = $conn->query($sql); 
+  // output data of each row
+
+?> 
          
 
 <html>
-    <head>
-        <title>Create Record</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-
-    </head>
+  <head>
+      <title>Create Record</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  </head>
   <body>
-  <section id="header">
-      <?php   include 'nav.php';?>
-    </section>
-    <div class="container">
-    <div class="form">
-      <form name="student"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <div class="row justify-content-center">
-          
-        </div>
-        <div class="row">
-
-          <div class="col-25">
-            <label for="fname">First Name</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $fname;?>">
-            <span class="error">* <?php echo $fnameErr;?></span>
-          </div>
-
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label for="lname">Last Name</label>
-          </div>
-          <div class="col-75">
-            <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $lname;?>">
-            <span class="error">* <?php echo $lnameErr;?></span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-            <label>Birth Date</label>
-          </div>
-          <div class="col-75">
-            <input type="date" name="bdate" id="bdate">
+    <section id="header">
+        <?php   include 'nav.php';?>
+      </section>
+      <div class="container">
+      <div class="form">
+        <form name="student"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+          <div class="row justify-content-center">
 
           </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-          <label for="mail">Mobile no:</label>
-          </div>
-          <div class="col-75">
-          <input type="phone" id="mail" name="mail"placeholder="Mobile no." value="<?php echo $mail;?>">  
-          <span class="error">* <?php echo $mailErr;?></span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-25">
-          <label for="mail">Email:</label>
-          </div>
-          <div class="col-75">
-          <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo $mail;?>">  
-          <span class="error">* <?php echo $mailErr;?></span>
-          </div>
-        </div>
-        <div class="row">
+          <div class="row">
+
             <div class="col-25">
-                <label for="browser">Course:</label>
+              <label for="fname">First Name</label>
             </div>
             <div class="col-75">
-            <select>
-                    <?php while($row = $result->fetch_assoc()): ?>
-                    <option value="<?php echo $row['course'];?>"><?php echo $row['course'];?> </option>
-                                                        
-                    <?php endwhile;?>
-                </select> 
-            <span class="error">* <?php echo $pswErr;?></span>
-          </div>
-        </div>    
-        <div class="row">
-          <div class="col-25">
-            <label>Created Date</label>
-          </div>
-          <div class="col-75">
-            <input type="date" name="cdate" id="cdate">
+              <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $fname;?>">
+              <span class="error">* <?php echo $fnameErr;?></span>
+            </div>
 
           </div>
-        </div>
+          <div class="row">
+            <div class="col-25">
+              <label for="lname">Last Name</label>
+            </div>
+            <div class="col-75">
+              <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $lname;?>">
+              <span class="error">* <?php echo $lnameErr;?></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+              <label>Birth Date</label>
+            </div>
+            <div class="col-75">
+              <input type="date" name="bdate" id="bdate">
+
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+            <label for="mail">Mobile no:</label>
+            </div>
+            <div class="col-75">
+            <input type="phone" id="mail" name="mail"placeholder="Mobile no." value="<?php echo $mail;?>">  
+            <span class="error">* <?php echo $mailErr;?></span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-25">
+            <label for="mail">Email:</label>
+            </div>
+            <div class="col-75">
+            <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo $mail;?>">  
+            <span class="error">* <?php echo $mailErr;?></span>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-25">
+                  <label for="browser">Course:</label>
+              </div>
+              <div class="col-75">
+              <select>
+                      <?php while($row = $result->fetch_assoc()): ?>
+                      <option value="<?php echo $row['course'];?>"><?php echo $row['course'];?> </option>
+
+                      <?php endwhile;?>
+                  </select> 
+              <span class="error">* <?php echo $pswErr;?></span>
+            </div>
+          </div>    
+          <div class="row">
+            <div class="col-25">
+              <label>Created Date</label>
+            </div>
+            <div class="col-75">
+              <input type="date" name="cdate" id="cdate">
+
+            </div>
+          </div>
 
 
 
-        <div class="row">
-        <hr>
-               
+          <div class="row">
+          <hr>
+                      
 
-          <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
-          <p>
-
-
-        
+            <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
+            <p>
 
 
-        </div>
-      </form>
-    </div>
-    </div>
-  </body>    
+                      
+
+
+          </div>
+        </form>
+      </div>
+      </div>
+  </body>
+</html>      
 
