@@ -136,7 +136,7 @@ function closeForm() {
           </div>
         </div>
       </div>
-      <?php echo $id;?>       
+          
     </div>
   </body>
 </html>

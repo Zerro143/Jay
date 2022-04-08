@@ -29,6 +29,8 @@ if (!checkdate($DOB)) {
 }
 ?>
 
+<button class="btn-xs btn-primary" onclick="window.open('crecord.php','popup','width=20,height=20'); return false;">Create Student Record</button>
+
 
 
                 
