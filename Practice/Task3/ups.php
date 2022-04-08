@@ -78,12 +78,14 @@
             
         
     }
+
     function test_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             return $data;
     }    
+
     if($errcount==0){
         $_SESSION['message'] = "Student's record has been Added";
         $_SESSION['msg_type'] = "Success";
@@ -99,13 +101,31 @@
         //echo $_SESSION['mailErr'];
        
       
-       echo $sql;
-
+       
+       header("location:record.php");
         
            
     }
+
+    if (isset($_GET['edit'])){
+        $id = $_GET['edit'];
+        $_SESSION['update']=true;
+        $sql = "SELECT * FROM student WHERE id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn)); 
+        $result = $conn->query($sql);  
+        $row = $result->fetch_array();
+        $_SESSION['id']=$row['id'];
+        $_SESSION['fname']=$row['fname'];
+        $_SESSION['lname']=$row['lname'];
+        $_SESSION['mail']=$row['email'];
+        $_SESSION['course_id']=$row['course_id'];
+        $_SESSION['bdate']=$row['bdate'];
+        $_SESSION['m']=$row['m'];
+        $_SESSION['cdate']=$row['created_date'];
+        
+       
+    }    
     
-    header("location:record.php");
+    //header("location:record.php");
 
     mysqli_query($conn, $sql);
    

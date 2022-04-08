@@ -43,8 +43,8 @@ include 'conn.php';?>
                         <td><?php echo $row['lname'];?></td>
                         <td><?php echo $row['email'];?></td>
                         <td>   
-                          <a href="students.php?edit=<?php echo $row['course_id'];?>"class="btn btn-info" onclick="openForm()">Edit</a>
-                          <a href="ups.php?delete=<?php echo $row['course_id'];?>"class="btn btn-danger">Delete</a>
+                          <a href="ups.php?edit=<?php echo $row['id'];?>"class="btn btn-info" >Edit</a>
+                          <a href="ups.php?delete=<?php echo $row['id'];?>"class="btn btn-danger">Delete</a>
                         </td>
                     
                       </tr>

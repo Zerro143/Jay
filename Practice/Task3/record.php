@@ -69,8 +69,8 @@
               <label for="fname">First Name</label>
             </div>
             <div class="col-75">
-              <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $fname;?>">
-              <span class="error">* <?php echo $_SESSION['fnameErr'];?></span>
+              <input type="text" id="fname" name="fname" placeholder="Your name.."value="<?php echo $_SESSION['fname']; unset($_SESSION['fname']);?>">
+              <span class="error">* <?php echo $_SESSION['fnameErr'];unset($_SESSION['fnameErr']);?></span>
             </div>
 
           </div>
@@ -79,7 +79,7 @@
               <label for="lname">Last Name</label>
             </div>
             <div class="col-75">
-              <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $lname;?>">
+              <input type="text" id="lname" name="lname" placeholder="Your last name.." value="<?php echo $_SESSION['lname'];unset($_SESSION['lname']);?>">
               <span class="error">* <?php echo $_SESSION['lnameErr'];?></span>
             </div>
           </div>
@@ -88,7 +88,7 @@
               <label>Birth Date</label>
             </div>
             <div class="col-75">
-              <input type="date" name="bdate" id="bdate">
+              <input type="date" name="bdate" id="bdate"value="<?php echo $_SESSION['bdate'];unset($_SESSION['bdate']);?>">
               <span class="error">* <?php echo $_SESSION['bdateErr'] ;?></span>
 
             </div>
@@ -98,7 +98,7 @@
             <label for="m">Mobile no:</label>
             </div>
             <div class="col-75">
-            <input type="phone" id="m" name="m"placeholder="Mobile no." value="<?php echo $m;?>">  
+            <input type="phone" id="m" name="m"placeholder="Mobile no." value="<?php echo $_SESSION['m']; unset($_SESSION['m']);?>">  
             <span class="error">* <?php echo $_SESSION['mErr'];?></span>
             </div>
           </div>
@@ -107,7 +107,7 @@
             <label for="mail">Email:</label>
             </div>
             <div class="col-75">
-            <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo $mail;?>">  
+            <input type="email" id="mail" name="mail"placeholder="Email" value="<?php echo  $_SESSION['mail'];unset( $_SESSION['mail']);?>">  
             <span class="error">* <?php echo $_SESSION['mailErr'];?></span>
             </div>
           </div>
@@ -130,8 +130,8 @@
               <label>Created Date</label>
             </div>
             <div class="col-75">
-              <input type="date" name="cdate" id="cdate">
-              <span class="error">* <?php echo $_SESSION['cdateErr'] ;?></span>
+              <input type="date" name="cdate" id="cdate"  value="<?php echo  $_SESSION['cdate'];unset( $_SESSION['cdate']);?>">
+              <span class="error">* <?php echo $_SESSION['cdateErr'];?></span>
 
             </div>
           </div>
