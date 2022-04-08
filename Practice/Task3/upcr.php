@@ -11,7 +11,7 @@ if (isset($_POST['add'])) {
     
     $course = $_POST['course'];
     $sql = "INSERT INTO course(course) VALUES ('$course')"or die("ERROR: Data no stored in database.".mysqli_error($conn));
-   
+    mysqli_query($conn, $sql);
     
     $_SESSION['message'] = "Course has been Added";
     $_SESSION['msg_type'] = "Success";

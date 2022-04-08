@@ -8,7 +8,7 @@
     if (isset($_GET['delete'])) {
         $id = $_GET['delete'];
         $sql = "DELETE FROM student WHERE id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
-
+        mysqli_query($conn, $sql);
         $_SESSION['message'] = "Student's record has been deleted";
         $_SESSION['msg_type'] = "Danger";
 
