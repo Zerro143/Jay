@@ -22,9 +22,13 @@ if (isset($_POST['add'])) {
 if (isset($_GET['delete'])) {
     $course_id = $_GET['delete'];
     $sql = "DELETE FROM course WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
-    $sql = "DELETE FROM student WHERE course_id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
+   mysqli_query($conn, $sql);
+    
+    $sql = "DELETE FROM student WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
+    mysqli_query($conn, $sql);
+    
 
-   $_SESSION['message'] = "Course has been deleted";
+   $_SESSION['message'] = "Course and Course Related Students has been deleted";
    $_SESSION['msg_type'] = "Danger";
     
    header("location:course.php");
@@ -33,7 +37,8 @@ if (isset($_GET['delete'])) {
 if (isset($_GET['edit'])){
     $id = $_GET['edit'];
     $_SESSION['crupdate']=true;
-    $sql = "SELECT * FROM course WHERE course_id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn)); 
+    $sql = "SELECT * FROM course WHERE course_id = $id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
+    mysqli_query($conn, $sql); 
     $result = $conn->query($sql);  
     $row = $result->fetch_array();
     $_SESSION['cid']=$row['course_id'];
@@ -63,6 +68,7 @@ if (isset($_POST['update'])) {
     //echo $id;
     //echo $course;
     $sql = "UPDATE course SET course = '$course' WHERE course_id = $id";// or die("ERROR: Data not stored in database.".mysqli_error($conn));
+    mysqli_query($conn, $sql);
     //echo $sql;   
     $_SESSION['message'] = "Course has been Edited";
     $_SESSION['msg_type'] = "Success";
@@ -72,7 +78,7 @@ if (isset($_POST['update'])) {
     
 }
 
-mysqli_query($conn, $sql);
+
 
 mysqli_close($conn);
 ?>
