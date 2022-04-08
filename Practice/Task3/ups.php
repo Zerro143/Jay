@@ -78,25 +78,25 @@
             
         
     }
-        function test_input($data) {
+    function test_input($data) {
             $data = trim($data);
             $data = stripslashes($data);
             $data = htmlspecialchars($data);
             return $data;
-        }    
-        if($errcount==0){
-            $_SESSION['message'] = "Student's record has been Added";
-            $_SESSION['msg_type'] = "Success";
-            unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr'],$_SESSION['mErr'],$_SESSION['bdateErr'],$_SESSION['course_idErr'],$_SESSION['cdateErr']);
+    }    
+    if($errcount==0){
+        $_SESSION['message'] = "Student's record has been Added";
+        $_SESSION['msg_type'] = "Success";
+        unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr'],$_SESSION['mErr'],$_SESSION['bdateErr'],$_SESSION['course_idErr'],$_SESSION['cdateErr']);
             
             
-           echo "$fname <br> $lname <br>$email<br>$m <br>" .$course_id = $_POST['course'] ." <br> $bdate <br>$cdate";
-           echo $_SESSION['mailErr'];
-            
-        }
+        echo "$fname <br> $lname <br>$email<br>$m <br>" .$course_id = $_POST['course'] ." <br> $bdate <br>$cdate";
         echo $_SESSION['mailErr'];
-        //header("location:record.php");
-    // }
+           
+    }
+    echo $_SESSION['mailErr'];
+    //header("location:record.php");
+    
    
 
     
