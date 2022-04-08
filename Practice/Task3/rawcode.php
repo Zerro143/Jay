@@ -23,7 +23,12 @@ if(valid_phone(1234567890)){
 }else{
     echo "Sorry, Your phone number is invalid.";
 }
+$DOB = strtotime("today");
+if (!checkdate($DOB)) {
+    $error_message = 'Invalid Date';
+}
 ?>
+
 
 
                 

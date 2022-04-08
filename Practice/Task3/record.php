@@ -54,7 +54,7 @@
       <?php
         echo $_SESSION['message'];
         unset($_SESSION['message']);
-        unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr']);
+        unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr'],$_SESSION['mErr'],$_SESSION['bdateErr'],$_SESSION['course_idErr'],$_SESSION['cdateErr']);
       ?>
 
     </div>
@@ -118,7 +118,7 @@
               <div class="col-75">
               <select name = "course">
                       <?php while($row = $result->fetch_assoc()): ?>
-                      <option value="<?php echo $row['course'];?>"><?php echo $row['course'];?> </option>
+                      <option value="<?php echo $row['course_id'];?>"><?php echo $row['course'];?> </option>
 
                       <?php endwhile;?>
                   </select> 

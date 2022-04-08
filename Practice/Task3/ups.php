@@ -87,17 +87,28 @@
     if($errcount==0){
         $_SESSION['message'] = "Student's record has been Added";
         $_SESSION['msg_type'] = "Success";
+        //$_SESSION['fname']= $fname; 
+        $course_id = $_POST['course'];
+        $bdate = $_POST['bdate'];
+        $cdate = $_POST['cdate'];
+
         unset($_Session['fnameErr'],$_SESSION['lnameErr'],$_SESSION['mailErr'],$_SESSION['mErr'],$_SESSION['bdateErr'],$_SESSION['course_idErr'],$_SESSION['cdateErr']);
             
-            
-        echo "$fname <br> $lname <br>$email<br>$m <br>" .$course_id = $_POST['course'] ." <br> $bdate <br>$cdate";
-        echo $_SESSION['mailErr'];
+       $sql = "INSERT INTO student(`fname`, `lname`, `email`, `m`, `course_id`, `bdate`, `created_date`) VALUES ('$fname','$lname','$email','$m','$course_id','$bdate','$cdate')" or die("ERROR: Data no stored in database.".mysqli_error($conn));
+        //echo "$fname <br> $lname <br>$email<br>$m <br>" .$course_id." <br> $bdate <br>$cdate";
+        //echo $_SESSION['mailErr'];
+       
+      
+       echo $sql;
+
+        
            
     }
-    echo $_SESSION['mailErr'];
-    //header("location:record.php");
     
-   
+    header("location:record.php");
 
+    mysqli_query($conn, $sql);
+   
+    mysqli_close($conn);
     
 ?>
