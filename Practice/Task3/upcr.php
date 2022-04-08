@@ -23,10 +23,7 @@ if (isset($_GET['delete'])) {
     $course_id = $_GET['delete'];
     $sql = "DELETE FROM course WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
    mysqli_query($conn, $sql);
-    
-    $sql = "DELETE FROM student WHERE course_id = $course_id" or die("ERROR: Data no stored in database.".mysqli_error($conn));
-    mysqli_query($conn, $sql);
-    
+  
 
    $_SESSION['message'] = "Course and Course Related Students has been deleted";
    $_SESSION['msg_type'] = "Danger";
