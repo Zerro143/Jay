@@ -12,7 +12,18 @@
                                                         
                     <?php endwhile;?>
                 </select>       
+                <?php
 
+function valid_phone($phone)
+{
+    return preg_match('/^[0-9]{10}+$/', $phone);
+}
+if(valid_phone(1234567890)){
+    echo "Your phone number is valid.";
+}else{
+    echo "Sorry, Your phone number is invalid.";
+}
+?>
 
 
                 
