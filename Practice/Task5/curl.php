@@ -43,6 +43,7 @@
             mysqli_query($conn,$b);
         }
     }
+    curl_close($ch);
 
 
 
