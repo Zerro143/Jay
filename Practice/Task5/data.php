@@ -2,6 +2,10 @@
 include 'conn.php';?>
 
 <style>
+    * {
+  box-sizing: border-box;
+  font-family:Apple Chancery, cursive;
+}
 
 .col-2{
   text-align: center;
@@ -41,7 +45,7 @@ include 'conn.php';?>
     <head>
         <title>Api Data</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        
     </head>
 
   <body>
