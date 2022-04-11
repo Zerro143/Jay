@@ -26,16 +26,26 @@ for($i=0; $i<=count($data['entries']); $i++){
     $link = $data['entries'][$i]['Link'];
     $cat = $data['entries'][$i]['Category'];
 
-    $r1 = "SELECT COUNT(*) FROM api  data WHERE linl = '$link';";
-    $a = mysqli_query($conn,$query);
-    if($a==0){
-        $query="INSERT INTO apidata VALUES('$api','$des','$auth','$https','$cors','$link','$cat')";
-        mysqli_query($conn,$query);
+   
 
-    }    
+    $r1 = "SELECT COUNT(*) FROM apidata WHERE `link` = '$link'";
+    $a = mysqli_query($conn,$r1);
+    //echo $a."<br>";
+    if($a<=0){
+    $query="INSERT INTO apidata VALUES('$api','$des','$auth','$https','$cors','$link','$cat');";
+    mysqli_query($conn,$query);
+    continue;
+    //echo $link."<br>";
+    }
+   else{
+       $b = "UPDATE apidata SET `link`= '$link' WHERE linK = '$link' ";
+       mysqli_query($conn,$b);
+    }
 
-    
-    //echo "$api <br> $des <br> $auth <br> $https<br> $cors <br> $link <br> $cat";
-    //echo $query."<br>";
 }
+
+
+
+
+
 ?>  
