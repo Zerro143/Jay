@@ -12,7 +12,7 @@
 
     $csv = 'apidata.csv';
 
-    $file_pointer = fopen($csv,'a+');
+    $file_pointer = fopen($csv,'w');
     
     //print_r($data['entries']);
 
