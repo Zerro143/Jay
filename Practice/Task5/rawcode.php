@@ -1,25 +1,32 @@
 <?php
-$array3D = array(
-    array(
-        array(1, 0, 9),
-        array(0, 5, 6),
-        array(1, 0, 3)
-    ),
-    array(
-        array(0, 4, 6),
-        array(0, 0, 1),
-        array(1, 2, 7)
-    ),
-);
- 
-foreach ($array3D as $array2D) {
-    foreach ($array2D as $array1D) {
-        foreach ($array1D as $element) {
-            echo $element;
-            echo " ";
-        }
-        echo "<br>";
-    }
-    echo "<br>";
+
+// Student JSON data
+$jsondata =
+'[
+{"student":"sravan kumar","age":22,"subject":"java"},
+{"student":"ojaswi","age":21,"subject":"java"},
+{"student":"rohith","age":22,"subject":"dbms"},
+{"student":"bobby","age":22,"subject":"sql"}]';
+
+// Decode json data and convert it
+// into an associative array
+$jsonans = json_decode($jsondata, true);
+
+// CSV file name => geeks.csv
+$csv = 'geeks.csv';
+
+// File pointer in writable mode
+$file_pointer = fopen($csv, 'w');
+
+// Traverse through the associative
+// array using for each loop
+foreach($jsonans as $i){
+	
+	// Write the data to the CSV file
+	fputcsv($file_pointer, $i);
 }
+
+// Close the file pointer.
+fclose($file_pointer);
+
 ?>
