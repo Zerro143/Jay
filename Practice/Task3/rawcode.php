@@ -27,9 +27,13 @@ $DOB = strtotime("today");
 if (!checkdate($DOB)) {
     $error_message = 'Invalid Date';
 }
+
+//phpinfo();
 ?>
 
 <button class="btn-xs btn-primary" onclick="window.open('crecord.php','popup','width=20,height=20'); return false;">Create Student Record</button>
+
+
 
 
 
