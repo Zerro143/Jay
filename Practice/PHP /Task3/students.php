@@ -1,19 +1,20 @@
 <?php  
-session_start();
-include 'conn.php';?>
+  session_start();
+  include 'conn.php';
+?>
 
 <style>
 
-.col-2{
-  text-align: center;
-  margin-top: 6px;
-  
-}
-.col-1{
-  text-align: center;
-  margin-top: 6px;
-}
-.form-popup {
+  .col-2{
+    text-align: center;
+    margin-top: 6px;
+
+  }
+  .col-1{
+    text-align: center;
+    margin-top: 6px;
+  }
+  .form-popup {
     display: none;
     position: relative;
     right: 15px;
@@ -37,13 +38,13 @@ include 'conn.php';?>
 
 </style>
 <script>
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
-}
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
-}
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 </script>
 
 <html>
