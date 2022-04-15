@@ -1,0 +1,26 @@
+<html>
+    <head></head>
+    <body>
+        <div>
+            <form action="">
+                <label for="datetime">Enter Your birthdate</label>
+                <input type="date" name="" id="DOB">
+                
+            </form>
+            <button onclick="a()">How many days to go</button>
+            <p id="r"></p>
+        </div>
+        <script>
+            function a(){
+                var usrinput = document.getElementById("DOB").value;
+                var dob = new Date(usrinput);
+                var pd = new Date();
+                var dt = pd.getTime()-dob.getTime();
+                var dd = dt/(1000 * 3600 * 24);
+                return document.getElementById("r").innerHTML =    
+                     "Days to your birthdate: " + dd + " Days. ";  
+        
+            }
+        </script>
+    </body>
+</html>
