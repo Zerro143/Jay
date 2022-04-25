@@ -14,6 +14,7 @@
     <?php include 'assets/clock.php';?>
     <?php include 'assets/snake.php';?>
     <?php include 'Practice/PHP/time.php';?>
+    <?php include 'Practice/JS/calculator.php';?>
 </div>
 
 
