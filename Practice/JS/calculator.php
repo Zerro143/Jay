@@ -23,23 +23,23 @@
       </script>
       <!-- for styling -->
       <style>
-         * {
-         align-self: center;
-         box-sizing: border-box;
-         font-family:Apple Chancery, cursive;
-         }
+        
          .title{
-         margin-bottom: 10px;
+         margin-bottom: 50px;
          text-align:center;
-         width: 210px;
-         color:Gray;
+         width: 250px;
+         color:Black;
          border: solid black 2px;
+         text-shadow: 1px;
+         align-items: center;
          }
+         
          input[type="button"]
          {
          background-color:gray;
          color: black;
          border: solid black 2px;
+         border-radius: 40px;
          width:100%
          }
          input[type="text"]
@@ -52,8 +52,9 @@
    </head>
    <!-- create table -->
    <body>
-      <div class = title >CALC 1.0</div>
-      <table border="2">
+    
+      <div class = title ><b>CALC 1.0</b>
+      <table border="2" align="center">
          <tr>
             <td colspan="3"><input type="text" id="result"/></td>
             <!-- clr() function will call clr to clear all value -->
@@ -87,5 +88,7 @@
             <td><input type="button" value="*" onclick="dis('*')"/> </td>
          </tr>
       </table>
+      </div>
+      
    </body>
 </html>
