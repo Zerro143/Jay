@@ -3,8 +3,10 @@
     <body>
         <div>
             <form action="">
-                <label for="datetime">Enter Your birthdate</label>
-                <input type="date" name="" id="DOB">
+                <label for="datetime">Enter Your birthday</label>
+                <input type="text" name="" id="DOB">
+                <label for="datetime">Enter Your birth Month</label>
+                <input type="text" name="" id="DOM">
                 
             </form>
             <button onclick="a()">How many days to go</button>
@@ -12,14 +14,15 @@
         </div>
         <script>
             function a(){
-                var usrinput = document.getElementById("DOB").value;
-                var dob = new Date(usrinput);
-                var pd = new Date();
-                var dt = pd.getTime()-dob.getTime();
-                var dd = dt/(1000 * 3600 * 24);
-                return document.getElementById("r").innerHTML =    
-                     "Days to your birthdate: " + dd + " Days. ";  
-        
+                var dob = document.getElementById("DOB").value;
+                var dom = document.getElementById("DOM").value;
+                dom -= 1;
+                const d = new Date();
+                a = d.getFullYear();
+                b = new Date(a,dom,dob);
+                z = (b-d)/86400000;
+
+            document.getElementById("r").innerHTML = z;
             }
         </script>
     </body>
