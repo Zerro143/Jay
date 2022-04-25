@@ -13,7 +13,7 @@
     
     <?php include 'assets/clock.php';?>
     <?php include 'assets/snake.php';?>
-    <?php include 'Practice/time.php';?>
+    <?php include 'Practice/PHP/time.php';?>
 </div>
 
 
