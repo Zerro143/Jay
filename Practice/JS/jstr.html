@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <h2>JavaScript For Loop</h2>
+        <p id="demo"></p>
+        <script>
+            let text = '{"employees":[' +
+                '{"firstName":"Jay","lastName":"Baviskar" },' +
+                '{"firstName":"Ritesh","lastName":"Gaikwad" },' +
+                '{"firstName":"Jayesh","lastName":"Shivnani" }]}';
+                
+            const obj = JSON.parse(text);
+                
+         
+         
+            let txt = "";
+            for (let i = 0; i < obj.employees.length; i++) {
+                txt += obj.employees[i].firstName + " " + obj.employees[i].lastName + "<br>";
+            }
+
+            document.getElementById("demo").innerHTML = txt;
+        </script>
+    </body>
+</html>
