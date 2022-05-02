@@ -116,7 +116,7 @@ function closeForm() {
           <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
           <div style="padding-left:20px">
             <div class="form" id="myForm">
-              <form action="upcr.php" class="form-container" method="POSt">
+              <form action="upcr.php" class="form-container" method="POST">
                 <input type="hidden" name="id" value="<?php echo $id = $_SESSION['cid'];?>">
                 <div class="row">
                   <label for="course"><b>Couse Name</b></label>
