@@ -28,20 +28,21 @@
 
     
 
-        $r1 = "SELECT COUNT(*) FROM apidata WHERE `link` = '$link'";
+       $r1 = "SELECT COUNT(*) FROM apidata WHERE `link` = '$link'";
         $a = mysqli_query($conn,$r1);
-        //echo $a."<br>";
+        echo $a."<br>";
         if($a<=0){
-            $query="INSERT INTO apidata VALUES('$api','$des','$auth','$https','$cors','$link','$cat');";
+            $query="INSERT INTO  apidata (`api`, `description`, `auth`, `https`, `cors`, `link`, `cat`)VALUES('$api','$des','$auth','$https','$cors','$link','$cat');";
+            echo $query;
             mysqli_query($conn,$query);
         continue;
-        //echo $link."<br>";
+        echo $link."<br>";
         }
 
        else{
             $b = "UPDATE apidata SET `link`= '$link' WHERE linK = '$link' ";
             mysqli_query($conn,$b);
-        }
+       }
     }
     curl_close($ch);
 

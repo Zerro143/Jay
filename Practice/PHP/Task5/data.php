@@ -56,6 +56,7 @@ include 'conn.php';?>
             <table class="table">
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>API</th>
                   <th>Description</th>
                   <th>Auth</th>
@@ -66,14 +67,14 @@ include 'conn.php';?>
                 
                 </tr>
               </thead>
-                <?php $sql = "SELECT * FROM apidata"; 
+                <?php $sql = "SELECT * FROM apidata WHERE id BETWEEN 1 AND 10"; 
                     $result = $conn->query($sql); 
 
                   // output data of each row
                   while($row = $result->fetch_assoc()):?> 
                   <div class="row" justify-content-center>
                     <tr>
-
+                      <td><?php echo $row['id'];?></td>
                       <td><?php echo $row['api'];?></td>
                       <td><?php echo $row['description'];?></td>
                       <td><?php echo $row['auth'];?></td>
