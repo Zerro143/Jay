@@ -36,78 +36,46 @@
         background-color: Gray;   
     }   
         </style>   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>   
   <body>   
   <center>  
-    <?php  
-      
-    // Import the file where we defined the connection to Database.     
-        require_once "conn.php";   
-        if (isset($_GET["sel"])){
-        $per_page_record = $_GET["sel"]; }
-        
-        else{$per_page_record = 25;}// Number of entries to show in a page.   
-        // Look for a GET variable page if not found default is 1.        
-        
-        if (isset($_GET["page"])) {    
-            $page  = $_GET["page"];    
-        }    
-        else {    
-          $page=1;    
-        }    
     
-        $start_from = ($page-1) * $per_page_record;   
-        
-        
-        
-       //$query = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";     
-        //$rs_result = mysqli_query ($conn, $query);    
-    ?>    
+    
+    <div id="x">
+    <?php $per_page_record = 10 ;?>
+    <input type="hidden" id="no of records" value ="<?php echo $per_page_record ?>">
+       
+    </div>
   
-    <div class="container">   
-      <br>   
-      <div>   
-        
-        <table class="table datatable" id = "datatable">
-              <thead>
+    <div class="container justify-content-center" id = "datatable">   
+        <br><br>
+        <table class="table datatable" >
+            <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>API</th>
-                  <th>Description</th>
-                  <th>Auth</th>
-                  <th>HTTPS</th>
-                  <th>CORS</th>
-                  <th>LINKS</th>
-                  <th>Catag</th>
+                    <th>ID</th>
+                    <th>API</th>
+                    <th>Description</th>
+                    <th>Auth</th>
+                    <th>HTTPS</th>
+                    <th>CORS</th>
+                    <th>LINKS</th>
+                    <th>Catag</th>
                 
                 </tr>
-              </thead>
-               
-                <?php
-                   
-                    $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
-                    $result = $conn->query($sql); 
+            </thead>
+            <tbody id="content">
 
-                  // output data of each row
-                  while($row = $result->fetch_assoc()):?> 
-                  <div class="row" justify-content-center>
-                    <tr>
-                      <td><?php echo $row['id'];?></td>
-                      <td><?php echo $row['api'];?></td>
-                      <td><?php echo $row['description'];?></td>
-                      <td><?php echo $row['auth'];?></td>
-                      <td><?php echo $row['https'];?></td>
-                      <td><?php echo $row['cors'];?></td>
-                      <td><?php echo $row['link'];?></td>
-                      <td><?php echo $row['cat'];?></td>
-                                               
-                    </tr>
-                  </div>  
-                <?php endwhile;?>
-            </table>   
-  
-     <div class="pagination">    
+            </tbody>
+               
+               
+        </table>   
+    </div>
+
+    <div class="pagination">    
       <?php  
+      require_once "conn.php";   
+      $page=1;  
         $query = "SELECT COUNT(*) FROM apidata";     
         $rs_result = mysqli_query($conn, $query);     
         $row = mysqli_fetch_row($rs_result);     
@@ -116,26 +84,27 @@
         echo "</br>";     
         // Number of pages required.   
         $total_pages = ceil($total_records / $per_page_record);     
-        $pagLink = "";       
+        
+        //$pagLink = "";       
       
         if($page>=2){   
-            echo "<a class ='btn'id ='$i' value =".($page-1)." href='data2.php?page=".($page-1)."'>  Prev </a>";   
+            echo "<a class ='btn' value =".($page-1).">  Prev </a>";   
         }       
                    
         for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
-              $pagLink .= "<a  value ='$i' class = 'active btn' href='data2.php?page=" .$i."'>".$i."</a>";   
+              $pagLink .= "<a  value ='$i' class = 'active btn'>".$i."</a>";   
             }               
             else{   
                 if($i == ($page-1)){
                
-                    $pagLink .= "<a  class ='btn'id ='$i' value ='$i'href='data2.php?page=".$i."'>  ".$i." </a>";   
+                    $pagLink .= "<a  class ='btn'id ='$i' value ='$i'>  ".$i." </a>";   
                     
                     }
 
               if($i == ($page+1)){
                
-                $pagLink .= "<a  class ='btn' value ='$i id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                $pagLink .= "<a  class ='btn' value ='$i' id ='$i'>  ".$i." </a>";   
                 
                 }
              
@@ -144,46 +113,50 @@
         echo $pagLink;   
   
         if($page<$total_pages){   
-            echo "<a class ='btn'id ='$i' value =".($page+1)." href='data2.php?page=".($page+1)."'>  Next </a>";   
+            echo "<a class ='btn'id ='$i' value =".($page+1).">  Next </a>";   
         }   
   
       ?>    
-      </div>  
+    </div>  
   
-  
-      <div class="inline">   
-        <select id='selector' name='selector'>
-            <option value='5'>5</option>
-            <option value='10'>10</option>
-            <option value='25'>25</option>
-        </select>
-      <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
-      placeholder="<?php echo $page."/".$total_pages; ?>" required>   
-      <button onClick="go2Page();">Go</button>   
-     </div>    
-    </div>   
-  </div>  
-
+    
 
 </center>   
   <script>   
-    function go2Page()   
-    {   
-        var sel = document.getElementById("selector").value;
+    
+    $(document).ready(function(){
+      
+        $.ajax({url: "getdata.php", 
+            success: function(result){
+                $("#content").html(result);
+        }});
 
-        var page = document.getElementById("page").value;   
-        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
-        window.location.href = 'data2.php?page='+page;
-        window.location.href = 'data2.php?sel='+sel;   
-    }
+        $(".btn").click(function(e){
+            e.preventDefault();
+            var page = $(this).attr("value");
+            $.ajax({url: "getdata.php",
+            method:"post",
+            data:{page:page},
+            success: function(){
+                $('#datatable').load(document.URL +  ' #datatable');
+                
+                
+            }});
 
-    $("#id").val();
+
+        });
+
+    });
+    
+
+
+
+
+  
+    
 
     
-    $(".btn").click(function(){
-        var a = $(this).val();
-        $.ajax({url:"data2.php"});
-    });
+  
 
 
     
