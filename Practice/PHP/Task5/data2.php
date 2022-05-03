@@ -108,7 +108,7 @@
         $row = mysqli_fetch_row($rs_result);     
         $total_records = $row[0];     
           
-    echo "</br>";     
+        echo "</br>";     
         // Number of pages required.   
         $total_pages = ceil($total_records / $per_page_record);     
         $pagLink = "";       
@@ -119,11 +119,11 @@
                    
         for ($i=1; $i<=$total_pages; $i++) {   
           if ($i == $page) {   
-              $pagLink .= "<a class = 'active' href='data2.php?page="  
+              $pagLink .= "<a id ='$i' class = 'active' href='data2.php?page="  
                                                 .$i."'>".$i." </a>";   
           }               
           else  {   
-              $pagLink .= "<a href='data2.php?page=".$i."'>   
+              $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>   
                                                 ".$i." </a>";     
           }   
         };     
@@ -152,6 +152,9 @@
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
         window.location.href = 'data2.php?page='+page;   
     }   
+
+
+    
   </script>  
   </body>   
 </html>
