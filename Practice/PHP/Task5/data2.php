@@ -118,14 +118,18 @@
         }       
                    
         for ($i=1; $i<=$total_pages; $i++) {   
-          if ($i == $page) {   
-              $pagLink .= "<a id ='$i' class = 'active' href='data2.php?page="  
-                                                .$i."'>".$i." </a>";   
-          }               
-          else  {   
-              $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>   
-                                                ".$i." </a>";     
-          }   
+            if ($i == $page) {   
+              $pagLink .= "<a id ='$i' class = 'active' href='data2.php?page=" .$i."'>".$i."</a>";   
+            }               
+            else{   
+
+              if($i == $page){
+               
+                $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                
+                }
+             
+            }  
         };     
         echo $pagLink;   
   
