@@ -122,8 +122,13 @@
               $pagLink .= "<a id ='$i' class = 'active' href='data2.php?page=" .$i."'>".$i."</a>";   
             }               
             else{   
+                if($i == ($page-1)){
+               
+                    $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                    
+                    }
 
-              if($i == $page){
+              if($i == ($page+1)){
                
                 $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
                 
