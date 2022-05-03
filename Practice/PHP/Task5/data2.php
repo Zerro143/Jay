@@ -43,9 +43,12 @@
       
     // Import the file where we defined the connection to Database.     
         require_once "conn.php";   
-    
-        $per_page_record = 25;  // Number of entries to show in a page.   
+        if (isset($_GET["sel"])){
+        $per_page_record = $_GET["sel"]; }
+        
+        else{$per_page_record = 25;}// Number of entries to show in a page.   
         // Look for a GET variable page if not found default is 1.        
+        
         if (isset($_GET["page"])) {    
             $page  = $_GET["page"];    
         }    
@@ -149,20 +152,33 @@
   
   
       <div class="inline">   
+      <select id='selector' name='selector'>
+            <option value='5'>5</option>
+            <option value='10'>10</option>
+            <option value='25'>25</option>
+        </select>
       <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
       placeholder="<?php echo $page."/".$total_pages; ?>" required>   
       <button onClick="go2Page();">Go</button>   
      </div>    
     </div>   
   </div>  
+
+
 </center>   
   <script>   
     function go2Page()   
     {   
+        var sel = document.getElementById("selector").value;
+
         var page = document.getElementById("page").value;   
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
-        window.location.href = 'data2.php?page='+page;   
+        window.location.href = 'data2.php?page='+page;
+        window.location.href = 'data2.php?sel='+sel;   
     }
+
+    $("#id").val();
+
     
     $(".btn").click(function(){
         var a = $(this).val();
