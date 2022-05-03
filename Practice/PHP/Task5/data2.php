@@ -152,7 +152,7 @@
   
   
       <div class="inline">   
-      <select id='selector' name='selector'>
+        <select id='selector' name='selector'>
             <option value='5'>5</option>
             <option value='10'>10</option>
             <option value='25'>25</option>
