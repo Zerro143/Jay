@@ -30,3 +30,13 @@ foreach($jsonans as $i){
 fclose($file_pointer);
 
 ?>
+
+<?php 
+	include 'conn.php';
+	$sql = "SELECT * FROM apidata";
+	//echo $sql;
+	$result = mysqli_query($conn, $sql);
+	$a = $result->num_rows;
+	echo $a;						
+        
+?>

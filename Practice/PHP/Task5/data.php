@@ -7,36 +7,6 @@ include 'conn.php';?>
   font-family:Apple Chancery, cursive;
 }
 
-.col-2{
-  text-align: center;
-  margin-top: 6px;
-  
-}
-.col-1{
-  text-align: center;
-  margin-top: 6px;
-}
-.form-popup {
-    display: none;
-    position: relative;
-    right: 15px;
-   
-    z-index: 9;
-  }
-  .form-container {
-    max-width: 400px;
-   
-    text-align: center;
-    
-  }
-  .form-container input[type=text] {
-    width: 100%;
-    padding: 5px;
-    margin: 5px 0 22px 0;
-    border: none;
-    background: #f1f1f1;
-  }
-  
 
 </style>
 
@@ -45,15 +15,17 @@ include 'conn.php';?>
     <head>
         <title>Api Data</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="bootstrap.css">
         
     </head>
 
   <body>
-       
+
+        
     <div class="container">
 
         <div class="row justify-content-center">
-            <table class="table">
+          <table class="table datatable" id = "datatable">
               <thead>
                 <tr>
                   <th>ID</th>
@@ -67,7 +39,11 @@ include 'conn.php';?>
                 
                 </tr>
               </thead>
-                <?php $sql = "SELECT * FROM apidata WHERE id BETWEEN 1 AND 10"; 
+               
+                <?php
+                    $b = 25;   
+                    $c = 1;
+                    $sql = "SELECT * FROM apidata WHERE id BETWEEN $c AND $b"; 
                     $result = $conn->query($sql); 
 
                   // output data of each row
@@ -90,8 +66,22 @@ include 'conn.php';?>
 
                           
         </div>
-        
-                          
+
+       
+        <?php 
+
+          $sql = "SELECT * FROM apidata";
+          //echo $sql;
+          $result = mysqli_query($conn, $sql);
+          $a = $result->num_rows;
+          $x = $a/25;
+          for ($i = 0; $i <= $x; $i++ ){
+            $q = $i+1 ;
+            echo "<button id = '$q' value = '$q'>$q</button>";
+          }          
+
+          $x = $a/$b;
+        ?>
     </div>
     
   </body>
