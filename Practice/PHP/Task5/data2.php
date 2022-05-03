@@ -116,23 +116,23 @@
         $pagLink = "";       
       
         if($page>=2){   
-            echo "<a href='data2.php?page=".($page-1)."'>  Prev </a>";   
+            echo "<a class ='btn'id ='$i' value =".($page-1)." href='data2.php?page=".($page-1)."'>  Prev </a>";   
         }       
                    
         for ($i=1; $i<=$total_pages; $i++) {   
             if ($i == $page) {   
-              $pagLink .= "<a id ='$i' class = 'active' href='data2.php?page=" .$i."'>".$i."</a>";   
+              $pagLink .= "<a  value ='$i' class = 'active btn' href='data2.php?page=" .$i."'>".$i."</a>";   
             }               
             else{   
                 if($i == ($page-1)){
                
-                    $pagLink .= "<a  id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                    $pagLink .= "<a  class ='btn'id ='$i' value ='$i'href='data2.php?page=".$i."'>  ".$i." </a>";   
                     
                     }
 
               if($i == ($page+1)){
                
-                $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                $pagLink .= "<a  class ='btn' value ='$i id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
                 
                 }
              
@@ -141,7 +141,7 @@
         echo $pagLink;   
   
         if($page<$total_pages){   
-            echo "<a href='data2.php?page=".($page+1)."'>  Next </a>";   
+            echo "<a class ='btn'id ='$i' value =".($page+1)." href='data2.php?page=".($page+1)."'>  Next </a>";   
         }   
   
       ?>    
@@ -162,7 +162,12 @@
         var page = document.getElementById("page").value;   
         page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
         window.location.href = 'data2.php?page='+page;   
-    }   
+    }
+    
+    $(".btn").click(function(){
+        var a = $(this).val();
+        $.ajax({url:"data2.php"});
+    });
 
 
     
