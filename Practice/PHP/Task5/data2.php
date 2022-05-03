@@ -53,8 +53,10 @@
           $page=1;    
         }    
     
-        $start_from = ($page-1) * $per_page_record;     
-    
+        $start_from = ($page-1) * $per_page_record;   
+        
+        
+        
        //$query = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";     
         //$rs_result = mysqli_query ($conn, $query);    
     ?>    
@@ -79,8 +81,7 @@
               </thead>
                
                 <?php
-                    $b = 25;   
-                    $c = 1;
+                   
                     $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
                     $result = $conn->query($sql); 
 
@@ -125,7 +126,7 @@
             else{   
                 if($i == ($page-1)){
                
-                    $pagLink .= "<a id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
+                    $pagLink .= "<a  id ='$i' href='data2.php?page=".$i."'>  ".$i." </a>";   
                     
                     }
 
