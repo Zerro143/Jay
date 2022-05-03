@@ -1,8 +1,7 @@
 <html>   
   <head>   
     <title>Pagination</title>   
-    <link rel="stylesheet"  
-    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="bootstrap.css">   
     <style>   
     table {  
         border-collapse: collapse;  
