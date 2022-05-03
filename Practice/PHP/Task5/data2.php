@@ -26,13 +26,14 @@
         float: left;   
         padding: 8px 16px;   
         text-decoration: none;   
-        border:1px solid black;   
+        border:1px solid black;  
+        border-radius: 10px; 
     }   
     .pagination a.active {   
-            background-color: pink;   
+            background-color: skyblue;   
     }   
     .pagination a:hover:not(.active) {   
-        background-color: skyblue;   
+        background-color: Gray;   
     }   
         </style>   
   </head>   
