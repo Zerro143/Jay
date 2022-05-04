@@ -6,12 +6,7 @@
     table {  
         border-collapse: collapse;  
     }  
-    .inline{   
-    display: inline-block;   
-    float: right;   
-    margin: 20px 0px;   
-    }   
-         
+     
     input, button{   
         height: 34px;   
         width: 48px;
@@ -51,19 +46,19 @@
   <body>   
     <br>
     <br>
-  <div class="container justify-content-center">
+    <div class="container justify-content-center">
       <div class="row">
-      <div class="col ">
-            <select class="selector" id="selector">
-                <option value='5'>5</option>
-                <option value='10'selected>10</option>
-                <option value='25'>25</option>
-            </select>
-        </div>
-        <div class="col ">
-            <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-            <button type="button" class="searchbtn">Search</button>
-        </div>
+          <div class="col">
+                <select class="selector" id="selector">
+                    <option value='5'>5</option>
+                    <option value='10'selected>10</option>
+                    <option value='25'>25</option>
+                </select>
+            </div>
+            <div class="col ">
+                <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="searchbtn">Search</button>
+            </div>
         </div>
 
     </div>
@@ -75,14 +70,15 @@
         <table class="table datatable" >
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>API</th>
+                    <th>ID </th>
+                    <th> API </th>
                     <th>Description</th>
                     <th>Auth</th>
                     <th>HTTPS</th>
                     <th>CORS</th>
                     <th>LINKS</th>
                     <th>Catag</th>
+                    <th><a class = 'asd' value ="asc">^</a>  <a class = 'asd' value ="desc"> v</a></th>
                 
                 </tr>
             </thead>
@@ -94,12 +90,19 @@
         </table>   
     </div>
     <center>
-    <div class ="pagination justify-content-center"id="pagination">
-      
-    </div>
-    <div id="go">
-      <input id="pagego" type="number" min="1" max=""placeholder="" required/>   
-      <button id="btn btn-primary" id="go">Go</button> 
+    <div class="container justify-content-center"></div>
+         
+            
+                <div class ="pagination" id="pagination">
+
+                </div>
+         
+           
+            <div id="go"class="col">
+              <input id="pagego" type="number" min="1" max=""placeholder="" required/>   
+              <button id="btn btn-primary" id="go">Go</button> 
+            </div>
+        
     </div>
     </center>
 
