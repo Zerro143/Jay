@@ -36,7 +36,15 @@
     }   
     .pagination a:hover:not(.active) {   
         background-color: Gray;   
+    }
+    .search {
+        width: 250px;
+        
     }   
+    .searchbtn{
+        background-color: skyblue;
+        width: fit-content;
+    }
         </style>   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>   
@@ -44,12 +52,18 @@
     <br>
     <br>
   <div class="container justify-content-center">
-      <div class="container ">
+      <div class="row">
+      <div class="col ">
             <select class="selector" id="selector">
                 <option value='5'>5</option>
                 <option value='10'selected>10</option>
                 <option value='25'>25</option>
             </select>
+        </div>
+        <div class="col ">
+            <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+            <button type="button" class="searchbtn">Search</button>
+        </div>
         </div>
 
     </div>
