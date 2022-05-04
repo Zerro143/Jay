@@ -78,8 +78,7 @@
                     <th>CORS</th>
                     <th>LINKS</th>
                     <th>Catag</th>
-                    <th><a class = 'asd'id="asd" value ="asc">^</a>  <a class = 'dsd' id="desc" value ="desc">v</a></th>
-                
+                    
                 </tr>
             </thead>
             <tbody id="content">
@@ -112,6 +111,7 @@
 
 
         <script>   
+        
     
             $(document).ready(function(){
                 var val = $("#selector").val();     
@@ -119,6 +119,8 @@
                     method:"post",
                     data:{sel:val},
                     success: function(result){
+                        
+
                     $("#content").html(result);
                     var tp = $("#tt").val();
                     var page = parseInt($("#page").val());
@@ -155,12 +157,15 @@
                         $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
                         
                     }
+                    
+                    
 
                 
           
-                }});
+                }
+            });
                
-                $("#asd").click(function(e){
+              $("#asd").click(function(e){
                     e.preventDefault();
                     var page = $("#page").val();
                     var val = $("#selector").val();
@@ -218,6 +223,8 @@
                 
                 
                 });
+               
+       
                 
                 
                 $("#go").click(function(e){
