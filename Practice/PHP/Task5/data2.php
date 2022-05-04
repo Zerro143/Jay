@@ -71,7 +71,7 @@
             <thead>
                 <tr>
                     <th>ID </th>
-                    <th> API  <a class = 'asd'id="asd" value ="asc">^</a>  <a class = 'dsd' id="desc" value ="desc"> v</a></th>
+                    <th id="asd" value="ASC"> API  </th>
                     <th>Description</th>
                     <th>Auth</th>
                     <th>HTTPS</th>
@@ -159,7 +159,67 @@
                 
           
                 }});
+               
+                $("#asd").click(function(e){
+                    e.preventDefault();
+                    var page = $("#page").val();
+                    var val = $("#selector").val();
+                    var asd = "ASC";
+                    alert(asd)
+                    
+                    $.ajax({url: "getdata.php",
+                    method:"post",
+                    data:{page:page,sel:val,sort:asd},
+                    success: function(a){
+                        // $('#content').load(document.URL +  ' #content');
+                        $("#content").html(a);
+                        var tp = $("#tt").val();
+                        var page = parseInt($("#page").val());
+                        var record =$("#records").val();
+                        $("#sort").val("DESC")
 
+                        
+                        
+                        $("#selector").val(record);
+                   
+                        
+                        $("#pagination").empty();
+                                if(page>=2){
+                                $("#pagination").append("<a class = 'btn' value ="+(page-1)+">  Prev </a>")
+
+                                }
+                                for (var i=1; i<=tp; i++){
+                                    if(i == page){
+                                       $("#pagination").append("<a class = 'btn active' value ="+i+"> "+i+" </a>")
+                            
+                            
+                                    }
+                        
+                                    else{
+                           
+                                        if(i == (page-1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                            
+                                        }
+                                        if(i == (page+1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                                            
+                                        }
+                                    }
+                     
+                        
+                                }
+
+                                if(page<tp){
+                                    $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                        
+                                }
+                    }});
+                
+                
+                });
+                
+                
                 $("#go").click(function(e){
                     e.preventDefault();
                     var page = $("#pagego").val();

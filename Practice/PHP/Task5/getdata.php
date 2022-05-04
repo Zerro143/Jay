@@ -15,6 +15,13 @@ require_once "conn.php";
       
     // Import the file where we defined the connection to Database.     
     
+  
+      
+    $sort= $_POST['sort'];   
+      
+
+    
+    
     $sql = "SELECT * FROM apidata";
     //echo $sql;
     $result = mysqli_query($conn, $sql);
@@ -31,7 +38,7 @@ require_once "conn.php";
 
     $tt = ceil($a/$per_page_record)
    
-    
+
         
         
     
@@ -40,10 +47,30 @@ require_once "conn.php";
 <input type="hidden" id="tt" value ="<?php echo $tt; ?>">
 <input type="hidden" id="page" value ="<?php echo $page; ?>">
 <input type="hidden" id="records" value ="<?php echo $per_page_record; ?>">
+<input type="hidden" id="sort" value ="<?php echo $sort; ?>">
 <?php
+    
+    $start_from = ($page-1) * $per_page_record;    
+    switch($sort){
+        case "ASC":
+          $sql = "SELECT * FROM apidata ORDER BY api";
+          //echo $sql1;
+          
+        break;
+        case "DESC":
+          $sql = "SELECT * FROM apidata ORDER BY api DESC";
+          //echo $sql1;
+          
+          break;
+        default:
+        $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";  
+        //echo $sql1;
+        
+
+    }
   
     
-  $start_from = ($page-1) * $per_page_record;                  
+                
   $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
   
   $result = $conn->query($sql); // output data of each row
