@@ -1,7 +1,7 @@
   
 
 <?php
-
+require_once "conn.php";   
 //echo $_POST['sel'];
     if (isset($_POST['sel'])){
         $per_page_record = $_POST['sel']; 
@@ -14,8 +14,12 @@
 <?php  
       
     // Import the file where we defined the connection to Database.     
-    require_once "conn.php";   
-          
+    
+    $sql = "SELECT * FROM apidata";
+    //echo $sql;
+    $result = mysqli_query($conn, $sql);
+    $a = $result->num_rows;
+ 
     
     if (isset($_POST['page'])) {    
         $page  = $_POST['page'];    
@@ -24,48 +28,39 @@
       $page=1;    
     } 
     //echo $page;
-    $start_from = ($page-1) * $per_page_record;   
+
+    $tt = ceil($a/$per_page_record)
+   
     
         
         
     
 ?>  
-
-
+<input type="hidden" id="totalRecords" value ="<?php echo $a; ?>">
+<input type="hidden" id="tt" value ="<?php echo $tt; ?>">
+<input type="hidden" id="page" value ="<?php echo $page; ?>">
+<input type="hidden" id="records" value ="<?php echo $per_page_record; ?>">
 <?php
-                   
-    $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
-    //echo $sql;
-    $result = $conn->query($sql); // output data of each row
-    while($row = $result->fetch_assoc()):?> 
-    <div class="row justify-content-center" id="row">
-        <tr>
-          
-          <td><?php echo $row['id'];?></td>
-          <td><?php echo $row['api'];?></td>
-          <td><?php echo $row['description'];?></td>
-          <td><?php echo $row['auth'];?></td>
-          <td><?php echo $row['https'];?></td>
-          <td><?php echo $row['cors'];?></td>
-          <td><?php echo $row['link'];?></td>
-          <td><?php echo $row['cat'];?></td>
-
-        </tr>
-    </div>  
+  
+    
+  $start_from = ($page-1) * $per_page_record;                  
+  $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
+  
+  $result = $conn->query($sql); // output data of each row
+  while($row = $result->fetch_assoc()):
+?> 
+  <div class="row justify-content-center" id="row">
+    <tr>
+        
+        <td><?php echo $row['id'];?></td>
+        <td><?php echo $row['api'];?></td>
+        <td><?php echo $row['description'];?></td>
+        <td><?php echo $row['auth'];?></td>
+        <td><?php echo $row['https'];?></td>
+        <td><?php echo $row['cors'];?></td>
+        <td><?php echo $row['link'];?></td>
+        <td><?php echo $row['cat'];?></td>
+      </tr>
+  </div>  
 <?php endwhile;?>
 
-
-  
-  
-      <div class="inline">   
-        <select onChange=selectChange(this.value)>
-            <option value='5'>5</option>
-            <option value='10'>10</option>
-            <option value='25'>25</option>
-        </select>
-      <input id="page" type="number" min="1" max="<?php echo $total_pages?>"   
-      placeholder="<?php echo $page."/".$total_pages; ?>" required>   
-      <button onClick="go2Page();">Go</button>   
-     </div>    
-    </div>   
-  </div>  

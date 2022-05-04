@@ -6,15 +6,17 @@
     table {  
         border-collapse: collapse;  
     }  
-        .inline{   
-            display: inline-block;   
-            float: right;   
-            margin: 20px 0px;   
-        }   
+    .inline{   
+    display: inline-block;   
+    float: right;   
+    margin: 20px 0px;   
+    }   
          
-        input, button{   
-            height: 34px;   
-        }   
+    input, button{   
+        height: 34px;   
+        width: 48px;
+        margin-top: 5px;
+    }   
   
     .pagination {   
         display: inline-block;   
@@ -39,15 +41,19 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   </head>   
   <body>   
-  <center>  
-    
-    
-    <div id="x">
-    <?php $per_page_record = 10 ;?>
-    <input type="hidden" id="no of records" value ="<?php echo $per_page_record ?>">
-       
+    <br>
+    <br>
+  <div class="container justify-content-center">
+        <select class="selector" id="selector">
+            <option value='5'>5</option>
+            <option value='10'selected>10</option>
+            <option value='25'>25</option>
+        </select>
+
     </div>
   
+     
+
     <div class="container justify-content-center" id = "datatable">   
         <br><br>
         <table class="table datatable" >
@@ -71,95 +77,242 @@
                
         </table>   
     </div>
-
-    <div class="pagination">    
-      <?php  
-      require_once "conn.php";   
-      $page=1;  
-        $query = "SELECT COUNT(*) FROM apidata";     
-        $rs_result = mysqli_query($conn, $query);     
-        $row = mysqli_fetch_row($rs_result);     
-        $total_records = $row[0];     
-          
-        echo "</br>";     
-        // Number of pages required.   
-        $total_pages = ceil($total_records / $per_page_record);     
-        
-        //$pagLink = "";       
+    <center>
+    <div class ="pagination justify-content-center"id="pagination">
       
-        if($page>=2){   
-            echo "<a class ='btn' value =".($page-1).">  Prev </a>";   
-        }       
-                   
-        for ($i=1; $i<=$total_pages; $i++) {   
-            if ($i == $page) {   
-              $pagLink .= "<a  value ='$i' class = 'active btn'>".$i."</a>";   
-            }               
-            else{   
-                if($i == ($page-1)){
-               
-                    $pagLink .= "<a  class ='btn'id ='$i' value ='$i'>  ".$i." </a>";   
-                    
+    </div>
+    <div id="go">
+      <input id="pagego" type="number" min="1" max=""placeholder="" required/>   
+      <button id="btn btn-primary" id="go">Go</button> 
+    </div>
+    </center>
+
+
+   
+    
+
+
+        <script>   
+    
+            $(document).ready(function(){
+                var val = $("#selector").val();     
+                $.ajax({url: "getdata.php", 
+                    method:"post",
+                    data:{sel:val},
+                    success: function(result){
+                    $("#content").html(result);
+                    var tp = $("#tt").val();
+                    var page = parseInt($("#page").val());
+                    var record =$("#records").val();
+                    $("#selector").val(record);
+                  
+                    $("#pagination").empty();
+                    if(page>=2){
+                        $("#pagination").append("<a class = 'btn' value ="+(page-1)+">  Prev </a>")
+                    }
+                    for (var i=1; i<=tp; i++){
+                        if(i == page){
+                            $("#pagination").append("<a class = 'btn active' value ="+i+"> "+i+" </a>")
+                            
+                            
+                        }
+                        
+                        else{
+                           
+                            if(i == (page-1)){
+                                $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                
+                            }
+                            if(i == (page+1)){
+                                $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                              
+                            }
+                        }
+                     
+                        
                     }
 
-              if($i == ($page+1)){
+                    if(page<tp){
+                        $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                        
+                    }
+
+                
+          
+                }});
+
+                $("#go").click(function(e){
+                    e.preventDefault();
+                    var page = $("#pagego").val();
+                    var val = $("#selector").val();
+                   
+                    
+                    $.ajax({url: "getdata.php",
+                    method:"post",
+                    data:{page:page,sel:val},
+                    success: function(a){
+                        // $('#content').load(document.URL +  ' #content');
+                        $("#content").html(a);
+                        var tp = $("#tt").val();
+                        var page = parseInt($("#page").val());
+                        var record =$("#records").val();
+                        $("#selector").val(record);
+                   
+                        
+                        $("#pagination").empty();
+                                if(page>=2){
+                                $("#pagination").append("<a class = 'btn' value ="+(page-1)+">  Prev </a>")
+
+                                }
+                                for (var i=1; i<=tp; i++){
+                                    if(i == page){
+                                       $("#pagination").append("<a class = 'btn active' value ="+i+"> "+i+" </a>")
+                            
+                            
+                                    }
+                        
+                                    else{
+                           
+                                        if(i == (page-1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                            
+                                        }
+                                        if(i == (page+1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                                            
+                                        }
+                                    }
+                     
+                        
+                                }
+
+                                if(page<tp){
+                                    $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                        
+                                }
+                    }});
+                
+                
+                });
+
+                $("#selector").change(function(e){
+                    e.preventDefault();
+                    var val = $(this).val();
+                    var page = $("#page").val();
+                   
+                    $.ajax(
+                        {
+                            url:"getdata.php",
+                            method:"post",
+                            data:{sel:val,page:page},
+                            success: function(a){
+                                $("#content").html(a);
+                                var tp = $("#tt").val();
+                                var page = parseInt($("#page").val());
+                                 
+                                 var record =$("#records").val();
+                                    $("#selector").val(record);
+                                    $("#pagination").empty();
+                  
+                                if(page>=2){
+                                $("#pagination").append("<a class = 'btn' value ="+(page-1)+">  Prev </a>")
+                                }
+                                for (var i=1; i<=tp; i++){
+                                    if(i == page){
+                                       $("#pagination").append("<a class = 'btn active' value ="+i+"> "+i+" </a>")
+                            
+                            
+                                    }
+                        
+                                    else{
+                           
+                                        if(i == (page-1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                
+                                        }
+                                        if(i == (page+1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                              
+                                        }
+                                    }
+                     
+                        
+                                }
+
+                                if(page<tp){
+                                    $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                        
+                                }
+                            }
+                         
+                        }
+                    );
+
+
+                });
+
                
-                $pagLink .= "<a  class ='btn' value ='$i' id ='$i'>  ".$i." </a>";   
+
+
+              
+              
+                $("#pagination").on("click",".btn",function(e){
+                    e.preventDefault();
+                    var page = $(this).attr("value");
+                    var val = $("#selector").val();
+                   
+                    
+                    $.ajax({url: "getdata.php",
+                    method:"post",
+                    data:{page:page,sel:val},
+                    success: function(a){
+                        // $('#content').load(document.URL +  ' #content');
+                        $("#content").html(a);
+                        var tp = $("#tt").val();
+                        var page = parseInt($("#page").val());
+                        var record =$("#records").val();
+                        $("#selector").val(record);
+                   
+                        
+                        $("#pagination").empty();
+                                if(page>=2){
+                                $("#pagination").append("<a class = 'btn' value ="+(page-1)+">  Prev </a>")
+
+                                }
+                                for (var i=1; i<=tp; i++){
+                                    if(i == page){
+                                       $("#pagination").append("<a class = 'btn active' value ="+i+"> "+i+" </a>")
+                            
+                            
+                                    }
+                        
+                                    else{
+                           
+                                        if(i == (page-1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                            
+                                        }
+                                        if(i == (page+1)){
+                                            $("#pagination").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                                            
+                                        }
+                                    }
+                     
+                        
+                                }
+
+                                if(page<tp){
+                                    $("#pagination").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                        
+                                }
+                    }});
                 
-                }
-             
-            }  
-        };     
-        echo $pagLink;   
-  
-        if($page<$total_pages){   
-            echo "<a class ='btn'id ='$i' value =".($page+1).">  Next </a>";   
-        }   
-  
-      ?>    
-    </div>  
-  
-    
-
-</center>   
-  <script>   
-    
-    $(document).ready(function(){
-      
-        $.ajax({url: "getdata.php", 
-            success: function(result){
-                $("#content").html(result);
-        }});
-
-        $(".btn").click(function(e){
-            e.preventDefault();
-            var page = $(this).attr("value");
-            $.ajax({url: "getdata.php",
-            method:"post",
-            data:{page:page},
-            success: function(){
-                $('#datatable').load(document.URL +  ' #datatable');
                 
-                
-            }});
-
-
-        });
-
-    });
-    
-
-
-
-
-  
-    
+                });
+            
+            });
 
     
-  
-
-
-    
-  </script>  
-  </body>   
+        </script>  
+    </body>   
 </html>
