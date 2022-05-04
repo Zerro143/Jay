@@ -71,14 +71,14 @@
             <thead>
                 <tr>
                     <th>ID </th>
-                    <th> API </th>
+                    <th> API  <a class = 'asd'id="asd" value ="asc">^</a>  <a class = 'dsd' id="desc" value ="desc"> v</a></th>
                     <th>Description</th>
                     <th>Auth</th>
                     <th>HTTPS</th>
                     <th>CORS</th>
                     <th>LINKS</th>
                     <th>Catag</th>
-                    <th><a class = 'asd' value ="asc">^</a>  <a class = 'asd' value ="desc"> v</a></th>
+                    <th><a class = 'asd'id="asd" value ="asc">^</a>  <a class = 'dsd' id="desc" value ="desc">v</a></th>
                 
                 </tr>
             </thead>
