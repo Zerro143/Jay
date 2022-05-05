@@ -1,7 +1,7 @@
 <html>   
   <head>   
     <title>Pagination</title>   
-    <link rel="stylesheet" href="bootstrap.css">   
+    <link rel="stylesheet" href="/assets/bootstrap.css">   
     <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
