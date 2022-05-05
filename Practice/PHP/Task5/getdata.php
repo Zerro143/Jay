@@ -53,12 +53,12 @@ require_once "conn.php";
     $start_from = ($page-1) * $per_page_record;    
     switch($sort){
         case "ASC":
-          $sql = "SELECT * FROM apidata ORDER BY api";
+          $sql = "SELECT * FROM apidata ORDER BY api LIMIT $start_from, $per_page_record ";
           //echo $sql1;
           
         break;
         case "DESC":
-          $sql = "SELECT * FROM apidata ORDER BY api DESC";
+          $sql = "SELECT * FROM apidata  ORDER BY api DESC LIMIT $start_from, $per_page_record";
           //echo $sql1;
           
           break;
@@ -71,7 +71,7 @@ require_once "conn.php";
   
     
                 
-  $sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
+  //$sql = "SELECT * FROM apidata LIMIT $start_from, $per_page_record";   
   
   $result = $conn->query($sql); // output data of each row
   while($row = $result->fetch_assoc()):

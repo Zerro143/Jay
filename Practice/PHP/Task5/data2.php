@@ -169,8 +169,8 @@
                     e.preventDefault();
                     var page = $("#page").val();
                     var val = $("#selector").val();
-                    var asd = "ASC";
-                    alert(asd)
+                    var asd = $("#asd").attr("value");
+                    
                     
                     $.ajax({url: "getdata.php",
                     method:"post",
@@ -181,10 +181,9 @@
                         var tp = $("#tt").val();
                         var page = parseInt($("#page").val());
                         var record =$("#records").val();
-                        $("#sort").val("DESC")
+                        
+                        $("#asd").attr("value","DESC")
 
-                        
-                        
                         $("#selector").val(record);
                    
                         
@@ -231,11 +230,11 @@
                     e.preventDefault();
                     var page = $("#pagego").val();
                     var val = $("#selector").val();
-                   
+                    var asd = $("#sort").val();
                     
                     $.ajax({url: "getdata.php",
                     method:"post",
-                    data:{page:page,sel:val},
+                    data:{page:page,sel:val,sort:asd},
                     success: function(a){
                         // $('#content').load(document.URL +  ' #content');
                         $("#content").html(a);
@@ -285,12 +284,13 @@
                     e.preventDefault();
                     var val = $(this).val();
                     var page = $("#page").val();
+                    var asd = $("#sort").val();
                    
                     $.ajax(
                         {
                             url:"getdata.php",
                             method:"post",
-                            data:{sel:val,page:page},
+                            data:{sel:val,page:page,sort:asd},
                             success: function(a){
                                 $("#content").html(a);
                                 var tp = $("#tt").val();
@@ -346,11 +346,11 @@
                     e.preventDefault();
                     var page = $(this).attr("value");
                     var val = $("#selector").val();
-                   
+                    var asd = $("#sort").val();
                     
                     $.ajax({url: "getdata.php",
                     method:"post",
-                    data:{page:page,sel:val},
+                    data:{page:page,sel:val,sort:asd},
                     success: function(a){
                         // $('#content').load(document.URL +  ' #content');
                         $("#content").html(a);
