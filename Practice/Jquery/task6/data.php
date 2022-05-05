@@ -1,11 +1,11 @@
 <html>   
   <head>   
     <title>Pagination</title>   
-    <link rel="stylesheet" href="/assets/bootstrap.css">   
-    <link rel="stylesheet" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" href="/var/www/html/Jay/Practice/Jquery/assets/bootstrap.css">    -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
   </head>   
   <body>   
 
@@ -43,29 +43,48 @@
     </body>   
     <script>
         $(document).ready(function(){
-            $.ajax({
+            /*$.ajax({
                 url:"getdata.php",
                 method:"post",
                 success:function(data){
                     $("#content").html(data);
                     $("#tda").DataTable({
-                        //"ajax":"getdata.php",
-                        //"data": "data",
-                        /*"columns":[
-                            {data:id},
-                            {data:api},
-                            {data:description},
-                            {data:auth},
-                            {data:https},
-                            {data:cors},
-                            {data:link},
-                            {data:cat},
-
-                        ]*/
-                })
+                        "order": [[1,'asc']],
+                        "pageLength": 50
+                       
+                       
+                    })
 
                 }
-            });
+            });*/
+            $("#tda").DataTable({
+                "ajax":{
+                    "url": "getdata.php",
+                    "method":"post",
+                    "dataSrc": "",
+                   
+               
+                },
+                
+                columns: [
+                  {"data":"id"},
+                  {"data":"api"},
+                  {"data":"description"},
+                  {"data":"auth"},
+                  {"data":"https"},
+                  {"data":"cors"},
+                  {"data":"link"},
+                  {"data":"cat"},
+
+                ],
+
+               "order": [[1,'asc']],
+                "pageLength": 50,
+                       
+                
+            })
+            console.log();
+            
         });
     </script>
 </html>
