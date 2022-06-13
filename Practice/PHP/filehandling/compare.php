@@ -1,6 +1,17 @@
 <?php 
 include '../need.php';
 $csv = fopen("output.csv","r");
+while (!feof($csv)){
+    $getData[]= fgetcsv($csv, 10000, ",");
+}
+
+
+
+
+
+
+
+
 echo "<table>";
 while (($getData = fgetcsv($csv, 10000, ",")) !== FALSE){
     $fname = $getData[0];
@@ -23,5 +34,6 @@ while (($getData = fgetcsv($csv, 10000, ",")) !== FALSE){
    
 }
 echo "</table>";
-fclose($csv)
+
+fclose($csv);
 ?>
