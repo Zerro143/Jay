@@ -1,9 +1,7 @@
 <?php 
 include '../need.php';
 $csv = fopen("output.csv","r");
-while (!feof($csv)){
-    $getData[]= fgetcsv($csv, 10000, ",");
-}
+
 
 
 
