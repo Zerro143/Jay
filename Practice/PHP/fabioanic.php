@@ -6,9 +6,9 @@ echo "<table>";
 
 for($i=0; $i<$num; $i++){
     echo "<tr><td>".$n1."</td></tr>";
-   $nth = $n1 + $n2;
-   $n1 = $n2;
-   $n2 = $nth;
+    $nth = $n1 + $n2;
+    $n1 = $n2;
+    $n2 = $nth;
 }
 echo "</table>";
 ?>
