@@ -37,7 +37,7 @@
                         <a href="view/insert.php" class="btn btn-success pull-right">Add New Course</a>
                     </div>
                     <?php
-                        if($re sult->num_rows > 0){
+                        if($result->num_rows > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
