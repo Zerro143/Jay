@@ -60,7 +60,8 @@
                     $sporttb->course = trim($_POST['course']);
                     
                     //call validation
-                    $chk=$this->checkValidation($sporttb);                    
+                    $chk=$this->checkValidation($sporttb);  
+                                     
                     if($chk)
                     {   
                         //call insert record            
@@ -73,7 +74,8 @@
                     }else
                     {    
                         $_SESSION['sporttbl0']=serialize($sporttb);//add session obj           
-                        $this->pageRedirect("view/insert.php");                
+                        $this->pageRedirect("view/insert.php");   
+                        $sporttb->course_msg=$chk;              
                     }
                 }
             }catch (Exception $e) 
