@@ -31,8 +31,8 @@
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("INSERT INTO sports (category,name) VALUES (?, ?)");
-				$query->bind_param("ss",$obj->category,$obj->name);
+				$query=$this->condb->prepare("INSERT INTO course (course) VALUES (?)");
+				$query->bind_param("s",$obj->course);
 				$query->execute();
 				$res= $query->get_result();
 				$last_id=$this->condb->insert_id;
@@ -52,8 +52,8 @@
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("UPDATE sports SET category=?,name=? WHERE id=?");
-				$query->bind_param("ssi", $obj->category,$obj->name,$obj->id);
+				$query=$this->condb->prepare("UPDATE course SET course=?,WHERE course_id=?");
+				$query->bind_param("si", $obj->course,$obj->course_id);
 				$query->execute();
 				$res=$query->get_result();						
 				$query->close();
@@ -67,12 +67,12 @@
         	}
         }
          // delete record
-		public function deleteRecord($id)
+		public function deleteRecord($course_id)
 		{	
 			try{
 				$this->open_db();
-				$query=$this->condb->prepare("DELETE FROM sports WHERE id=?");
-				$query->bind_param("i",$id);
+				$query=$this->condb->prepare("DELETE FROM course WHERE course_id=?");
+				$query->bind_param("i",$course_id);
 				$query->execute();
 				$res=$query->get_result();
 				$query->close();
@@ -81,23 +81,23 @@
 			}
 			catch (Exception $e) 
 			{
-            	$this->closeDb();
+            	$this->close_Db();
             	throw $e;
         	}		
         }   
         // select record     
-		public function selectRecord($id)
+		public function selectRecord($course_id)
 		{
 			try
 			{
                 $this->open_db();
-                if($id>0)
+                if($course_id>0)
 				{	
-					$query=$this->condb->prepare("SELECT * FROM sports WHERE id=?");
-					$query->bind_param("i",$id);
+					$query=$this->condb->prepare("SELECT * FROM course WHERE course_id=?");
+					$query->bind_param("i",$course_id);
 				}
                 else
-                {$query=$this->condb->prepare("SELECT * FROM sports");	}		
+                {$query=$this->condb->prepare("SELECT * FROM course");	}		
 				
 				$query->execute();
 				$res=$query->get_result();	

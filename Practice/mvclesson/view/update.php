@@ -1,5 +1,5 @@
 <?php
-        require '../model/sports.php'; 
+        require 'Practice/mvclesson/model/sports.php'; 
         session_start();             
         $sporttb=isset($_SESSION['sporttbl0'])?unserialize($_SESSION['sporttbl0']):new sports();            
 ?>
@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Create Record</title>
-    <link rel="stylesheet" href="../libs/bootstrap.css">
+    <link rel="stylesheet" href="Practice/mvclesson/libs/bootstrap.css">
     <style type="text/css">
         .wrapper{
             width: 500px;
@@ -25,7 +25,7 @@
                         <h2>Update Sports</h2>
                     </div>
                     <p>Please fill this form and submit to add sports record in the database.</p>
-                    <form action="../index.php?act=update" method="post" >
+                    <form action=".Practice/mvclesson/index.php?act=update" method="post" >
                         <div class="form-group <?php echo (!empty($sporttb->category_msg)) ? 'has-error' : ''; ?>">
                             <label>Sport Category</label>
                             <input type="text" name="category" class="form-control" value="<?php echo $sporttb->category; ?>">
@@ -38,7 +38,7 @@
                         </div>
                         <input type="hidden" name="id" value="<?php echo $sporttb->id; ?>"/>
                         <input type="submit" name="updatebtn" class="btn btn-primary" value="Submit">
-                        <a href="../index.php" class="btn btn-default">Cancel</a>
+                        <a href="Practice/mvclesson/index.php" class="btn btn-default">Cancel</a>
                     </form>
                 </div>
             </div>        

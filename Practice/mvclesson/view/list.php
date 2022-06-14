@@ -33,29 +33,27 @@
                 <div class="col-md-12">
                     <div class="page-header clearfix">
                         <a href="index.php" class="btn btn-success pull-left">Home</a>
-                        <h2 class="pull-left">Sports Details</h2>
-                        <a href="view/insert.php" class="btn btn-success pull-right">Add New Sports</a>
+                        <h2 class="pull-left">Course</h2>
+                        <a href="view/insert.php" class="btn btn-success pull-right">Add New Course</a>
                     </div>
                     <?php
                         if($result->num_rows > 0){
                             echo "<table class='table table-bordered table-striped'>";
                                 echo "<thead>";
                                     echo "<tr>";
-                                        echo "<th>#</th>";                                        
-                                        echo "<th>Sports Category</th>";
-                                        echo "<th>Sports Name</th>";
+                                        echo "<th>Course_ID</th>";                                        
+                                        echo "<th>Course</th>";
                                         echo "<th>Action</th>";
                                     echo "</tr>";
                                 echo "</thead>";
                                 echo "<tbody>";
                                 while($row = mysqli_fetch_array($result)){
                                     echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";                                        
-                                        echo "<td>" . $row['category'] . "</td>";
-                                        echo "<td>" . $row['name'] . "</td>";
+                                        echo "<td>" . $row['course_id'] . "</td>";                                        
+                                        echo "<td>" . $row['course'] . "</td>";
                                         echo "<td>";
-                                        echo "<a href='index.php?act=update&id=". $row['id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-                                        echo "<a href='index.php?act=delete&id=". $row['id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
+                                        echo "<a href='index.php?act=update&id=". $row['course_id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
+                                        echo "<a href='index.php?act=delete&id=". $row['course_id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
                                         echo "</td>";
                                     echo "</tr>";
                                 }

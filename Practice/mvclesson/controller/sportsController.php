@@ -41,18 +41,13 @@
 		public function checkValidation($sporttb)
         {    $noerror=true;
             // Validate category        
-            if(empty($sporttb->category)){
-                $sporttb->category_msg = "Field is empty.";$noerror=false;
-            } elseif(!filter_var($sporttb->category, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-                $sporttb->category_msg = "Invalid entry.";$noerror=false;
-            }else{$sporttb->category_msg ="";}            
+            if(empty($sporttb->course)){
+                $sporttb->course_msg = "Field is empty.";$noerror=false;
+            } elseif(!filter_var($sporttb->course, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+                $sporttb->course_msg = "Invalid entry.";$noerror=false;
+            }else{$sporttb->course_msg ="";}            
             // Validate name            
-            if(empty($sporttb->name)){
-                $sporttb->name_msg = "Field is empty.";$noerror=false;     
-            } elseif(!filter_var($sporttb->name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-                $sporttb->name_msg = "Invalid entry.";$noerror=false;
-            }else{$sporttb->name_msg ="";}
-            return $noerror;
+
         }
         // add new record
 		public function insert()
@@ -62,8 +57,8 @@
                 if (isset($_POST['addbtn'])) 
                 {   
                     // read form value
-                    $sporttb->category = trim($_POST['category']);
-                    $sporttb->name = trim($_POST['name']);
+                    $sporttb->course = trim($_POST['course']);
+                    
                     //call validation
                     $chk=$this->checkValidation($sporttb);                    
                     if($chk)
@@ -96,9 +91,9 @@
                 if (isset($_POST['updatebtn'])) 
                 {
                     $sporttb=unserialize($_SESSION['sporttbl0']);
-                    $sporttb->id = trim($_POST['id']);
-                    $sporttb->category = trim($_POST['category']);
-                    $sporttb->name = trim($_POST['name']);                    
+                    $sporttb->course_id = trim($_POST['course_id']);
+                    $sporttb->course = trim($_POST['course']);
+                              
                     // check validation  
                     $chk=$this->checkValidation($sporttb);
                     if($chk)
@@ -114,14 +109,14 @@
                         $_SESSION['sporttbl0']=serialize($sporttb);      
                         $this->pageRedirect("view/update.php");                
                     }
-                }elseif(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
-                    $id=$_GET['id'];
-                    $result=$this->objsm->selectRecord($id);
+                }elseif(isset($_GET["course_id"]) && !empty(trim($_GET["course_id"]))){
+                    $course_id=$_GET['course_id'];
+                    $result=$this->objsm->selectRecord($course_id);
                     $row=mysqli_fetch_array($result);  
                     $sporttb=new sports();                  
-                    $sporttb->id=$row["id"];
-                    $sporttb->name=$row["name"];
-                    $sporttb->category=$row["category"];
+                    $sporttb->course_id=$row["course_id"];
+                    $sporttb->course=$row["course"];
+                    
                     $_SESSION['sporttbl0']=serialize($sporttb);
                     $this->pageRedirect('view/update.php');
                 }else{
@@ -139,10 +134,10 @@
 		{
             try
             {
-                if (isset($_GET['id'])) 
+                if (isset($_GET['course_id'])) 
                 {
-                    $id=$_GET['id'];
-                    $res=$this->objsm->deleteRecord($id);                
+                    $course_id=$_GET['course_id'];
+                    $res=$this->objsm->deleteRecord($course_id);                
                     if($res){
                         $this->pageRedirect('index.php');
                     }else{

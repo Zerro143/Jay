@@ -3,18 +3,18 @@
 class sports
 {
     // table fields
-    public $id;
-    public $category;
-    public $name;
+    public $course_id;
+    public $course;
+    
     // message string
-    public $id_msg;
-    public $category_msg;
-    public $name_msg;
+    public $crid_msg;
+    public $course_msg;
+    
     // constructor set default value
     function __construct()
     {
-        $id=0;$category=$name="";
-        $id_msg=$category_msg=$name_msg="";
+        $course_id=0;$course="";
+        $crid_msg=$course_msg="";
     }
 }
 
