@@ -1,6 +1,6 @@
 <?php
 	
-	class sportsModel
+	class courseModel
 	{
 		// set database config for mysql
 		function __construct($consetup)
@@ -52,7 +52,7 @@
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("UPDATE course SET course=? WHERE course_id=?");
+				$query=$this->condb->prepare("UPDATE course SET course=?,WHERE course_id=?");
 				$query->bind_param("si", $obj->course,$obj->course_id);
 				$query->execute();
 				$res=$query->get_result();						
