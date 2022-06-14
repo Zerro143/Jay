@@ -1,73 +1,79 @@
-<?php session_unset();?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link href="~/../libs/fontawesome/css/font-awesome.css" rel="stylesheet" />    
-    <link rel="stylesheet" href="~/../libs/bootstrap.css"> 
-    <script src="~/../libs/jquery.min.js"></script>
-    <script src="~/../libs/bootstrap.js"></script>
-    <style type="text/css">
-        .wrapper{
-            width: 650px;
-            margin: 0 auto;
-        }
-        .page-header h2{
-            margin-top: 0;
-        }
-        table tr td:last-child a{
-            margin-right: 15px;
-        }
-    </style>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $('[data-toggle="tooltip"]').tooltip();   
-        });
-    </script>
-</head>
-<body>
-    <div class="wrapper">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header clearfix">
-                        <a href="index.php" class="btn btn-success pull-left">Home</a>
-                        <h2 class="pull-left">Course</h2>
-                        <a href="view/insert.php" class="btn btn-success pull-right">Add New Course</a>
-                    </div>
-                    <?php
-                        if($result->num_rows > 0){
-                            echo "<table class='table table-bordered table-striped'>";
-                                echo "<thead>";
-                                    echo "<tr>";
-                                        echo "<th>Course_ID</th>";                                        
-                                        echo "<th>Course</th>";
-                                        echo "<th>Action</th>";
-                                    echo "</tr>";
-                                echo "</thead>";
-                                echo "<tbody>";
-                                while($row = mysqli_fetch_array($result)){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['course_id'] . "</td>";                                        
-                                        echo "<td>" . $row['course'] . "</td>";
-                                        echo "<td>";
-                                        echo "<a href='index.php?act=update&id=". $row['course_id'] ."' title='Update Record' data-toggle='tooltip'><i class='fa fa-edit'></i></a>";
-                                        echo "<a href='index.php?act=delete&id=". $row['course_id'] ."' title='Delete Record' data-toggle='tooltip'><i class='fa fa-trash'></i></a>";
-                                        echo "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            mysqli_free_result($result);
-                        } else{
-                            echo "<p class='lead'><em>No records were found.</em></p>";
-                        }
-                    ?>
+<html>
+    <head>
+        <title>Student Grid</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    </head>
+
+  <body>
+    <section id="header">
+      <?php   include 'nav.php';?>
+    </section>
+    <!-- <?php   include 'alert.php';?> -->
+    <div class="container" >
+               
+                
+      <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
+      <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Students Record</button>
+      <?php /*
+      <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
+    </div> 
+
+    <div class="container">
+    
+      <div class="row" justify-content-center>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Course ID</th>
+              <th>Course Name</th>
+              <th colspan="2">Action</th>
+            </tr>
+          </thead>
+            <?php 
+              while($row = $result->fetch_assoc()):?> 
+              <div class="row" justify-content-center>
+                <tr>
+                  <td><?php echo $row['course_id'];?></td>
+                  <td><?php echo $row['course'];?></td>
+                  <td>  
+                    <a href="upcr.php?edit=<?php echo $row['course_id'];?>"class="btn btn-info">Edit</a>
+                    <a href="upcr.php?delete=<?php echo $row['course_id'];?>"class="btn btn-danger">Delete</a>
+                  </td>
+              
+                </tr>
+              </div>  
+            <?php endwhile;?>
+        </table>
+
+                
+      </div>
+      <!-- <div class="row">
+        <div class="col-4">
+          <?php //<a class="btn btn-primary" onclick="openForm()">Add</a>?>
+          <div style="padding-left:20px">
+            <div class="form" id="myForm">
+              <form action="upcr.php" class="form-container" method="POST">
+                <input type="hidden" name="id" value="<?php echo $id = $_SESSION['cid'];?>">
+                <div class="row">
+                  <label for="course"><b>Couse Name</b></label>
+                  <input type="text" placeholder="Enter course" name="course" value="<?php echo /*$course;*/$_SESSION['course'];  unset($_SESSION['course']);?>" >
                 </div>
-            </div>        
+                <?php
+                  if($_SESSION['crupdate']==true):
+                ?>
+                  <button type="submit" class="btn btn-info" placeholder="update" name="update">Update</button>
+                <?php unset($_SESSION['crupdate']); ?>  
+                <?php else:?>
+                  <button type="submit" class="btn btn-primary" placeholder="ADD" name="add">Add</button>
+                <?php endif;?>  
+                <button type="button" class="btn btn-primary" onclick="closeForm()">Close</button>
+              </form>
+            </div>
+          </div>
         </div>
-    </div>
-</body>
+      </div>
+          
+    </div> -->
+  </body>
 </html>
