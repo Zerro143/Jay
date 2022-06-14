@@ -20,7 +20,7 @@ for ($a = 0; $a < 100; $a++) {
 }*/
 echo count($odd)."<br>";
 echo count($even);
-space();
+//space();
 $arrlength = count($odd);
 
 /*for($x = 0; $x < $arrlength; $x++) {
