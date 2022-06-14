@@ -2,6 +2,7 @@
 	
 	class courseModel
 	{
+		
 		// set database config for mysql
 		function __construct($consetup)
 		{

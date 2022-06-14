@@ -11,18 +11,19 @@
         
         public function mvchandler()
         {
-            $act =isset($_GET['act'])?$_GET['act']:NULL;
-            switch($act)
-            {
-                case 'add':
-                    break;
-                case 'update':
-                    break;
-                case 'delete':
-                    break;
-                default:
-                    $this->lsc();
-            } 
+            $this->lsc();
+            //$act =isset($_GET['act'])?$_GET['act']:NULL;
+            // switch($act)
+            // {
+                // case 'add':
+                    // break;
+                // case 'update':
+                    // break;
+                // case 'delete':
+                    // break;
+                // default:
+                    // $this->lsc();
+            // } 
         }
         public function pageRedirect($url)
         {
