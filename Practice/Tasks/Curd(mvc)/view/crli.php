@@ -30,10 +30,9 @@
               </tr>
             </thead>
               <?php 
-              $sql = "SELECT * FROM `course`;"; 
-                  $result = $conn->query($sql); 
-                  // output data of each row
-                while($row = $result->fetch_assoc()):?> 
+               
+                // output data of each row
+                while($row = mysqli_fetch_array($result)):?> 
                 <div class="row" justify-content-center>
                   <tr>
                     <td id = "course_id<?php echo $row['course_id'];?>"><?php echo $row['course_id'];?></td>
@@ -46,7 +45,7 @@
                 
                   </tr>
                 </div>  
-              <?php endwhile;?>
+              <?php endwhile; mysqli_free_result($result)  ?>
           </table>
 
 

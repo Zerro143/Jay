@@ -1,6 +1,6 @@
 <?php 
 include 'controller/coursecontroller.php';
-$controller = new coursecontroller();
+$controller = new controller();
 $controller->mvcHandler();
 
 ?>
