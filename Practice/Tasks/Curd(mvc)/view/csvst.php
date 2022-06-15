@@ -1,6 +1,6 @@
 <?php
 
-include_once 'conn.php';
+
  
 if(!empty($_FILES["file"]["name"]))
 {

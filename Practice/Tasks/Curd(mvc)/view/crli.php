@@ -2,14 +2,23 @@
     <head>
         <title>Course Grid</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/bootstrap.css"> 
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.css"> 
+        <script src="../assets/js/bootstrap.js"></script>
+        <script src="../assets/js/popper.js"></script>
+        <script src="../assets/js/jquery.js"></script>
+        <script src="../assets/js/craction.js"></script>
+        <script src="../assets/js/saction.js"></script>
         
     </head>
 
   <body>
     <section id="header">
-      <?php include 'nav.php';?>
+      <?php 
+      ini_set('display_errors', 1);
+      ini_set('display_startup_errors', 1);
+      error_reporting(E_ALL);
+      include 'nav.php';?>
     </section>
 
    
@@ -17,11 +26,11 @@
           
                 
       
-    <section id = "">
+    <section id ="">
       <div class="container datatable" id = "">
 
         <div class="row justify-content-center" >
-          <table class="table" id = "datatable">
+          <!-- <table class="table" id = "datatable">
             <thead>
               <tr>
                 <th>Course ID</th>
@@ -46,7 +55,7 @@
                   </tr>
                 </div>  
               <?php endwhile; mysqli_free_result($result)  ?>
-          </table>
+          </table> -->
 
 
 
@@ -62,10 +71,6 @@
           
     </div>
 
-    <script src="assets/js/bootstrap.js"></script>
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/craction.js"></script>
-    <script src="assets/js/saction.js"></script>
+
   </body>
 </html>

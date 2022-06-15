@@ -22,6 +22,33 @@ class courseModel{
         $this->condb->close();
     }
 
+    //insert record
+    public function insertRecord($obj){
+        try{
+            
+            $this->open_db();
+            //$r1 = $this->condb->prepare("SELECT * FROM course WHERE id=?");
+            //$r1->bind_param("s",$obj->course);
+            //$r1->execute();
+            //$r2=$r1->get_result();
+
+            //$tr = $r2->num_rows;
+            //if($tr==0){
+                $query=$this->condb->prepare("INSERT INTO course(course) VALUES(?)");
+                $query->bind_param("s",$obj->course);
+                $query->execute();
+               // return $tr;
+          //  }else{ return $tr;}
+            
+
+            
+        }
+        catch(Exception $e){
+            $this->close_db();
+            throw $e;
+        }
+    }
+
     public function selectRecord($course_id){
         try{
             $this->open_db();
@@ -30,9 +57,13 @@ class courseModel{
 
             $query->execute();
             $res=$query->get_result();
+            while($row = mysqli_fetch_array($res)){
+                $data[]= $row;
+            }
             $query->close();
             $this->close_db();
-            return $res;
+          
+            return $data;
         }
         catch(Exception $e){
             $this->close_db();

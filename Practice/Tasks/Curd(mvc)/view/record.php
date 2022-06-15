@@ -1,8 +1,6 @@
 <?php 
   //session_start();
-  include 'conn.php';
-  $sql = "SELECT * FROM `course`;"; 
-  $result = $conn->query($sql); 
+
 
   //$id = $_POST['c'];
   //echo $id;
@@ -60,7 +58,7 @@
   <head>
       <title>Create Record</title>
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="assets/css/bs.css"> 
+      <link rel="stylesheet" href="../assets/css/bs.css"> 
   </head>
   <body>
     <section id="header">

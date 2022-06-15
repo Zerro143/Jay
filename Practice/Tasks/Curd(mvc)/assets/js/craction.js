@@ -1,6 +1,7 @@
-$("#myForm").hide();
+
 
 $(document).ready(function(){
+    $("#myForm").hide();
    
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
@@ -72,7 +73,7 @@ $(document).ready(function(){
     
     $("#add").click(function(e){
         e.preventDefault();
-       
+       alert("err");
         
         var btn = $("#add").attr("value");
         var course = $("#course").val();
@@ -80,19 +81,19 @@ $(document).ready(function(){
         //alert(course + "Added to Database")
         if(course !== ""){
             if(f.test(course) == true){
-                $.ajax({url:"upcr.php", 
+                $.ajax({url:"../controller/coursecontroller.php", 
                 method:"POST", 
                 data:{a:btn,b:course}, 
-                success:function(a){ 
-                    if (a==0){
-                        alert(course + " Added to Database");
-                        
-                        location.reload();
-                    }
-                    else{
-                        alert("Course already exist")
-                       
-                    }
+                success:function(abc){ 
+                    //if (a==0){
+                    alert(course + " Added to Database");
+                    //                                                                                                                                                                                  
+                    //location.reload();
+                    //}
+                    //else{
+                    //    alert("Course already exist")
+                    //   
+                    //}
              
                 }});
 
