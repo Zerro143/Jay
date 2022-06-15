@@ -25,11 +25,7 @@ class courseModel{
     public function selectRecord($course_id){
         try{
             $this->open_db();
-            // if($course_id>0){
-                // $query=$this->condb->prepare("SELECT * From course WHERE course_id=?");
-                // $query->bind_param("i",$course_id);
-            // }
-            //else
+          
             $query=$this->condb->prepare("SELECT * FROM course");
 
             $query->execute();
