@@ -25,6 +25,25 @@ $(document).ready(function(){
         $(".datatable").show();
     });
 
+    $.ajax({
+        url:"../controller/crcontroller.php",
+        method:"POST",
+        success:function(a){
+            let b = a;
+            console.log(b)
+            for (var i = 0;i < b.length;i++) { 
+                console.log(i);
+
+                
+                // $('#content').append("<tr>\
+                //             <td>"+course_id[i]+"</td>\
+                //             <td>"+course[i]+"</td>\
+                //             </tr>");
+            }
+        }
+
+    })
+
     $("#add").click(function(e){
         e.preventDefault();
        

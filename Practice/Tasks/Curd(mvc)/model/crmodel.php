@@ -1,4 +1,8 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $hostname     = "localhost";
 $username     = "root";
 $password     = "Admin@123"; 
@@ -56,9 +60,15 @@ switch($a){
     break;
 
     default:
-        $sql = "SELECT * FROM `student`;"; 
+        $sql = "SELECT * FROM `course`;"; 
         $result = $conn->query($sql); 
-        echo $result;
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+        // foreach($data as $row){
+            print_r($data);
+            //echo json_encode($data);
+        // }
     break;
 }
  
