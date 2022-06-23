@@ -12,7 +12,7 @@ function data(){
                 + a[i].course + 
                 '</td><td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
                 ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
-                $('#content').append(row);
+                $('#course_content').append(row);
             }
         }
   
@@ -86,13 +86,13 @@ $(document).ready(function(){
     
     });
 
-    $("#content").on("click",".delete",function(e){
+    $("#course_content").on("click",".delete",function(e){
         
         e.preventDefault();
         
         var cid = $(this).attr("did");
         var course = $(this).attr("dname");
-        var btn = "del";
+        var btn = "del_course";
           
         if(confirm("Are you sure u want to delete " + course)){
             
@@ -110,7 +110,7 @@ $(document).ready(function(){
 
     });
     
-    $("#content").on("click",".edit",function(e){
+    $("#course_content").on("click",".edit",function(e){
         e.preventDefault();
 
         cid = $(this).attr("did");
@@ -127,7 +127,7 @@ $(document).ready(function(){
     
             url:"../controller/crcontroller.php",
             method:"POST",
-            data:{a:'edit',c:cid},
+            data:{a:'edit_course',c:cid},
             dataType:"json",
             success:function(data){
                $("#course").val(data[0].course);
