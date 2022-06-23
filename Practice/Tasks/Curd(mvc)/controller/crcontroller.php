@@ -29,8 +29,8 @@ error_reporting(E_ALL);
                     $this->insert();
 					break;						
 				case 'update':
-                    echo "Welcome to update";
-					// $this->update();
+                    // echo "Welcome to update";
+					$this->update();
 					break;				
 				case 'del' :					
 					// echo "Welcome to delete";
@@ -40,35 +40,66 @@ error_reporting(E_ALL);
                     $this->list();
 			}
 		}		
-        // // page redirection
-		// public function pageRedirect($url)
-		// {
-		// 	header('Location:'.$url);
-		// }	
-        // // check validation
-		// public function checkValidation($sporttb)
-        // {    $noerror=true;
-        //     // Validate category        
-        //     if(empty($sporttb->category)){
-        //         $sporttb->category_msg = "Field is empty.";$noerror=false;
-        //     } elseif(!filter_var($sporttb->category, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        //         $sporttb->category_msg = "Invalid entry.";$noerror=false;
-        //     }else{$sporttb->category_msg ="";}            
-        //     // Validate name            
-        //     if(empty($sporttb->name)){
-        //         $sporttb->name_msg = "Field is empty.";$noerror=false;     
-        //     } elseif(!filter_var($sporttb->name, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
-        //         $sporttb->name_msg = "Invalid entry.";$noerror=false;
-        //     }else{$sporttb->name_msg ="";}
-        //     return $noerror;
-        // }
-       
-        // // update record
-        // public function update()
-		// {
-        //     try
-        //     {
-                
+
+
+
+        public function list(){
+            $result=$this->objcm->selectRecord(0);
+            while($row = mysqli_fetch_array($result)){
+                $data[]=$row;
+            }
+            echo json_encode($data);          
+        }
+         
+        // add new record
+		public function insert()
+		{
+            
+            try{
+                //$sporttb=new course();
+                if (isset($_POST['b'])) 
+                { 
+                    $course = $_POST['b'];
+                    $tr =$this->objcm->insertRecord($course);
+                    echo $tr;
+                }
+            }catch (Exception $e) 
+            {
+                throw $e;
+            }
+        }
+
+        //delete record
+        public function delete()
+		{
+            try
+            {
+               
+                if (isset($_POST['c'])) 
+                {
+                    $id=$_POST['c'];
+                    // echo $id;
+                    $res=$this->objcm->deleteRecord($id);                
+                    echo $res;
+                }else{
+                    echo "false";
+                }
+            }
+            catch (Exception $e) 
+            {
+               			
+                throw $e;
+            }
+        }
+
+        // update record
+        public function update()
+		{
+            try
+            {
+                $id = $_POST['c'];
+                $course = $_POST['b'];
+                $res = $this -> objcm ->updateRecord($id,$course);	  
         //         if (isset($_POST['updatebtn'])) 
         //         {
         //             $sporttb=unserialize($_SESSION['sporttbl0']);
@@ -103,57 +134,10 @@ error_reporting(E_ALL);
         //         }else{
         //             echo "Invalid operation.";
         //         }
-        //     }
-        //     catch (Exception $e) 
-        //     {
-        //         $this->close_db();				
-        //         throw $e;
-        //     }
-        // }
-        // // delete record
-
-        public function list(){
-            $result=$this->objcm->selectRecord(0);
-            while($row = mysqli_fetch_array($result)){
-                $data[]=$row;
-            }
-            echo json_encode($data);          
-        }
-         // add new record
-		public function insert()
-		{
-            
-            try{
-                //$sporttb=new course();
-                if (isset($_POST['b'])) 
-                { 
-                    $course = $_POST['b'];
-                    $tr =$this->objcm->insertRecord($course);
-                    echo $tr;
-                }
-            }catch (Exception $e) 
-            {
-                throw $e;
-            }
-        }
-        public function delete()
-		{
-            try
-            {
-               
-                if (isset($_POST['c'])) 
-                {
-                    $id=$_POST['c'];
-                    // echo $id;
-                    $res=$this->objcm->deleteRecord($id);                
-                    echo $res;
-                }else{
-                    echo "false";
-                }
             }
             catch (Exception $e) 
             {
-               			
+               		
                 throw $e;
             }
         }

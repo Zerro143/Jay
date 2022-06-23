@@ -97,6 +97,25 @@
             	throw $e;
         	}		
         }   
+
+		public function updateRecord($obj,$obj2)
+		{
+			try
+			{	
+				$this->open_db();
+				$query=$this->condb->prepare("UPDATE course SET course='$obj2' WHERE course_id=$obj");
+				$query->execute();
+				$res=$query->get_result();						
+				$query->close();
+				$this->close_db();
+				return true;
+			}
+			catch (Exception $e) 
+			{
+            	$this->close_db();
+            	throw $e;
+        	}
+        }
 	}
 
 ?>

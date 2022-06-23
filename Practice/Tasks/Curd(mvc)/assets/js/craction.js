@@ -26,7 +26,7 @@ $(document).ready(function(){
         $("#myForm").show();
         $("#update").hide();
         $("#add").show();
-        $(".datatable").hide();
+        $("#main").hide();
         $("#expall").hide();
         $("#exp").hide();
         $("#delsel").hide();
@@ -40,7 +40,7 @@ $(document).ready(function(){
         $("#expall").show();
         $("#exp").show();
         $("#delsel").show();
-        $(".datatable").show();
+        $("#main").show();
     });
 
   data();
@@ -83,6 +83,7 @@ $(document).ready(function(){
         }
     
     });
+
     $("#content").on("click",".delete",function(e){
         
         e.preventDefault();
@@ -105,6 +106,50 @@ $(document).ready(function(){
         }
 
 
+    });
+    $("#content").on("click",".edit",function(){
+        $("#expall").hide();
+        $("#exp").hide();
+        $("#delsel").hide();
+        var cid="";
+        cid = $(this).attr("did");
+        var course = $(this).attr("dname");
+             
+        $("#add").hide();
+        $("#main").hide();
+        $("#update").show();
+        $("#myForm").show();
+        $("#course").val(course);
+        $("#update").click(function(e){
+            e.preventDefault();
+            var btn = $("#update").val();
+            var course = $("#course").val()
+            if(course !== ""){
+                if(f.test(course) == true){
+                    $.ajax({
+                        url:"../controller/crcontroller.php",
+                        method:"POST", 
+                        data:{a:btn,b:course,c:cid}, 
+                        success:function(){ 
+                            location.reload();
+                            // $("#myForm").hide();
+                            alert(course + "Updated in Database");
+                            $("#course").val("");
+                            
+                            // $("#crerr").html("");
+                        }});
+                }
+                else{
+                    $("#crerr").html("<b>Only Alphabets are allowed</b>")
+                }
+            }else{
+                
+                $("#crerr").html("<b>Please Enter the Course</b>")
+            }
+
+        });
+        
+       
     });
             
 
