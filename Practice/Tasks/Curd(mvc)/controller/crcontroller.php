@@ -81,7 +81,7 @@ error_reporting(E_ALL);
         }
 
         //delete record
-        public function delete_std()
+        public function del_std()
 		{
             try
             {

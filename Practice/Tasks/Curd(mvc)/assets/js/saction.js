@@ -26,7 +26,7 @@ function student_data(){
 $(document).ready(function(){
 student_data();
 
-$("#student").on("click",".delete",function(e){
+$("#student_content").on("click",".delete",function(e){
         
     e.preventDefault();
     
@@ -41,7 +41,7 @@ $("#student").on("click",".delete",function(e){
                 method:"POST", 
                 data:{a:btn,c:cid}, 
                 success:function(dataabc){ 
-                    //$("#main").load("index.php #dta");
+                
                     alert("Record Deleted from Database");
                     location.reload();
                 }});
