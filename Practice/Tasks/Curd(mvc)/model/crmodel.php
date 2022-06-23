@@ -33,7 +33,7 @@
                 $this->open_db();
                 if($id>0)
 				{	
-					$query=$this->condb->prepare("SELECT * FROM course WHERE id=$id");
+					$query=$this->condb->prepare("SELECT * FROM course WHERE course_id=$id");
 				
 				}
                 else
@@ -42,8 +42,11 @@
 				$query->execute();
 				$res=$query->get_result();	
 				$query->close();				
-				$this->close_db();                
-                return $res;
+				$this->close_db();
+				while($row = mysqli_fetch_array($res)){
+                    $data[]=$row;
+                }                
+                return $data;
 			}
 			catch(Exception $e)
 			{
@@ -98,12 +101,12 @@
         	}		
         }   
 
-		public function updateRecord($obj,$obj2)
+		public function updateRecord($id,$course)
 		{
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("UPDATE course SET course='$obj2' WHERE course_id=$obj");
+				$query=$this->condb->prepare("UPDATE course SET course='$course' WHERE course_id=$id");
 				$query->execute();
 				$res=$query->get_result();						
 				$query->close();

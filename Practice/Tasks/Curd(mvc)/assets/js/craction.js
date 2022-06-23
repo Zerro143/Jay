@@ -110,9 +110,9 @@ $(document).ready(function(){
     
     $("#content").on("click",".edit",function(e){
         e.preventDefault();
-        // alert("Clicked edit");
+
         cid = $(this).attr("did");
-        // alert("Clicked"+cid);
+        
         $("#expall").hide();
         $("#exp").hide();
         $("#delsel").hide();
@@ -121,48 +121,52 @@ $(document).ready(function(){
         $("#update").show();
         $("#myForm").show();
         // $("#course").val(course);
-        //  $.ajax({
-        //     url:"../controller/crcontroller.php",
-        //     method:"POST",
-        //     data:{a:update,c:cid},
-        //     success:function(data){
-        //         //console.log('data');
-  
-        //     }
+         $.ajax({
+    
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{a:'edit',c:cid},
+            dataType:"json",
+            success:function(data){
+               $("#course").val(data[0].course);
+               $("#cid").val(data[0].course_id);
+                
+            }
 
         })
 
         
        
-    // });
-    // $("#update").click(function(e){
-    //     e.preventDefault();
-    //     var btn = $("#update").val();
-    //     var course = $("#course").val()
-    //     if(course !== ""){
-    //         if(f.test(course) == true){
-    //             $.ajax({
-    //                 url:"../controller/crcontroller.php",
-    //                 method:"POST", 
-    //                 data:{a:btn,b:course,c:cid}, 
-    //                 success:function(){ 
-    //                     location.reload();
-    //                     // $("#myForm").hide();
-    //                     alert(course + "Updated in Database");
-    //                     $("#course").val("");
-                        
-    //                     // $("#crerr").html("");
-    //                 }});
-    //         }
-    //         else{
-    //             $("#crerr").html("<b>Only Alphabets are allowed</b>")
-    //         }
-    //     }else{
-            
-    //         $("#crerr").html("<b>Please Enter the Course</b>")
-    //     }
+    });
 
-    // });
+    $("#update").click(function(e){
+        e.preventDefault();
+        var btn = $("#update").val();
+        var course = $("#course").val()
+        if(course !== ""){
+            if(f.test(course) == true){
+                $.ajax({
+                    url:"../controller/crcontroller.php",
+                    method:"POST", 
+                    data:{a:btn,b:course,c:cid}, 
+                    success:function(){ 
+                        location.reload();
+                        $("#myForm").hide();
+                        alert(course + "Updated in Database");
+                        $("#course").val("");
+                        
+                        $("#crerr").html("");
+                    }});
+            }
+            else{
+                $("#crerr").html("<b>Only Alphabets are allowed</b>")
+            }
+        }else{
+            
+            $("#crerr").html("<b>Please Enter the Course</b>")
+        }
+
+    });
             
 
     

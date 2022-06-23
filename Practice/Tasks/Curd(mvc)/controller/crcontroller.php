@@ -35,7 +35,9 @@ error_reporting(E_ALL);
 				case 'del' :					
 					// echo "Welcome to delete";
                     $this -> delete();
-					break;								
+					break;		
+                case 'update':
+                    $this->update();						
 				default:
                     $this->list();
 			}
@@ -45,10 +47,10 @@ error_reporting(E_ALL);
 
         public function list(){
             $result=$this->objcm->selectRecord(0);
-            while($row = mysqli_fetch_array($result)){
-                $data[]=$row;
-            }
-            echo json_encode($data);          
+            // while($row = mysqli_fetch_array($result)){
+            //     $data[]=$row;
+            // }
+            echo json_encode($result);          
         }
          
         // add new record
@@ -99,13 +101,28 @@ error_reporting(E_ALL);
             {
                 $id = $_POST['c'];
                 $result=$this->objcm->selectRecord($id);
-                echo $result;
+  
+                echo json_encode($result);     
   
 
             }
             catch (Exception $e) 
             {
                		
+                throw $e;
+            }
+        }
+        public function update()
+        {
+            try
+            {
+                $id = $_POST['c'];
+                $course = $_POST['b']; 
+                $result=$this->objcm->updateRecord($id,$course);
+            }
+            catch (Exception $e) 
+            {
+			
                 throw $e;
             }
         }
