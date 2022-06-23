@@ -145,20 +145,20 @@ error_reporting(E_ALL);
                 {
                     $id=$_POST['c'];
                     // echo $id;
-                    $res=$this->objsm->deleteRecord($id);                
-
+                    $res=$this->objcm->deleteRecord($id);                
+                    echo $res;
                 }else{
-                    echo "Invalid operation.";
+                    echo "false";
                 }
             }
             catch (Exception $e) 
             {
-                $this->close_db();				
+               			
                 throw $e;
             }
         }
     }
 		
-$controller = new crController();	
-$controller->mvcHandler();
+    $controller = new crController();	
+    $controller->mvcHandler();
 ?>
