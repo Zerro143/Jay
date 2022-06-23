@@ -83,13 +83,13 @@
 		{	
 			try{
 				$this->open_db();
-				$query=$this->condb->prepare("DELETE FROM course WHERE id=?");
-				$query->bind_param("i",$id);
+				// echo "DELETE FROM course WHERE id=$id";
+				$query=$this->condb->prepare("DELETE FROM course WHERE course_id=$id");
 				$query->execute();
-				// $res=$query->get_result();
-				// $query->close();
-				// $this->close_db();
-				// return true;	
+				$res=$query->get_result();
+				$query->close();
+				$this->close_db();
+				return true;	
 			}
 			catch (Exception $e) 
 			{

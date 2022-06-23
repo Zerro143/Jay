@@ -1,4 +1,22 @@
 
+function data(){
+    $.ajax({
+        url:"../controller/crcontroller.php",
+        method:"POST",
+        dataType:"json",
+        success:function(a){
+            for (var i=0; i<a.length; i++) {
+                var row = $('<tr><td>' + a[i].course_id+ '</td><td>' 
+                + a[i].course + 
+                '</td><td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
+                ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
+                $('#content').append(row);
+            }
+        }
+  
+    });
+
+}
 $(document).ready(function(){
     $("#myForm").hide();
     const f = /^[a-zA-Z]*$/;
@@ -25,21 +43,7 @@ $(document).ready(function(){
         $(".datatable").show();
     });
 
-    $.ajax({
-        url:"../controller/crcontroller.php",
-        method:"POST",
-        dataType:"json",
-        success:function(a){
-            for (var i=0; i<a.length; i++) {
-                var row = $('<tr><td>' + a[i].course_id+ '</td><td>' 
-                + a[i].course + 
-                '</td><td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
-                ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
-                $('#content').append(row);
-            }
-        }
-  
-    });
+  data();
 
     $("#add").click(function(e){
         e.preventDefault();
@@ -94,9 +98,9 @@ $(document).ready(function(){
                     method:"POST", 
                     data:{a:btn,c:cid}, 
                     success:function(dataabc){ 
-                        //$("#datatable").load("course .php #datatable")
-                        //alert(course + " Deleted from Database");
-                        
+                        //$("#main").load("index.php #dta");
+                        alert(course + " Deleted from Database");
+                        location.reload();
                     }});
         }
 
