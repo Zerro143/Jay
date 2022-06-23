@@ -3,8 +3,10 @@ function data(){
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
+        data:{a:'course'},
         dataType:"json",
         success:function(a){
+          
             for (var i=0; i<a.length; i++) {
                 var row = $('<tr><td>' + a[i].course_id+ '</td><td>' 
                 + a[i].course + 
@@ -19,9 +21,9 @@ function data(){
 }
 $(document).ready(function(){
     $("#myForm").hide();
+    
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
-
     $("#openForm").click(function(){
         $("#myForm").show();
         $("#update").hide();
