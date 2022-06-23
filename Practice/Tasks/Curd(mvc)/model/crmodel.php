@@ -78,6 +78,25 @@
             	throw $e;
         	}
 		}
+
+		public function deleteRecord($id)
+		{	
+			try{
+				$this->open_db();
+				$query=$this->condb->prepare("DELETE FROM course WHERE id=?");
+				$query->bind_param("i",$id);
+				$query->execute();
+				// $res=$query->get_result();
+				// $query->close();
+				// $this->close_db();
+				// return true;	
+			}
+			catch (Exception $e) 
+			{
+            	$this->close_db();
+            	throw $e;
+        	}		
+        }   
 	}
 
 ?>

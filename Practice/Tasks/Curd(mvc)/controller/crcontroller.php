@@ -144,13 +144,9 @@ error_reporting(E_ALL);
                 if (isset($_POST['c'])) 
                 {
                     $id=$_POST['c'];
-                    echo $id;
-                    // $res=$this->objsm->deleteRecord($id);                
-                    // if($res){
-                    //     $this->pageRedirect('index.php');
-                    // }else{
-                    //     echo "Somthing is wrong..., try again.";
-                    // }
+                    // echo $id;
+                    $res=$this->objsm->deleteRecord($id);                
+
                 }else{
                     echo "Invalid operation.";
                 }
