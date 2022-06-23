@@ -6,7 +6,7 @@ error_reporting(E_ALL);
 ?>
 <?php
     require '../model/crmodel.php';
-    require '../model/cr.php';
+    //require '../model/cr.php';
     require_once '../config.php';
 
  
@@ -26,32 +26,43 @@ error_reporting(E_ALL);
 			switch ($act) 
 			{
                 case 'add' :   
-                    $this->insert();
+                    $this->insert_course();
 					break;						
 				case 'edit':
 
-					$this->edit();
+					$this->edit_course();
 					break;				
 				case 'del' :					
 
-                    $this -> delete();
+                    $this -> delete_course();
 					break;		
                 case 'update':
-                    $this->update();						
+                    $this->update_course();	
+                    break;	
+                case 'course':
+                    $this->course();
+                    break;				
 				default:
-                    $this->list();
+                    $this->student();
 			}
 		}		
 
 
+        public function student()
+        {
+            $result=$this->objcm->select_studentRecord(0);
+            //print_r($result);
+            echo json_encode($result);    
+        }
 
-        public function list(){
-            $result=$this->objcm->selectRecord(0);
+        public function course()
+        {
+            $result=$this->objcm->select_courseRecord(0);
             echo json_encode($result);          
         }
          
         // add new record
-		public function insert()
+		public function insert_course()
 		{
             
             try{
@@ -59,7 +70,7 @@ error_reporting(E_ALL);
                 if (isset($_POST['b'])) 
                 { 
                     $course = $_POST['b'];
-                    $tr =$this->objcm->insertRecord($course);
+                    $tr =$this->objcm->insert_courseRecord($course);
                     echo $tr;
                 }
             }catch (Exception $e) 
@@ -69,7 +80,7 @@ error_reporting(E_ALL);
         }
 
         //delete record
-        public function delete()
+        public function delete_course()
 		{
             try
             {
@@ -78,7 +89,7 @@ error_reporting(E_ALL);
                 {
                     $id=$_POST['c'];
                     // echo $id;
-                    $res=$this->objcm->deleteRecord($id);                
+                    $res=$this->objcm->delete_courseRecord($id);                
                     echo $res;
                 }else{
                     echo "false";
@@ -92,12 +103,12 @@ error_reporting(E_ALL);
         }
 
         // edit retrive record
-        public function edit()
+        public function edit_course()
 		{
             try
             {
                 $id = $_POST['c'];
-                $result=$this->objcm->selectRecord($id);
+                $result=$this->objcm->select_courseRecord($id);
   
                 echo json_encode($result);     
   
@@ -109,15 +120,15 @@ error_reporting(E_ALL);
                 throw $e;
             }
         }
-        
+
         //update record
-        public function update()
+        public function update_course()
         {
             try
             {
                 $id = $_POST['c'];
                 $course = $_POST['b']; 
-                $result=$this->objcm->updateRecord($id,$course);
+                $result=$this->objcm->update_courseRecord($id,$course);
             }
             catch (Exception $e) 
             {

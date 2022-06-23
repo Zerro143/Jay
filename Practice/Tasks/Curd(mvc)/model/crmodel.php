@@ -26,7 +26,37 @@
 		}	
 
         // select record     
-		public function selectRecord($id)
+
+		public function select_studentRecord($id)
+		{
+			try
+			{
+                $this->open_db();
+                if($id>0)
+				{	
+					$query=$this->condb->prepare("SELECT * FROM student WHERE id=$id");
+				
+				}
+                else
+                {$query=$this->condb->prepare("SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id");	}		
+				
+				$query->execute();
+				$res=$query->get_result();	
+				$query->close();				
+				$this->close_db();
+				while($row = mysqli_fetch_array($res)){
+                    $data[]=$row;
+                }                
+                return $data;
+			}
+			catch(Exception $e)
+			{
+				$this->close_db();
+				throw $e; 	
+			}
+			
+		}
+		public function select_courseRecord($id)
 		{
 			try
 			{
@@ -55,7 +85,7 @@
 			}
 			
 		}
-		public function insertRecord($obj)
+		public function insert_courseRecord($obj)
 		{
 			try
 			{	
@@ -82,7 +112,7 @@
         	}
 		}
 
-		public function deleteRecord($id)
+		public function delete_courseRecord($id)
 		{	
 			try{
 				$this->open_db();
@@ -101,7 +131,7 @@
         	}		
         }   
 
-		public function updateRecord($id,$course)
+		public function update_courseRecord($id,$course)
 		{
 			try
 			{	
