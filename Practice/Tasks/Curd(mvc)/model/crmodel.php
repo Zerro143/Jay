@@ -33,8 +33,8 @@
                 $this->open_db();
                 if($id>0)
 				{	
-					$query=$this->condb->prepare("SELECT * FROM course WHERE id=?");
-					$query->bind_param("i",$id);
+					$query=$this->condb->prepare("SELECT * FROM course WHERE id=$id");
+				
 				}
                 else
                 {$query=$this->condb->prepare("SELECT * FROM course");	}		
