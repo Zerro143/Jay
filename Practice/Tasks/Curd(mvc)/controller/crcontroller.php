@@ -24,19 +24,20 @@ error_reporting(E_ALL);
 		{
 			$act = isset($_POST['a']) ? $_POST['a'] : NULL;
 			switch ($act) 
-			{
-                case 'add' :   
+			{   case 'del_std':
+                    $this->del_std();
+                    break;
+                case 'add_course' :   
                     $this->insert_course();
 					break;						
-				case 'edit':
-
+				case 'edit_course':
 					$this->edit_course();
 					break;				
-				case 'del' :					
+				case 'del_course' :					
 
                     $this -> delete_course();
 					break;		
-                case 'update':
+                case 'update_course':
                     $this->update_course();	
                     break;	
                 case 'course':
@@ -80,6 +81,28 @@ error_reporting(E_ALL);
         }
 
         //delete record
+        public function delete_std()
+		{
+            try
+            {
+               
+                if (isset($_POST['c'])) 
+                {
+                    $id=$_POST['c'];
+                    // echo $id;
+                    $res=$this->objcm->delete_stdRecord($id);                
+                    echo $res;
+                }else{
+                    echo "false";
+                }
+            }
+            catch (Exception $e) 
+            {
+               			
+                throw $e;
+            }
+        }
+
         public function delete_course()
 		{
             try

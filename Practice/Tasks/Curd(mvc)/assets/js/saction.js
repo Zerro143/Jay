@@ -15,7 +15,7 @@ function student_data(){
                 +'<td>'+ a[i].update_date + '</td>'
                 +'<td><button id="edit" class="btn btn-info edit" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
                 ' <button id="Delete" class="btn btn-danger delete" did='+a[i].id+ ' dname='+a[i].fname+'> Delete</button></td></tr>');
-                $('#content').append(row);
+                $('#student_content').append(row);
             }
         }
   
@@ -25,4 +25,29 @@ function student_data(){
 
 $(document).ready(function(){
 student_data();
+
+$("#student").on("click",".delete",function(e){
+        
+    e.preventDefault();
+    
+    var cid = $(this).attr("did");
+    // var course = $(this).attr("dname");
+    var btn = "del_std";
+      
+    if(confirm("Are you sure u want to delete this record" )){
+        
+        $.ajax({
+            url:"../controller/crcontroller.php",
+                method:"POST", 
+                data:{a:btn,c:cid}, 
+                success:function(dataabc){ 
+                    //$("#main").load("index.php #dta");
+                    alert("Record Deleted from Database");
+                    location.reload();
+                }});
+    }
+
+
+});
+
 });

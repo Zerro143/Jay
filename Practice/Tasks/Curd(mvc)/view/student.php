@@ -34,7 +34,7 @@
                     <th colspan="2">Action</th>
                   </tr>
                 </thead>
-                <tbody id="content">
+                <tbody id="student_content">
 
                 </tbody>
             </table>

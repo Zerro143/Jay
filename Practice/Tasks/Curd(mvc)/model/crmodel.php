@@ -112,6 +112,25 @@
         	}
 		}
 
+		public function delete_stdRecord($id)
+		{	
+			try{
+				$this->open_db();
+				// echo "DELETE FROM course WHERE id=$id";
+				$query=$this->condb->prepare("DELETE FROM student WHERE id=$id");
+				$query->execute();
+				$res=$query->get_result();
+				$query->close();
+				$this->close_db();
+				return true;	
+			}
+			catch (Exception $e) 
+			{
+            	$this->close_db();
+            	throw $e;
+        	}		
+        }   
+
 		public function delete_courseRecord($id)
 		{	
 			try{

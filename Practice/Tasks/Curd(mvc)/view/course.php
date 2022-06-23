@@ -26,7 +26,7 @@
                     <th colspan="2">Action</th>
                   </tr>
                 </thead>
-                <tbody id="content">
+                <tbody id="course_content">
 
                 </tbody>
             </table>
