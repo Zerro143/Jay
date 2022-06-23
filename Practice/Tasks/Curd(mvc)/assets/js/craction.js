@@ -111,7 +111,7 @@ $(document).ready(function(){
         $("#expall").hide();
         $("#exp").hide();
         $("#delsel").hide();
-        var cid="";
+  
         cid = $(this).attr("did");
         var course = $(this).attr("dname");
              
