@@ -29,11 +29,11 @@ error_reporting(E_ALL);
                     $this->insert();
 					break;						
 				case 'edit':
-                    // echo "Welcome to update";
+
 					$this->edit();
 					break;				
 				case 'del' :					
-					// echo "Welcome to delete";
+
                     $this -> delete();
 					break;		
                 case 'update':
@@ -47,9 +47,6 @@ error_reporting(E_ALL);
 
         public function list(){
             $result=$this->objcm->selectRecord(0);
-            // while($row = mysqli_fetch_array($result)){
-            //     $data[]=$row;
-            // }
             echo json_encode($result);          
         }
          
@@ -58,7 +55,7 @@ error_reporting(E_ALL);
 		{
             
             try{
-                //$sporttb=new course();
+
                 if (isset($_POST['b'])) 
                 { 
                     $course = $_POST['b'];
@@ -94,7 +91,7 @@ error_reporting(E_ALL);
             }
         }
 
-        // update record
+        // edit retrive record
         public function edit()
 		{
             try
@@ -112,6 +109,8 @@ error_reporting(E_ALL);
                 throw $e;
             }
         }
+        
+        //update record
         public function update()
         {
             try
