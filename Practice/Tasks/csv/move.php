@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-$out = fopen("final2.csv","w");
+
 $mydir = "img";
 
 $files = array_diff(scandir($mydir), array('.', '..'));
@@ -28,6 +28,7 @@ foreach($array as $itm){
         $ptr = substr($itm2, 0, strpos($itm2, "."));
         if($ptr == $itm[0]){
             $itm[1]=$itm2;
+            copy("img/$itm2", "$itm2");
             continue;
         }
         //echo $file."<br>";
@@ -35,10 +36,10 @@ foreach($array as $itm){
     }   
     //echo $itm[0]."<br>";
     print_r($itm);
-    fputcsv($out,$itm);
+  
     
 }
-fclose($out);
+
 // $result=array_intersect($files,$a2);
 // print_r($result);
 ?>
