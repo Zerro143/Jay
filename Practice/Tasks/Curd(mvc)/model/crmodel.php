@@ -52,6 +52,32 @@
 			}
 			
 		}
+		public function insertRecord($obj)
+		{
+			try
+			{	
+				$this->open_db();
+				$query=$this->condb->prepare("SELECT * FROM course WHERE course =?");
+				$query->bind_param("s",$obj);
+				$query->execute();
+				$r2= $query->get_result();
+				$tr = $r2->num_rows;
+				if($tr==0){
+					$query=$this->condb->prepare("INSERT INTO course (course) VALUES (?)");
+					$query->bind_param("s",$obj);
+					$query->execute();
+					return $tr;
+				}
+				else{
+					return $tr;
+				}
+			}
+			catch (Exception $e) 
+			{
+				$this->close_db();	
+            	throw $e;
+        	}
+		}
 	}
 
 ?>
