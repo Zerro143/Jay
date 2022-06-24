@@ -80,7 +80,7 @@ error_reporting(E_ALL);
         {
 
             $ids = $_POST['ids'];
-            $output = fopen("output.csv", "w");
+            $output = fopen("../export/output.csv", "w");
  
             switch($_POST['c']){
                 case 'course':
@@ -101,7 +101,7 @@ error_reporting(E_ALL);
                     fputcsv($output, array('fname','lname','email','m','course', 'bdate','created_date','update_date'));
                     foreach ($ids as $id)
                     {
-                        $result=$this->objcm->select_studentRecord($ids); 
+                        $result=$this->objcm->select_studentRecord($id); 
                        
                         fputcsv($output,$result[0]);
                         

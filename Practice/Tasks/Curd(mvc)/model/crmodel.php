@@ -34,7 +34,7 @@
                 $this->open_db();
                 if($id>0)
 				{	
-					$query=$this->condb->prepare("SELECT * FROM student WHERE id=$id");
+					$query=$this->condb->prepare("SELECT `fname`, `lname`, `email`, `m`, `course`, `bdate`, `created_date`, `update_date` FROM student WHERE id=$id");
 				
 				}
                 else

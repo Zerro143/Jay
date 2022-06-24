@@ -96,7 +96,7 @@ $(document).ready(function(){
 					{   
                         //alert ("Selected data deleted");
                         
-                        window.location.href='output.csv';
+                        window.location.href='../export/output.csv';
                         $(".sil").prop('checked',false)
                         $("#master").prop('checked',false)
 					}   
