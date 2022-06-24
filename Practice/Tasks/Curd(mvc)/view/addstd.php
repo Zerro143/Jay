@@ -86,11 +86,7 @@
                     </div>
                     <div class="col-75">
                     <select id = "course1" class = "course "name = "course">
-                         
-                            <option value=""> </option>
-
-                    
-                        </select> 
+                    </select> 
                     <span class="error">* </span>
                   </div>
                 </div>
