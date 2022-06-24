@@ -45,7 +45,6 @@ error_reporting(E_ALL);
 					$this->edit_course();
 					break;				
 				case 'del_course' :					
-
                     $this -> delete_course();
 					break;		
                 case 'update_course':
@@ -134,16 +133,20 @@ error_reporting(E_ALL);
 		{
             try
             {
-               
-                if (isset($_POST['c'])) 
-                {
-                    $id=$_POST['c'];
-                    // echo $id;
-                    $res=$this->objcm->delete_courseRecord($id);                
-                    echo $res;
-                }else{
-                    echo "false";
-                }
+                // if(isset($_POST['c'])){
+                    $ids=$_POST['c'];
+                    if(is_array($ids)){
+                        foreach ($ids as $id)
+                        {
+                            $res=$this->objcm->delete_courseRecord($id);      
+                            echo $id;
+                            
+                        }
+                    }else{
+                        $res=$this->objcm->delete_courseRecord($ids);
+                        echo $ids;
+                    }
+     
             }
             catch (Exception $e) 
             {
