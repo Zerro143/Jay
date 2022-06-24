@@ -29,6 +29,9 @@ error_reporting(E_ALL);
                 case 'update_std':
 					$this->upd_std();
 					break;	
+                case'exp':
+                    $this->exp();
+                    break;
                 case 'edit_std':
 					$this->edit_std();
 					break;	
@@ -70,6 +73,46 @@ error_reporting(E_ALL);
         {
             $result=$this->objcm->select_courseRecord(0);
             echo json_encode($result);          
+        }
+        //export to csv
+
+        public function exp()
+        {
+
+            $ids = $_POST['ids'];
+            $output = fopen("output.csv", "w");
+ 
+            switch($_POST['c']){
+                case 'course':
+                    fputcsv($output, array('Course_id','Course'));
+                    foreach ($ids as $id)
+                    {
+                        $result=$this->objcm->select_courseRecord($id);  
+
+                        fputcsv($output,$result[0]);
+
+                        
+                    }
+        
+                    
+
+                    break;
+                case 'student': 
+                    fputcsv($output, array('fname','lname','email','m','course', 'bdate','created_date','update_date'));
+                    foreach ($ids as $id)
+                    {
+                        $result=$this->objcm->select_studentRecord($ids); 
+                       
+                        fputcsv($output,$result[0]);
+                        
+                    }
+                    
+                    break;
+                default:
+                    return "error";
+                    break;
+            }
+            fclose($output);
         }
          
         // add new record
@@ -176,6 +219,7 @@ error_reporting(E_ALL);
                 throw $e;
             }
         }
+
         public function edit_std()
 		{
             try

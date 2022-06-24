@@ -44,7 +44,7 @@
 				$res=$query->get_result();	
 				$query->close();				
 				$this->close_db();
-				while($row = mysqli_fetch_array($res)){
+				while($row = mysqli_fetch_assoc($res)){
                     $data[]=$row;
                 }                
                 return $data;
@@ -73,7 +73,7 @@
 				$res=$query->get_result();	
 				$query->close();				
 				$this->close_db();
-				while($row = mysqli_fetch_array($res)){
+				while($row = mysqli_fetch_assoc($res)){
                     $data[]=$row;
                 }                
                 return $data;

@@ -73,6 +73,39 @@ $(document).ready(function(){
         }
 
     });
+    $("#exp").click(function(e){
+        e.preventDefault();
+        var allVals = [];  
+        $(".sil:checked").each(function(){
+            allVals.push($(this).attr("value"));
+        });
+       
+        if(allVals.length == 0)  
+        {  
+            alert("Please select row.");  
+        }else{
+
+               var join_selected_values = allVals.join(","); 
+               var btn= "exp";
+                $.ajax({   
+				  
+					type: "POST",  
+					url:"../controller/crcontroller.php",
+					data: {ids:allVals,a:btn,c:'course'},
+					success: function()  
+					{   
+                        //alert ("Selected data deleted");
+                        
+                        //window.location.href='output.csv';
+                        $(".sil").prop('checked',false)
+                        $("#master").prop('checked',false)
+					}   
+				});
+
+
+        }
+
+    });
     
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
