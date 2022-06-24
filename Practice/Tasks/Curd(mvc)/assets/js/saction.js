@@ -217,7 +217,7 @@ $(document).ready(function(){
                         alert(fname + " Added to Database");
                     }
                     else{
-                        alert("Email already exist ")
+                        alert("Email already exist ");
                        
                     }
              
