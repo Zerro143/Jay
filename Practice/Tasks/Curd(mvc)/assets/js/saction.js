@@ -215,8 +215,6 @@ $(document).ready(function(){
                     
                     if (a==0){
                         alert(fname + " Added to Database");
-                        //
-                        // location.reload();
                     }
                     else{
                         alert("Email already exist ")
