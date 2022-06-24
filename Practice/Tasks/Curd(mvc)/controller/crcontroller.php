@@ -25,7 +25,11 @@ error_reporting(E_ALL);
 		{
 			$act = isset($_POST['a']) ? $_POST['a'] : NULL;
 			switch ($act) 
-			{   case 'del_std':
+			{   
+                case 'addstd':
+                    $this->add_std();
+                    break;
+                case 'del_std':
                     $this->del_std();
                     break;
                 case 'add_course' :   
@@ -49,7 +53,7 @@ error_reporting(E_ALL);
 			}
 		}		
 
-
+        
         public function student()
         {
             $result=$this->objcm->select_studentRecord(0);
@@ -64,6 +68,22 @@ error_reporting(E_ALL);
         }
          
         // add new record
+
+        public function add_std()
+        {
+            $student = new student();
+
+            $student->fname=($_POST['b']);
+            $student->lname=($_POST['c']);
+            $student->bdate=($_POST['d']);
+            $student->m=($_POST['e']);
+            $student->mail=($_POST['f']);
+            $student->course_id=($_POST['g']);
+            $student->cdate=($_POST['h']);
+            $student->udate=($_POST['h']);
+            $result=$this->objcm->insert_student($student);
+            echo $result;
+        }
 		public function insert_course()
 		{
             

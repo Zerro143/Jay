@@ -85,6 +85,41 @@
 			}
 			
 		}
+
+		public function insert_student($obj)
+		{
+			try
+			{	
+				$this->open_db();
+				$query=$this->condb->prepare("SELECT * FROM student WHERE email =?");
+				$query->bind_param("s",$obj->mail);
+				$query->execute();
+				$r2= $query->get_result();
+				$tr = $r2->num_rows;
+				if($tr==0){
+					$query=$this->condb->prepare("INSERT INTO student(`fname`, `lname`, `email`, `m`, `course_id`, `bdate`, `created_date`, `update_date`) VALUES (?,?,?,?,?,?,?,?)");
+					$query->bind_param("ssssssss",$obj->fname, 
+					$obj->fname,
+					$obj->lname,
+					$obj->bdate,
+					$obj->m,
+					$obj->mail,
+					$obj->course,
+					$obj->cdate,
+					$obj->udate,);
+					$query->execute();
+					return $tr;
+				}
+				else{
+					return $tr;
+				}
+			}
+			catch (Exception $e) 
+			{
+				$this->close_db();	
+            	throw $e;
+        	}
+		}
 		public function insert_courseRecord($obj)
 		{
 			try

@@ -6,7 +6,7 @@ class student
     public $id;
     public $fname;
     public $lname;
-    public $email;
+    public $mail;
     public $m;
     public $course_id;
     public $bdate;
