@@ -22,17 +22,18 @@
         <div class="container" id="dta">
             <table class="table" id="tda">
                 <thead>
-                  <tr>
-                    <th>Student ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                    <th>Mobile No.</th>
-                    <th>Course</th>
-                    <th>Created_Date</th>
-                    <th>Updated_Date</th>
-                    <th colspan="2">Action</th>
-                  </tr>
+                    <tr>
+                        <th><input type="checkbox" name="" id="master"></th>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Mobile No.</th>
+                        <th>Course</th>
+                        <th>Created_Date</th>
+                        <th>Updated_Date</th>
+                        <th colspan="2">Action</th>
+                    </tr>
                 </thead>
                 <tbody id="student_content">
 

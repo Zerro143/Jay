@@ -5,7 +5,9 @@ function student_data(){
         dataType:"json",
         success:function(a){
             for (var i=0; i<a.length; i++) {
-                var row = $('<tr><td>' + a[i].id+ '</td>'
+                var row = $('<tr>'
+                +'<td><input type="checkbox" class="sil" id="checkbox" value=' + +a[i].id+'></td>'
+                +'<td>' + a[i].id+ '</td>'
                 +'<td>'+ a[i].fname +'</td>'
                 +'<td>'+ a[i].lname + '</td>'
                 +'<td>'+ a[i].email + '</td>'

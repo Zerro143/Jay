@@ -21,6 +21,7 @@
             <table class="table" id="tda">
                 <thead>
                   <tr>
+                    <th><input type="checkbox" name="" id="master"></th>
                     <th>Course ID</th>
                     <th>Course Name</th>
                     <th colspan="2">Action</th>

@@ -8,9 +8,11 @@ function data(){
         success:function(a){
           
             for (var i=0; i<a.length; i++) {
-                var row = $('<tr><td>' + a[i].course_id+ '</td><td>' 
-                + a[i].course + 
-                '</td><td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
+                var row = $('<tr>'+
+                '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[i].course_id+ '></td>'
+                +'<td>' + a[i].course_id+ '</td>'+
+                '<td>'+ a[i].course + '</td>'
+                +'<td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
                 ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
                 $('#course_content').append(row);
             }
