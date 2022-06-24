@@ -128,6 +128,24 @@ $(document).ready(function(){
     student_data();
     $(".studentForm").hide();
 
+    $("#main").on("click","#master",function(){
+        if($("#master").is(':checked',true)){
+            $(".sil").prop('checked',true)
+        }
+        else{
+            $(".sil").prop('checked',false)
+        }
+        
+    })
+    $("#main").on("click",".sil",function(){
+    
+        if($(".sil").length == $(".sil:checked").length) {
+            $("#master").prop("checked", true);
+        } else {
+            $("#master").prop("checked", false);
+        }
+    })
+    
     $("#student_content").on("click",".delete",function(e){
             
         e.preventDefault();

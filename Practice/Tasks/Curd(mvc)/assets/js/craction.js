@@ -23,6 +23,23 @@ function data(){
 }
 $(document).ready(function(){
     $("#myForm").hide();
+    $("#main").on("click","#master",function(){
+        if($("#master").is(':checked',true)){
+            $(".sil").prop('checked',true)
+        }
+        else{
+            $(".sil").prop('checked',false)
+        }
+        
+    })
+    $("#main").on("click",".sil",function(){
+    
+        if($(".sil").length == $(".sil:checked").length) {
+            $("#master").prop("checked", true);
+        } else {
+            $("#master").prop("checked", false);
+        }
+    })
     
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
