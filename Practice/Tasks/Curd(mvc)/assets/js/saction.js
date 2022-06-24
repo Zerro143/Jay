@@ -24,44 +24,56 @@ function student_data(){
 }
 
 $(document).ready(function(){
-student_data();
-$(".studentForm").hide();
+    student_data();
+    $(".studentForm").hide();
 
-$("#student_content").on("click",".delete",function(e){
+    $("#student_content").on("click",".delete",function(e){
+            
+        e.preventDefault();
         
-    e.preventDefault();
-    
-    var cid = $(this).attr("did");
-    // var course = $(this).attr("dname");
-    var btn = "del_std";
-      
-    if(confirm("Are you sure u want to delete this record" )){
+        var cid = $(this).attr("did");
+        // var course = $(this).attr("dname");
+        var btn = "del_std";
         
-        $.ajax({
-            url:"../controller/crcontroller.php",
+        if(confirm("Are you sure u want to delete this record" )){
+            
+            $.ajax({
+                url:"../controller/crcontroller.php",
                 method:"POST", 
                 data:{a:btn,c:cid}, 
                 success:function(dataabc){ 
-                
                     alert("Record Deleted from Database");
                     location.reload();
                 }});
-    }
+        }
 
 
-});
+    });
 
-$(".container").on("click","#studentAdd",function(e){
-    e.preventDefault();
-    $(".studentForm").show();
-    $("#main").hide();
-    $("#upd").hide();
-});
+    $(".container").on("click","#studentAdd",function(e){
+        e.preventDefault();
+        $(".studentForm").show();
+        $("#main").hide();
+        $("#upd").hide();
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST", 
+            data:{a:'course'},
+            dataType:"json",
+            success:function(data){
+                console.log(data);
+                for (var i=0; i<data.length; i++) {
+                    var row = $('<option value = '+data[i].course_id+'>'+data[i].course+'</option>');
+                    $('#course1').append(row);
+                }
+            }
+        });
+    });
 
-$("#cls").click(function(e){
-    e.preventDefault();
-    $(".studentForm").hide();
-    $("#main").show();
-})
+    $("#cls").click(function(e){
+        e.preventDefault();
+        $(".studentForm").hide();
+        $("#main").show();
+    })
 
 });
