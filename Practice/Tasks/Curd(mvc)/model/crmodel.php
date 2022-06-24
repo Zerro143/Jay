@@ -98,7 +98,7 @@
 				$tr = $r2->num_rows;
 				if($tr==0){
 					$query=$this->condb->prepare("INSERT INTO student(`fname`, `lname`, `email`, `m`, `course_id`, `bdate`, `created_date`, `update_date`) VALUES (?,?,?,?,?,?,?,?)");
-					$query->bind_param("ssssssss",$obj->fname, 
+					$query->bind_param("ssssssss",
 					$obj->fname,
 					$obj->lname,
 					$obj->bdate,
