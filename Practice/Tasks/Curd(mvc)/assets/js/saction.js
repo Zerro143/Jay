@@ -22,6 +22,7 @@ function student_data(){
     });
 
 }
+
 var f = /^[a-zA-Z]*$/;
 var k = /(6|7|8|9)\d{9}/;
 var q = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
@@ -114,14 +115,8 @@ function validate(fname,lname,m,mail,bdate){
         $("#bderr").html("");
     }
     }
- 
 
-     //}
-     
-   
-     
-
-     return errcode
+    return errcode
 
     
 }
