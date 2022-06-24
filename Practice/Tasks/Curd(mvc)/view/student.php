@@ -42,8 +42,12 @@
         </div>
 
     </section>
-    <section id = "student_form" class="container mt-5">
+    <section id = "course_form" class="container mt-5">
         <!-- <?php include 'addcr.php';?> -->
+      
+    </section>
+    <section id ="student_form" class="container mt-5">
+        <?php include 'addstd.php';?> 
     </section>
 
     </body>

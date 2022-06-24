@@ -25,6 +25,7 @@ function student_data(){
 
 $(document).ready(function(){
 student_data();
+$(".studentForm").hide();
 
 $("#student_content").on("click",".delete",function(e){
         
@@ -49,5 +50,18 @@ $("#student_content").on("click",".delete",function(e){
 
 
 });
+
+$(".container").on("click","#studentAdd",function(e){
+    e.preventDefault();
+    $(".studentForm").show();
+    $("#main").hide();
+    $("#upd").hide();
+});
+
+$("#cls").click(function(e){
+    e.preventDefault();
+    $(".studentForm").hide();
+    $("#main").show();
+})
 
 });
