@@ -174,5 +174,62 @@ $(document).ready(function(){
         $(".studentForm").hide();
         $("#main").show();
     })
+    $("#add1").click(function(e){
+        e.preventDefault();
+
+        var today = new Date();
+        var y = String(today.getFullYear());
+        var mm = String(1 + today.getMonth()).padStart(2, '0');
+        var d = String(1 + today.getDay()).padStart(2, '0');
+
+              
+       
+   
+        
+      
+      var btn = $("#add1").attr("value");
+      var fname = $("#fname").val();
+      var lname = $("#lname").val();
+      var bdate = $("#bdate").val();
+      var m = $("#m").val();
+      var mail = $("#mail").val();
+      var course = $("#course1").val();
+      var cdate = y +"-"+ mm +"-"+ d; //$("#cdate").val();
+     
+       
+      
+
+       errcode = validate(fname,lname,m,mail,bdate);
+       
+
+      
+      
+        if(errcode == 0){
+           
+            $.ajax({
+                url:"../controller/crcontroller.php", 
+                method:"POST", 
+                data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
+                success:function(a){ 
+                    
+                    
+                    if (a==0){
+                        alert(fname + " Added to Database");
+                        //
+                        // location.reload();
+                    }
+                    else{
+                        alert("Email already exist ")
+                       
+                    }
+             
+                                    
+                    
+                }});
+            
+            
+        }
+
+    });
 
 });
