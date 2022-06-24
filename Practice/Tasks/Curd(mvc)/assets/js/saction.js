@@ -160,6 +160,39 @@ $(document).ready(function(){
         }
 
     });
+    $("#exp").click(function(e){
+        e.preventDefault();
+        var allVals = [];  
+        $(".sil:checked").each(function(){
+            allVals.push($(this).attr("value"));
+        });
+       
+        if(allVals.length == 0)  
+        {  
+            alert("Please select row.");  
+        }else{
+
+               var join_selected_values = allVals.join(","); 
+               var btn= "exp";
+                $.ajax({   
+				  
+					type: "POST",  
+					url:"../controller/crcontroller.php",
+					data: {ids:allVals,a:btn,c:'student'},
+					success: function()  
+					{   
+                        //alert ("Selected data deleted");
+                        
+                        window.location.href='output.csv';
+                        $(".sil").prop('checked',false)
+                        $("#master").prop('checked',false)
+					}   
+				});
+
+
+        }
+
+    });
 
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
