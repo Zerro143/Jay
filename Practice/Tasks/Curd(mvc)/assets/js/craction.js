@@ -198,7 +198,7 @@ $(document).ready(function(){
     $("#course_content").on("click",".edit",function(e){
         e.preventDefault();
 
-        cid = $(this).attr("did");
+        var cid = $(this).attr("did");
         
         $("#expall").hide();
         $("#exp").hide();
@@ -207,6 +207,7 @@ $(document).ready(function(){
         $("#main").hide();
         $("#update").show();
         $("#myForm").show();
+        $("#did").val(cid);
         // $("#course").val(course);
          $.ajax({
     
@@ -241,7 +242,7 @@ $(document).ready(function(){
                         $("#myForm").hide();
                         alert(course + " Updated in Database");
                         $("#course").val("");
-                        
+                        $("#did").val();
                         $("#crerr").html("");
                     }});
             }

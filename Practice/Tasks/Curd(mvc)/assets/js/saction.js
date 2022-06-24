@@ -6,7 +6,7 @@ function student_data(){
         success:function(a){
             for (var i=0; i<a.length; i++) {
                 var row = $('<tr>'
-                +'<td><input type="checkbox" class="sil" id="checkbox" value=' + +a[i].id+'></td>'
+                +'<td><input type="checkbox" class="sil" id="checkbox" value='+a[i].id+'></td>'
                 +'<td>' + a[i].id+ '</td>'
                 +'<td>'+ a[i].fname +'</td>'
                 +'<td>'+ a[i].lname + '</td>'
@@ -238,7 +238,8 @@ $(document).ready(function(){
     $("#student_content").on("click",".edit",function(e){
         e.preventDefault();
 
-        cid = $(this).attr("did");
+        var cid = $(this).attr("did");
+
         
         $("#expall").hide();
         $("#exp").hide();
@@ -247,6 +248,7 @@ $(document).ready(function(){
         $(".studentForm").show();
         $("#main").hide();
         $("#upd").show();
+        $("#did").val(cid);
          $.ajax({
     
             url:"../controller/crcontroller.php",
