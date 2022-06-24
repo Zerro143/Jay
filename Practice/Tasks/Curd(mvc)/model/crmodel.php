@@ -97,16 +97,14 @@
 				$r2= $query->get_result();
 				$tr = $r2->num_rows;
 				if($tr==0){
-					$query=$this->condb->prepare("INSERT INTO student(`fname`, `lname`, `email`, `m`, `course_id`, `bdate`, `created_date`, `update_date`) VALUES (?,?,?,?,?,?,?,?)");
-					$query->bind_param("ssssssss",
-					$obj->fname,
-					$obj->lname,
-					$obj->bdate,
-					$obj->m,
-					$obj->mail,
-					$obj->course,
-					$obj->cdate,
-					$obj->udate,);
+					$query=$this->condb->prepare("INSERT INTO student(`fname`, `lname`, `email`, `m`, `course_id`, `bdate`, `created_date`, `update_date`) VALUES ('$obj->fname',
+					'$obj->lname',
+					'$obj->mail',
+					'$obj->m',
+					'$obj->course_id',
+					'$obj->bdate',			
+					'$obj->cdate',
+					'$obj->udate')");
 					$query->execute();
 					return $tr;
 				}

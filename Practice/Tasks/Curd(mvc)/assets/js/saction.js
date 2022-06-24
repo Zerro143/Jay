@@ -212,7 +212,7 @@ $(document).ready(function(){
                 data:{a:'addstd',b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
                 success:function(a){ 
                     
-                    
+                    location.reload();
                     if (a==0){
                         alert(fname + " Added to Database");
                     }

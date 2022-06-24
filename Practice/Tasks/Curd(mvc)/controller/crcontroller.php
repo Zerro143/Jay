@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 ?>
 <?php
     require '../model/crmodel.php';
-    //require '../model/cr.php';
+    require '../model/st.php';
     require_once '../config.php';
 
  
