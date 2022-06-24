@@ -149,6 +149,41 @@ $(document).ready(function(){
 
     });
 
+    $("#student_content").on("click",".edit",function(e){
+        e.preventDefault();
+
+        cid = $(this).attr("did");
+        
+        $("#expall").hide();
+        $("#exp").hide();
+        $("#delsel").hide();
+        $("#add1").hide();
+        $(".studentForm").show();
+        $("#main").hide();
+        $("#upd").hide();
+         $.ajax({
+    
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{a:'edit_std',c:cid},
+            dataType:"json",
+            success:function(data){
+                var fname = $("#fname").val(data[0].fname);
+                var lname = $("#lname").val(data[0].lname);
+                var bdate = $("#bdate").val(data[0].bdate);
+                var m = $("#m").val(data[0].m);
+                var mail = $("#mail").val(data[0].mail);
+                var course = $("#course1").val(data[0].course_id);
+                var cdate = y +"-"+ mm +"-"+ d; 
+                
+            }
+
+        })
+
+        
+       
+    });
+
     $(".container").on("click","#studentAdd",function(e){
         e.preventDefault();
         $(".studentForm").show();
