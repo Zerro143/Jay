@@ -160,7 +160,7 @@ $(document).ready(function(){
         $("#add1").hide();
         $(".studentForm").show();
         $("#main").hide();
-        $("#upd").hide();
+        $("#upd").show();
          $.ajax({
     
             url:"../controller/crcontroller.php",
@@ -172,9 +172,15 @@ $(document).ready(function(){
                 var lname = $("#lname").val(data[0].lname);
                 var bdate = $("#bdate").val(data[0].bdate);
                 var m = $("#m").val(data[0].m);
-                var mail = $("#mail").val(data[0].mail);
-                var course = $("#course1").val(data[0].course_id);
-                var cdate = y +"-"+ mm +"-"+ d; 
+                var mail = $("#mail").val(data[0].email);
+                // var course = $("#course1").val(data[0].course_id);
+                // var cdate = y +"-"+ mm +"-"+ d; 
+                // console.log(data[1].length);
+                var dt = data[1];
+                for (var i=0; i<dt.length; i++) {
+                    var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
+                    $('#course1').append(row);
+                }
                 
             }
 
