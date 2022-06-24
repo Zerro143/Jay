@@ -143,7 +143,7 @@ $(document).ready(function(){
 
     $("#update").click(function(e){
         e.preventDefault();
-        var btn = $("#update").val();
+        var btn = "update_course";
         var course = $("#course").val()
         if(course !== ""){
             if(f.test(course) == true){

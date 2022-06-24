@@ -215,6 +215,7 @@ $(document).ready(function(){
         $(".studentForm").hide();
         $("#main").show();
     })
+
     $("#add1").click(function(e){
         e.preventDefault();
 
@@ -263,8 +264,9 @@ $(document).ready(function(){
                     }
              
                                     
-                    
-                }});
+        
+                }
+            });
             
             
         }

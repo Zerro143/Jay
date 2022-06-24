@@ -177,10 +177,7 @@ error_reporting(E_ALL);
                 $result[1] = $c;
                 // print_r ($result);
                 echo json_encode($result);
-               
-
-  
-
+ 
             }
             catch (Exception $e) 
             {
