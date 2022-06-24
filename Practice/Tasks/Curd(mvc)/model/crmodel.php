@@ -181,7 +181,9 @@
             	$this->close_db();
             	throw $e;
         	}		
-        }   
+        }
+		
+		
 
 		public function update_studentRecord($fname,$lname,$email,$m,$course_id,$bdate,$cdate,$id)
 		{
