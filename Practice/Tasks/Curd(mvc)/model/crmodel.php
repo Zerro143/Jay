@@ -123,7 +123,7 @@
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("SELECT * FROM course WHERE course =?");
+				$query=$this->condb->prepare("SELECT * FROM course WHERE course = ?");
 				$query->bind_param("s",$obj);
 				$query->execute();
 				$r2= $query->get_result();

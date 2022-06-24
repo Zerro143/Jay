@@ -23,6 +23,8 @@ function data(){
 }
 $(document).ready(function(){
     $("#myForm").hide();
+    $("#studentAdd").hide();
+    $("#expall").hide();
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)
@@ -136,7 +138,7 @@ $(document).ready(function(){
         e.preventDefault();
        
         
-        var btn = $("#add").attr("value");
+        var btn = 'add_course';
         var course = $("#course").val();
         
         //alert(course + "Added to Database")
@@ -207,7 +209,7 @@ $(document).ready(function(){
         $("#main").hide();
         $("#update").show();
         $("#myForm").show();
-        $("#did").val(cid);
+        $("#cid").val(cid);
         // $("#course").val(course);
          $.ajax({
     
@@ -230,6 +232,7 @@ $(document).ready(function(){
     $("#update").click(function(e){
         e.preventDefault();
         var btn = "update_course";
+        var cid = $("#cid").val();
         var course = $("#course").val()
         if(course !== ""){
             if(f.test(course) == true){
@@ -242,7 +245,7 @@ $(document).ready(function(){
                         $("#myForm").hide();
                         alert(course + " Updated in Database");
                         $("#course").val("");
-                        $("#did").val();
+                        $("#did").val("");
                         $("#crerr").html("");
                     }});
             }

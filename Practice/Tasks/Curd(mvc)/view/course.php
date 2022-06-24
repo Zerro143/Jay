@@ -7,9 +7,10 @@
     <head>
         <title>CURD with MVC Pattern</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <script src="../assets/js/bootstrap.js"></script>
-        <script src="../assets/js/popper.js"></script>
         <script src="../assets/js/jquery.js"></script>
+        <!-- <script src="../assets/js/bootstrap.js"></script> -->
+        <script src="../assets/js/popper.js"></script>
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
         <script src="../assets/js/craction.js"></script>
     </head>
     <body>
@@ -35,7 +36,9 @@
         </div>
 
     </section>
-    <section id = "course_form" class="container mt-5">
+    <section id = "course_form" class="container mt-5" >
+
+        
         <?php include 'addcr.php';?>
     </section>
 
