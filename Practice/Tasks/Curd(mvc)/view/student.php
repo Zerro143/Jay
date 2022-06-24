@@ -7,10 +7,12 @@
     <head>
         <title>CURD with MVC Pattern</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-        <script src="../assets/js/bootstrap.js"></script>
-        <script src="../assets/js/popper.js"></script>
+
         <script src="../assets/js/jquery.js"></script>
         <script src="../assets/js/saction.js"></script>
+        <script src="../assets/js/bootstrap.js"></script>
+        <script src="../assets/js/popper.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
         <!-- <script src="../assets/js/craction.js"></script> -->
     </head>
@@ -30,6 +32,7 @@
                         <th>Email</th>
                         <th>Mobile No.</th>
                         <th>Course</th>
+                        <th>B.Date</th>
                         <th>Created_Date</th>
                         <th>Updated_Date</th>
                         <th colspan="2">Action</th>

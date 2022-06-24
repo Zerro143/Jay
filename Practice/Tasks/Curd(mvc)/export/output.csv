@@ -1,2 +1,4 @@
-fname,lname,email,m,course,bdate,created_date,update_date
-Vivek,Bavsikar,abc@123.com,7123456789,JS,2022-06-22,2022-06-28,2022-06-28
+Course_id,Course
+15,JS
+16,DBMS
+23,Ajax

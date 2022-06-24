@@ -13,6 +13,7 @@ function student_data(){
                 +'<td>'+ a[i].email + '</td>'
                 +'<td>'+ a[i].m + '</td>'
                 +'<td>'+ a[i].course + '</td>'
+                +'<td>'+ a[i].bdate + '</td>'
                 +'<td>'+ a[i].created_date + '</td>'
                 +'<td>'+ a[i].update_date + '</td>'
                 +'<td><button id="edit" class="btn btn-info edit" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
@@ -126,7 +127,9 @@ function validate(fname,lname,m,mail,bdate){
 
 $(document).ready(function(){
     student_data();
+    $("#openForm").hide();
     $(".studentForm").hide();
+    $("#expall").hide();
 
     $("#delsel").click(function(){
         var allVals = [];  
@@ -256,7 +259,7 @@ $(document).ready(function(){
             data:{a:'edit_std',c:cid},
             dataType:"json",
             success:function(data){
-                $("#did").val(data[0].id);
+                // $("#did").val(data[0].id);
                 $("#fname").val(data[0].fname);
                 $("#lname").val(data[0].lname);
                 $("#bdate").val(data[0].bdate);
