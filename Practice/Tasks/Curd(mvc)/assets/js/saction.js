@@ -128,6 +128,39 @@ $(document).ready(function(){
     student_data();
     $(".studentForm").hide();
 
+    $("#delsel").click(function(){
+        var allVals = [];  
+        $(".sil:checked").each(function(){
+            allVals.push($(this).attr("value"));
+        });
+        //alert(allVals.length); 
+        if(allVals.length == 0)  
+        {  
+            alert("Please select row.");  
+        }else{
+            if(confirm("Are you sure u want to delete")){
+               var join_selected_values = allVals.join(","); 
+               var btn= "del_std";
+                $.ajax({   
+				    url:"../controller/crcontroller.php",
+					type: "POST",  
+					data: {c:allVals,a:btn},
+					success: function(a)  
+					{   
+                        alert ("Selected data deleted");
+                        location.reload();
+                        // $("#datatable").load("students.php #datatable")                  
+					}   
+				});
+            }else{
+                $(".sil").prop('checked',false)
+                $("#master").prop("checked", false);
+            }
+
+        }
+
+    });
+
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)

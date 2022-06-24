@@ -112,14 +112,17 @@ error_reporting(E_ALL);
             try
             {
                
-                if (isset($_POST['c'])) 
-                {
-                    $id=$_POST['c'];
-                    // echo $id;
-                    $res=$this->objcm->delete_stdRecord($id);                
-                    echo $res;
+                $ids=$_POST['c'];
+                if(is_array($ids)){
+                    foreach ($ids as $id)
+                    {
+                        $res=$this->objcm->delete_stdRecord($id);      
+                        echo $id;
+                        
+                    }
                 }else{
-                    echo "false";
+                    $res=$this->objcm->delete_stdRecord($ids);
+                    echo $ids;
                 }
             }
             catch (Exception $e) 
