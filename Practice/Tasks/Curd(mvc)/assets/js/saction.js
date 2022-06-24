@@ -209,7 +209,7 @@ $(document).ready(function(){
             $.ajax({
                 url:"../controller/crcontroller.php", 
                 method:"POST", 
-                data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
+                data:{a:'addstd',b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
                 success:function(a){ 
                     
                     
