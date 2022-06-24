@@ -26,6 +26,9 @@ error_reporting(E_ALL);
 			$act = isset($_POST['a']) ? $_POST['a'] : NULL;
 			switch ($act) 
 			{   
+                case 'update_std':
+					$this->upd_std();
+					break;	
                 case 'edit_std':
 					$this->edit_std();
 					break;	
@@ -186,6 +189,31 @@ error_reporting(E_ALL);
             }
         }
         //update record
+
+        public function upd_std()
+        {
+            try
+            {
+
+                $id = $_POST['i'];
+                $fname = $_POST['b'];
+                $lname = $_POST['c'];
+                $email = $_POST['f'];
+                $m = $_POST['e'];
+                $course_id =$_POST['g'];
+                $bdate= $_POST['d'];
+                $cdate= $_POST['h'];
+                
+                $result=$this->objcm->update_studentRecord($fname,$lname,$email,$m,$course_id,$bdate,$cdate,$id);
+                echo $result;
+            }
+            catch (Exception $e) 
+            {
+			
+                throw $e;
+            }
+        }
+
         public function update_course()
         {
             try

@@ -183,12 +183,31 @@
         	}		
         }   
 
-		public function update_courseRecord($id,$course)
+		public function update_studentRecord($fname,$lname,$email,$m,$course_id,$bdate,$cdate,$id)
 		{
 			try
 			{	
 				$this->open_db();
-				$query=$this->condb->prepare("UPDATE course SET course='$course' WHERE course_id=$id");
+				$query=$this->condb->prepare("UPDATE student SET `fname` = '$fname', `lname` = '$lname' , `email` = '$email' , `m` = $m , `course_id` = '$course_id' , `bdate` = '$bdate', `update_date`= '$cdate' WHERE id = $id");
+				$query->execute();
+				$res=$query->get_result();						
+				$query->close();
+				$this->close_db();
+				return true;
+			}
+			catch (Exception $e) 
+			{
+            	$this->close_db();
+            	throw $e;
+        	}
+        }
+	
+		public function update_courseRecord($cid,$course)
+		{
+			try
+			{	
+				$this->open_db();
+				$query=$this->condb->prepare("UPDATE course SET course='$course' WHERE course_id=$cid");
 				$query->execute();
 				$res=$query->get_result();						
 				$query->close();

@@ -23,15 +23,15 @@ function student_data(){
 
 }
 
-var f = /^[a-zA-Z]*$/;
-var k = /(6|7|8|9)\d{9}/;
-var q = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+
 
 //var errcode = 0;
 
 function validate(fname,lname,m,mail,bdate){
      errcode = 0 ;
-     
+     var f = /^[a-zA-Z]*$/;
+     var k = /(6|7|8|9)\d{9}/;
+     var q = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
      var dtCurrent = new Date();
      var dtdob = new Date(bdate);
      var aa = (dtCurrent.getFullYear() - dtdob.getFullYear())
@@ -168,14 +168,13 @@ $(document).ready(function(){
             data:{a:'edit_std',c:cid},
             dataType:"json",
             success:function(data){
-                var fname = $("#fname").val(data[0].fname);
-                var lname = $("#lname").val(data[0].lname);
-                var bdate = $("#bdate").val(data[0].bdate);
-                var m = $("#m").val(data[0].m);
-                var mail = $("#mail").val(data[0].email);
-                // var course = $("#course1").val(data[0].course_id);
-                // var cdate = y +"-"+ mm +"-"+ d; 
-                // console.log(data[1].length);
+                $("#did").val(data[0].id);
+                $("#fname").val(data[0].fname);
+                $("#lname").val(data[0].lname);
+                $("#bdate").val(data[0].bdate);
+                $("#m").val(data[0].m);
+                $("#mail").val(data[0].email);
+
                 var dt = data[1];
                 for (var i=0; i<dt.length; i++) {
                     var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
@@ -195,6 +194,12 @@ $(document).ready(function(){
         $(".studentForm").show();
         $("#main").hide();
         $("#upd").hide();
+        $("#did").val("");
+        $("#fname").val("");
+        $("#lname").val("");
+        $("#bdate").val("");
+        $("#m").val("");
+        $("#mail").val("");
         $.ajax({
             url:"../controller/crcontroller.php",
             method:"POST", 
@@ -215,6 +220,48 @@ $(document).ready(function(){
         $(".studentForm").hide();
         $("#main").show();
     })
+
+    $(".studentForm").on("click","#upd",function(e){
+        e.preventDefault();
+
+        var today = new Date();
+        var y = String(today.getFullYear());
+        var mm = String(1 + today.getMonth()).padStart(2, '0');
+        var d = String(1 + today.getDay()).padStart(2, '0');
+
+      
+        
+        var btn = "update_std";
+        var id = $("#did").val();
+        var fname = $("#fname").val();
+        var lname = $("#lname").val();
+        var bdate = $("#bdate").val();
+        var m = $("#m").val();
+        var mail = $("#mail").val();
+        var course = $("#course1").val();
+        var cdate = y +"-"+ mm +"-"+ d; //$("#cdate").val();
+    
+        errcode = validate(fname,lname,m,mail,bdate);
+        
+        if(errcode == 0){
+           
+            $.ajax({
+                url:"../controller/crcontroller.php",
+                method:"POST", 
+                data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate,i:id}, 
+                success:function(){ 
+                    alert("Date has been Updated to Database");
+                    location.reload();
+                    $("#upd").hide();
+
+                                    
+                    
+                }});
+            
+            
+        }
+    });
+
 
     $("#add1").click(function(e){
         e.preventDefault();
