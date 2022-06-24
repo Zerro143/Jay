@@ -26,6 +26,9 @@ error_reporting(E_ALL);
 			$act = isset($_POST['a']) ? $_POST['a'] : NULL;
 			switch ($act) 
 			{   
+                case 'edit_std':
+					$this->edit_std();
+					break;	
                 case 'addstd':
                     $this->add_std();
                     break;
@@ -164,7 +167,23 @@ error_reporting(E_ALL);
                 throw $e;
             }
         }
+        public function edit_std()
+		{
+            try
+            {
+                $id = $_POST['c'];
+                $result=$this->objcm->select_studentRecord($id);
+  
+                echo json_encode($result);     
+  
 
+            }
+            catch (Exception $e) 
+            {
+               		
+                throw $e;
+            }
+        }
         //update record
         public function update_course()
         {
