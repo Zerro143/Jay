@@ -103,9 +103,9 @@ error_reporting(E_ALL);
                     fputcsv($output, array('Course_id','Course'));
                     foreach ($ids as $id)
                     {
-                        $result=$this->objcm->select_courseRecord($id);  
-
-                        fputcsv($output,$result[0]);
+                        $result=$this->objcm->select_courseRecord($id,'a','b');  
+                        // print_r($result[0]);
+                        fputcsv($output,$result[0][0]);
 
                         
                     }
