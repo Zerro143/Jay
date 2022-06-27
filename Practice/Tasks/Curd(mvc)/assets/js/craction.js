@@ -1,7 +1,38 @@
-
 function da(a){
+    // console.log(a[0]);
     // alert(a[0].length);
     $('#course_content').html("");
+    var tp = a[1]['tt'];
+    var page = a[1]['page'];
+    var record = a[1]['record'];
+    $("#selector").val(record);
+    $("#page").empty();
+    
+    if(page>=2){
+        $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
+    }
+    for(var i=1;i<tp;i++){
+        if(i==page){
+            $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
+        }
+        else{
+            if(i==(page-1)){
+                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+            }
+            if(i==(page+1)){
+                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+            }
+        }
+    }
+
+    if(page<tp){
+        $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+        
+    }
+
+
+    
+    
     for (var i=0; i<a[0].length; i++) {
         var row = $('<tr>'+
         '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[0][i].course_id+ '></td>'
@@ -13,8 +44,12 @@ function da(a){
         
     }
 }
-function data(){
-    var val = $("#selector").val();  
+
+
+$(document).ready(function(){
+
+
+    var val = $("#selector").val(); 
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
@@ -26,8 +61,21 @@ function data(){
   
     });
 
-}
-$(document).ready(function(){
+    $("#page").on("click",".btn",function(e){
+        e.preventDefault();
+        var page = $(this).attr("value");
+        var val = $("#selector").val();
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{page:page,sel:val,a:'course'},
+            dataType:"json",
+            success:function(a){
+                // alert(a);
+                da(a);
+            }
+        });
+    });
 
     $("#studentAdd").hide();
     $("#expall").hide();
@@ -140,7 +188,7 @@ $(document).ready(function(){
     });
 
 
-  data();
+
 
     $("#add").click(function(e){
         e.preventDefault();

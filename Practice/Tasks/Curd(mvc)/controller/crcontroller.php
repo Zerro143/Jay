@@ -86,7 +86,8 @@ error_reporting(E_ALL);
 
             $start_from = ($page-1) * $per_page_record;   
             $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
-            // print_r($result);
+            $result[1]['page']= $page;
+            $result[1]['record']=$per_page_record;  
             echo json_encode($result);          
         }
         //export to csv
