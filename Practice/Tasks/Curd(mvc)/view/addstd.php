@@ -5,7 +5,7 @@
             .col-25 {
               text-align: center;
               float: Left;
-              width: 25%;
+              width: 16%;
               margin-top: 6px;
             }
             .col-75 {
