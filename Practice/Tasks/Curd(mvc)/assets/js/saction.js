@@ -301,8 +301,8 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 console.log(data);
-                for (var i=0; i<data.length; i++) {
-                    var row = $('<option value = '+data[i].course_id+'>'+data[i].course+'</option>');
+                for (var i=0; i<data[0].length; i++) {
+                    var row = $('<option value = '+data[0][i].course_id+'>'+data[0][i].course+'</option>');
                     $('#course1').append(row);
                 }
             }
