@@ -12,7 +12,7 @@ function data(){
                 '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[i].course_id+ '></td>'
                 +'<td>' + a[i].course_id+ '</td>'+
                 '<td>'+ a[i].course + '</td>'
-                +'<td><button id="edit" class="btn btn-info edit" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
+                +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
                 ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
                 $('#course_content').append(row);
             }
@@ -22,7 +22,7 @@ function data(){
 
 }
 $(document).ready(function(){
-    $("#myForm").hide();
+
     $("#studentAdd").hide();
     $("#expall").hide();
     $("#main").on("click","#master",function(){
@@ -112,25 +112,13 @@ $(document).ready(function(){
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
     $("#openForm").click(function(){
-        $("#myForm").show();
         $("#update").hide();
         $("#add").show();
-        $("#main").hide();
-        $("#expall").hide();
-        $("#exp").hide();
-        $("#delsel").hide();
+        $("#cid").val("");
         $("#course").val("");
         $("#crerr").html("");
-        $(".studentForm").hide();
     });
-    $("#closeForm").click(function(){
-        $("#myForm").hide();
-        $("#crerr").html("");
-        $("#expall").show();
-        $("#exp").show();
-        $("#delsel").show();
-        $("#main").show();
-    });
+
 
   data();
 
@@ -144,6 +132,7 @@ $(document).ready(function(){
         //alert(course + "Added to Database")
         if(course !== ""){
             if(f.test(course) == true){
+                
                 $.ajax({
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
@@ -201,16 +190,11 @@ $(document).ready(function(){
         e.preventDefault();
 
         var cid = $(this).attr("did");
-        
-        $("#expall").hide();
-        $("#exp").hide();
-        $("#delsel").hide();
+
         $("#add").hide();
-        $("#main").hide();
         $("#update").show();
-        $("#myForm").show();
         $("#cid").val(cid);
-        // $("#course").val(course);
+        
          $.ajax({
     
             url:"../controller/crcontroller.php",
