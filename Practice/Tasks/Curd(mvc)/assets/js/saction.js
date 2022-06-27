@@ -395,7 +395,7 @@ $(document).ready(function(){
                 $("#m").val(data[0].m);
                 $("#mail").val(data[0].email);
 
-                var dt = data[1];
+                var dt = data[1][0];
                 for (var i=0; i<dt.length; i++) {
                     var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
                     $('#course1').append(row);
