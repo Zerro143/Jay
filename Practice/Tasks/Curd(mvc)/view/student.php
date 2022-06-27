@@ -6,7 +6,7 @@
     ?>
     <head>
         <title>CURD with MVC Pattern</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <script src="../assets/js/jquery.js"></script>
         <script src="../assets/js/saction.js"></script>

@@ -11,11 +11,6 @@
                   <input type="text" id="course" placeholder="Enter course" name="course" value="" >
                   <span id="crerr"></span>
                 </div>
-                <button type="button" id="update" class="btn btn-info"  placeholder="update" value="update">Update</button>
-                         
-                <button type="button" id="add" class="btn btn-primary" placeholder="ADD" name="add" value="add">Add</button>
-               
-                <button type="button" class="btn btn-primary" id="closeForm">Close</button>
               </form>
             </div>
           </div>
