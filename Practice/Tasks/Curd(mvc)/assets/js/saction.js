@@ -123,79 +123,211 @@ function validate(fname,lname,m,mail,bdate){
 
     
 }
+function exp(){
+   
+    var allVals = [];  
+    $(".sil:checked").each(function(){
+        allVals.push($(this).attr("value"));
+    });
+   
+    if(allVals.length == 0)  
+    {  
+        alert("Please select row.");  
+    }else{
+
+           var join_selected_values = allVals.join(","); 
+           var btn= "exp";
+            $.ajax({   
+              
+                type: "POST",  
+                url:"../controller/crcontroller.php",
+                data: {ids:allVals,a:btn,c:'student'},
+                success: function()  
+                {   
+                    //alert ("Selected data deleted");
+                    
+                    window.location.href='../export/output.csv';
+                    $(".sil").prop('checked',false)
+                    $("#master").prop('checked',false)
+                }   
+            });
+
+
+    }
+
+}
+function del_sel(){
+    var allVals = [];  
+    $(".sil:checked").each(function(){
+        allVals.push($(this).attr("value"));
+    });
+    //alert(allVals.length); 
+    if(allVals.length == 0)  
+    {  
+        alert("Please select row.");  
+    }else{
+        if(confirm("Are you sure u want to delete")){
+           var join_selected_values = allVals.join(","); 
+           var btn= "del_std";
+            $.ajax({   
+                url:"../controller/crcontroller.php",
+                type: "POST",  
+                data: {c:allVals,a:btn},
+                success: function(a)  
+                {   
+                    alert ("Selected data deleted");
+                    location.reload();
+                    // $("#datatable").load("students.php #datatable")                  
+                }   
+            });
+        }else{
+            $(".sil").prop('checked',false)
+            $("#master").prop("checked", false);
+        }
+
+    }
+
+}
 
 
 $(document).ready(function(){
     student_data();
+    $("#selector_action").on("click",function(e){
+        e.preventDefault();
+       
+        var val= $(this).val();
+        // alert(val);
+        // var allVals = []; 
+        switch (val){
+            case 'exp':
+                // alert(val);
+                exp();
+                break;
+            case 'delsel':
+                // alert(val);
+                del_sel();
+                break; 
+        }
+
+        // alert(val);
+        // $(".sil:checked").each(function(){
+        //     allVals.push($(this).attr("value"));
+        // });
+        // if(allVals.length == 0){  
+        //         alert("Please select row.");  
+        // }else{
+        //     switch (val){
+        //         case delsel:
+        //             if(confirm("Are you sure u want to delete")){
+        //                 var join_selected_values = allVals.join(","); 
+        //                 var btn= "del_course";
+        //                 $.ajax({   
+        //                     url:"../controller/crcontroller.php",
+        //                     type: "POST",  
+        //                     data: {c:allVals,a:val},
+        //                     success: function(a)  
+        //                     {   
+                                
+        //                         location.reload();
+        //                         // $("#datatable").load("students.php #datatable")                  
+        //                     }   
+        //                 });
+        //             }
+        //             else{
+        //                 $(".sil").prop('checked',false)
+        //                 $("#master").prop("checked", false);
+        //             }
+        //             break;
+        //         case exp:
+        //                 $.ajax({   
+		// 		        type: "POST",  
+		// 			    url:"../controller/crcontroller.php",
+		// 			    data: {ids:allVals,a:btn,c:'course'},
+		// 			    success: function()  
+		// 			{   
+        //                 window.location.href='../export/output.csv';
+        //                 $(".sil").prop('checked',false)
+        //                 $("#master").prop('checked',false)
+		// 			}   
+		// 		});
+
+                
+
+
+        //     }
+            
+
+        // }
+    });
     $("#openForm").hide();
     // $(".studentForm").hide();
     $("#expall").hide();
 
-    $("#delsel").click(function(){
-        var allVals = [];  
-        $(".sil:checked").each(function(){
-            allVals.push($(this).attr("value"));
-        });
-        //alert(allVals.length); 
-        if(allVals.length == 0)  
-        {  
-            alert("Please select row.");  
-        }else{
-            if(confirm("Are you sure u want to delete")){
-               var join_selected_values = allVals.join(","); 
-               var btn= "del_std";
-                $.ajax({   
-				    url:"../controller/crcontroller.php",
-					type: "POST",  
-					data: {c:allVals,a:btn},
-					success: function(a)  
-					{   
-                        alert ("Selected data deleted");
-                        location.reload();
-                        // $("#datatable").load("students.php #datatable")                  
-					}   
-				});
-            }else{
-                $(".sil").prop('checked',false)
-                $("#master").prop("checked", false);
-            }
+    // $("#delsel").click(function(){
+    //     var allVals = [];  
+    //     $(".sil:checked").each(function(){
+    //         allVals.push($(this).attr("value"));
+    //     });
+    //     //alert(allVals.length); 
+    //     if(allVals.length == 0)  
+    //     {  
+    //         alert("Please select row.");  
+    //     }else{
+    //         if(confirm("Are you sure u want to delete")){
+    //            var join_selected_values = allVals.join(","); 
+    //            var btn= "del_std";
+    //             $.ajax({   
+	// 			    url:"../controller/crcontroller.php",
+	// 				type: "POST",  
+	// 				data: {c:allVals,a:btn},
+	// 				success: function(a)  
+	// 				{   
+    //                     alert ("Selected data deleted");
+    //                     location.reload();
+    //                     // $("#datatable").load("students.php #datatable")                  
+	// 				}   
+	// 			});
+    //         }else{
+    //             $(".sil").prop('checked',false)
+    //             $("#master").prop("checked", false);
+    //         }
 
-        }
+    //     }
 
-    });
-    $("#exp").click(function(e){
-        e.preventDefault();
-        var allVals = [];  
-        $(".sil:checked").each(function(){
-            allVals.push($(this).attr("value"));
-        });
+    // });
+    // $("#exp").click(function(e){
+    //     e.preventDefault();
+    //     var allVals = [];  
+    //     $(".sil:checked").each(function(){
+    //         allVals.push($(this).attr("value"));
+    //     });
        
-        if(allVals.length == 0)  
-        {  
-            alert("Please select row.");  
-        }else{
+    //     if(allVals.length == 0)  
+    //     {  
+    //         alert("Please select row.");  
+    //     }else{
 
-               var join_selected_values = allVals.join(","); 
-               var btn= "exp";
-                $.ajax({   
+    //            var join_selected_values = allVals.join(","); 
+    //            var btn= "exp";
+    //             $.ajax({   
 				  
-					type: "POST",  
-					url:"../controller/crcontroller.php",
-					data: {ids:allVals,a:btn,c:'student'},
-					success: function()  
-					{   
-                        //alert ("Selected data deleted");
+	// 				type: "POST",  
+	// 				url:"../controller/crcontroller.php",
+	// 				data: {ids:allVals,a:btn,c:'student'},
+	// 				success: function()  
+	// 				{   
+    //                     //alert ("Selected data deleted");
                         
-                        window.location.href='../export/output.csv';
-                        $(".sil").prop('checked',false)
-                        $("#master").prop('checked',false)
-					}   
-				});
+    //                     window.location.href='../export/output.csv';
+    //                     $(".sil").prop('checked',false)
+    //                     $("#master").prop('checked',false)
+	// 				}   
+	// 			});
 
 
-        }
+    //     }
 
-    });
+    // });
 
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){

@@ -1,7 +1,2 @@
-Course
-DBMS
-JQuery
-Ajax
-HTML
-Java
-JS
+fname,lname,email,m,course,bdate,created_date,update_date
+Jay,Bavsikar,jay@a.com,7123456789,DBMS,2012-12-31,2022-06-02,2022-06-02
