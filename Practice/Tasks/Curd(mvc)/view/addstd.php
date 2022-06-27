@@ -90,20 +90,7 @@
                     <span class="error">* </span>
                   </div>
                 </div>
-             
-                <div class="justify-content-center" >
-                    <center>
 
-                    </center>
-                </div>  
-         
-          
-
-
-                      
-
-
-          
             </form>
 
         </div>
