@@ -340,8 +340,8 @@ $(document).ready(function(){
             data:{a:'edit_course',c:cid},
             dataType:"json",
             success:function(data){
-               $("#course").val(data[0].course);
-               $("#cid").val(data[0].course_id);
+               $("#course").val(data[0][0].course);
+               $("#cid").val(data[0][0].course_id);
                 
             }
 

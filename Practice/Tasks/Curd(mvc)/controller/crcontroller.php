@@ -100,16 +100,25 @@ error_reporting(E_ALL);
  
             switch($_POST['c']){
                 case 'course':
-                    fputcsv($output, array('Course_id','Course'));
+                    fputcsv($output, array('Course'));
                     foreach ($ids as $id)
                     {
                         $result=$this->objcm->select_courseRecord($id,'a','b');  
-                        // print_r($result[0]);
-                        fputcsv($output,$result[0][0]);
+                        // print_r($result);
+                         $course[]= $result[0][0];
+                        // print_r($course);
+                        // echo $result[0][0]['course']."<br>";
+                        // fwrite($output,$result[0][0]['course']);
+                        // fputcsv($output,$course);
+                        fputcsv($output,array($result[0][0]['course']));
 
                         
                     }
-        
+                    //  fputcsv($output,$course);
+                //    foreach($course as $cr ){
+                //     echo $cr['course'];
+                //    }
+                    
                     
 
                     break;
@@ -223,7 +232,7 @@ error_reporting(E_ALL);
             try
             {
                 $id = $_POST['c'];
-                $result=$this->objcm->select_courseRecord($id);
+                $result=$this->objcm->select_courseRecord($id,0,1);
   
                 echo json_encode($result);     
   
