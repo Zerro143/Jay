@@ -282,6 +282,11 @@ $(document).ready(function(){
         $(".studentForm").show();
         $("#add1").show();
         // $("#main").hide();
+        $("#ferr").html("");
+        $("#lerr").html("");
+        $("#merr").html("");
+        $("#bderr").html("");
+        $("#mailerr").html("");
         $("#upd").hide();
         $("#did").val("");
         $("#fname").val("");
@@ -335,7 +340,7 @@ $(document).ready(function(){
                 method:"POST", 
                 data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate,i:id}, 
                 success:function(){ 
-                    alert("Date has been Updated to Database");
+                    alert("Data has been Updated to Database");
                     location.reload();
                     $("#upd").hide();
 
@@ -388,10 +393,11 @@ $(document).ready(function(){
                     
                     location.reload();
                     if (a==0){
-                        alert(fname + " Added to Database");
+                        // alert(fname + " Added to Database");
                     }
                     else{
-                        alert("Email already exist ");
+                        $("#mailerr").html("<b> Email already exist ");
+                        // alert("Email already exist ");
                        
                     }
              
