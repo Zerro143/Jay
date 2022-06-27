@@ -27,7 +27,7 @@
             
                 <select class="selector" id="selector">
                     <option value='5'>5</option>
-                    <option value='10'selected>10</option>
+                    <option value='10' selected>10</option>
                     <option value='25'>25</option>
                 </select>
             </div>
