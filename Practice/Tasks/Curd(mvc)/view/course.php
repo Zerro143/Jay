@@ -38,7 +38,6 @@
     </section>
     <section id = "course_form" class="container mt-5" >
 
-        
         <?php include 'addcr.php';?>
     </section>
 
