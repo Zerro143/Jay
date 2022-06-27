@@ -16,7 +16,7 @@ function student_data(){
                 +'<td>'+ a[i].bdate + '</td>'
                 +'<td>'+ a[i].created_date + '</td>'
                 +'<td>'+ a[i].update_date + '</td>'
-                +'<td><button id="edit" class="btn btn-info edit" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
+                +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
                 ' <button id="Delete" class="btn btn-danger delete" did='+a[i].id+ ' dname='+a[i].fname+'> Delete</button></td></tr>');
                 $('#student_content').append(row);
             }
@@ -128,7 +128,7 @@ function validate(fname,lname,m,mail,bdate){
 $(document).ready(function(){
     student_data();
     $("#openForm").hide();
-    $(".studentForm").hide();
+    // $(".studentForm").hide();
     $("#expall").hide();
 
     $("#delsel").click(function(){
@@ -244,12 +244,9 @@ $(document).ready(function(){
         var cid = $(this).attr("did");
 
         
-        $("#expall").hide();
-        $("#exp").hide();
-        $("#delsel").hide();
+
         $("#add1").hide();
-        $(".studentForm").show();
-        $("#main").hide();
+
         $("#upd").show();
         $("#did").val(cid);
          $.ajax({
@@ -283,7 +280,8 @@ $(document).ready(function(){
     $(".container").on("click","#studentAdd",function(e){
         e.preventDefault();
         $(".studentForm").show();
-        $("#main").hide();
+        $("#add1").show();
+        // $("#main").hide();
         $("#upd").hide();
         $("#did").val("");
         $("#fname").val("");
@@ -306,13 +304,9 @@ $(document).ready(function(){
         });
     });
 
-    $("#cls").click(function(e){
-        e.preventDefault();
-        $(".studentForm").hide();
-        $("#main").show();
-    })
 
-    $(".studentForm").on("click","#upd",function(e){
+
+    $("#upd").on("click",function(e){
         e.preventDefault();
 
         var today = new Date();

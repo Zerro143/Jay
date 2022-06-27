@@ -132,20 +132,20 @@ $(document).ready(function(){
         //alert(course + "Added to Database")
         if(course !== ""){
             if(f.test(course) == true){
-                
+
                 $.ajax({
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
                     data:{a:btn,b:course}, 
                     success:function(a){ 
                         if (a==0){
-                            alert(course + " Added to Database");
+                            // alert(course + " Added to Database");
 
                             location.reload();
                         }
                         else{
-                            alert("Course already exist")
-                        
+                            $("#crerr").html("<b>Course already exist</b>");
+                           
                         }
                     
                     }});

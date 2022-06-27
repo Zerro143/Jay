@@ -93,9 +93,7 @@
              
                 <div class="justify-content-center" >
                     <center>
-                    <button id ="upd" class="btn btn-info" placeholder="update" value="update1">Update</button>
-                    <button id="add1" class="btn btn-primary" value = "add1">Add</button>
-                    <button class="btn btn-primary" id="cls">Close</button>
+
                     </center>
                 </div>  
          

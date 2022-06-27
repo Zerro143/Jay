@@ -51,7 +51,29 @@
       
     </section>
     <section id ="student_form" class="container mt-5">
-        <?php include 'addstd.php';?> 
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Course</h4>
+                </div>
+                <div class="modal-body">
+                   
+                    <?php include 'addstd.php';?> 
+                </div>
+                <div class="modal-footer">
+                    <button id ="upd" class="btn btn-info" placeholder="update" value="update1">Update</button>
+                    <button id="add1" class="btn btn-primary" value = "add1">Add</button>
+                    
+                </div>
+            </div>
+      
+        </div>
+    </div>
+   
     </section>
 
     </body>
