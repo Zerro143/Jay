@@ -1,20 +1,22 @@
 
 function data(){
+    var val = $("#selector").val();  
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
-        data:{a:'course'},
+        data:{a:'course',sel:val},
         dataType:"json",
         success:function(a){
           
-            for (var i=0; i<a.length; i++) {
+            for (var i=0; i<a[0].length; i++) {
                 var row = $('<tr>'+
-                '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[i].course_id+ '></td>'
-                +'<td>' + a[i].course_id+ '</td>'+
-                '<td>'+ a[i].course + '</td>'
-                +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
-                ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
+                '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[0][i].course_id+ '></td>'
+                +'<td>' + a[0][i].course_id+ '</td>'+
+                '<td>'+ a[0][i].course + '</td>'
+                +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[0][i].course_id+ ' dname ='+a[0][i].course+'>Edit</button>'+ 
+                ' <button id="Delete" class="btn btn-danger delete" did='+a[0][i].course_id+ ' dname='+a[0][i].course+'> Delete</button></td></tr>');
                 $('#course_content').append(row);
+                
             }
         }
   

@@ -65,13 +65,28 @@ error_reporting(E_ALL);
         public function student()
         {
             $result=$this->objcm->select_studentRecord(0);
-            //print_r($result);
+            // $result[1] = ;
+            
             echo json_encode($result);    
         }
 
         public function course()
         {
-            $result=$this->objcm->select_courseRecord(0);
+            if (isset($_POST['page'])) {    
+                $page  = $_POST['page'];    
+            }    
+            else {    
+              $page=1;    
+            } 
+            if (isset($_POST['sel'])){
+                $per_page_record = $_POST['sel']; 
+            }
+            
+            else{$per_page_record = 10;}
+
+            $start_from = ($page-1) * $per_page_record;   
+            $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
+            // print_r($result);
             echo json_encode($result);          
         }
         //export to csv

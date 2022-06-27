@@ -1,4 +1,12 @@
-<?php
+<?php 
+//https://docs.google.com/spreadsheets/d/1qEejf4ESD1P00_H0G0KnDyTpxX8jlWKm90XM71vk9XM/edit#gid=1146114837
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+  
+?>
+<?php  
+// require_once '../config.php';
 	
 	class crmodel
 	{
@@ -56,7 +64,7 @@
 			}
 			
 		}
-		public function select_courseRecord($id)
+		public function select_courseRecord($id,$start_from,$per_page_record)
 		{
 			try
 			{
@@ -67,15 +75,28 @@
 				
 				}
                 else
-                {$query=$this->condb->prepare("SELECT * FROM course");	}		
+                {
+					$q1=$this->condb->prepare("SELECT * FROM course ");
+					$q1->execute();
+					$rs=$q1->get_result();
+					// $q1->close_db();
+					$a = $rs->num_rows;
+					// $q1->close_db();
+					$tt = ceil($a/$per_page_record);
+					$data[1] = $tt;
+					
+					$query=$this->condb->prepare("SELECT * FROM course LIMIT $start_from, $per_page_record");
+					// echo $query;	
+				}		
 				
 				$query->execute();
 				$res=$query->get_result();	
-				$query->close();				
-				$this->close_db();
+
 				while($row = mysqli_fetch_assoc($res)){
-                    $data[]=$row;
-                }                
+                    $data[0][]=$row;
+                }            
+				$query->close();				
+				$this->close_db();    
                 return $data;
 			}
 			catch(Exception $e)
@@ -223,5 +244,7 @@
         	}
         }
 	}
+
+	
 
 ?>
