@@ -1,5 +1,7 @@
 function da(a){
-
+    $("#openForm").hide();
+    // $(".studentForm").hide();
+    $("#expall").hide();
     $('#student_content').empty();
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
@@ -295,9 +297,7 @@ std();
 
 
     });
-    $("#openForm").hide();
-    // $(".studentForm").hide();
-    $("#expall").hide();
+
 
 
 
@@ -386,7 +386,7 @@ std();
        
     });
 
-    $(".container").on("click","#studentAdd",function(e){
+    $("#btn").on("click","#studentAdd",function(e){
         e.preventDefault();
         // $(".studentForm").show();
         $("#add1").show();
@@ -464,7 +464,7 @@ std();
 
 
     $("#md").on("click","#add1",function(e){
-   
+        $('#md').modal('hide');
         e.preventDefault();
 
         var today = new Date();
