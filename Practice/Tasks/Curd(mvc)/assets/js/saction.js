@@ -10,7 +10,13 @@ function da(a){
     $('#student_content').empty();
     $("#page").empty();
     $("#entries").empty();
-    $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+    if(record>=tr){
+        $("#entries").append(a[0].length+" Enteries")
+    }
+    else{
+        $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+    }
+   
     
     if(page>=2){
         $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
