@@ -70,8 +70,14 @@ function std(){
         method:"POST",
         data:{a:'student',sel:val},
         dataType:"json",
+        beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+            $('#preloader').removeClass('hidden')
+        },
         success:function(a){
             da(a);
+        },
+        complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+            $('#preloader').addClass('hidden')
         }
   
     });

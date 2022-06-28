@@ -136,12 +136,18 @@ function da(){
         method:"POST",
         data:{a:'course',sel:val},
         dataType:"json",
+        beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+            $('#preloader').removeClass('hidden')
+        },
         success:function(a){
             cr(a);
 
 
+        },
+        complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+            $('#preloader').addClass('hidden')
         }
-  
+        
     });
 
 }
@@ -345,11 +351,19 @@ $(document).ready(function(){
             method:"POST",
             data:{a:'edit_course',c:cid},
             dataType:"json",
+            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                $('#mdload').removeClass('hidden');
+                $('#myModal').css({"filter":"blur(2px)"})
+            },
             success:function(data){
             
                $("#course").val(data[0][0].course);
                $("#cid").val(data[0][0].course_id);
                 
+            },
+            complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                $('#mdload').addClass('hidden')
+                $('#myModal').css({"filter":"blur(0px)"})
             }
 
         })
