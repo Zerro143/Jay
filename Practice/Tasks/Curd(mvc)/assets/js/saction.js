@@ -231,8 +231,15 @@ function del_sel(){
                 data: {c:allVals,a:btn},
                 success: function(a)  
                 {   
-                    alert ("Selected data deleted");
-                    location.reload();
+                    $("#dsa").html("<b> Data Deleted from database");
+               
+                    $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#danger-alert").slideUp(500);
+                       
+                    });
+                    std();
+                    // alert ("Selected data deleted");
+                    // location.reload();
                     // $("#datatable").load("students.php #datatable")                  
                 }   
             });
@@ -449,6 +456,13 @@ std();
                 method:"POST", 
                 data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate,i:id}, 
                 success:function(){ 
+                    $("#mdcl").click();
+                    std();
+                    $("#ssa").html("<b>"+fname+" Updated in database");
+                    $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#success-alert").slideUp(500);
+                       
+                    });
                     // alert("Data has been Updated to Database");
                     // $('#myModal').modal('hide');
                     // location.reload();
@@ -464,7 +478,7 @@ std();
 
 
     $("#md").on("click","#add1",function(e){
-        $('#md').modal('hide');
+     
         e.preventDefault();
 
         var today = new Date();
@@ -504,9 +518,9 @@ std();
                     
                     // location.reload();
                     if (a==0){
-                        $('#md').modal('hide');
+                    
                         std();
-                   
+                        $("#mdcl").click();
                         
                         $("#ssa").html("<b>"+fname+" Added to database");
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
