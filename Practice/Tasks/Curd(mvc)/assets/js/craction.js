@@ -364,7 +364,7 @@ $(document).ready(function(){
                     success:function(){ 
                         da();                            
                         $('#myModal').modal('hide');
-                        $("#ssa").html("<b>"+course+" Added to database");
+                        $("#ssa").html("<b>"+course+" updated in database");
                         $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
                             $("#success-alert").slideUp(500);
                            

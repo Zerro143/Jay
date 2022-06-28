@@ -12,7 +12,7 @@
             
             <!-- <button class="btn-xs btn-primary" onclick="location.href='student.php' ">Show All Students Record</button>
             <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show All course Record</button> -->
-            <button class="btn-xs btn-primary" data-toggle="modal" data-target="#myModal" id="studentAdd">Add Student Record</button>
+            <button class="btn-xs btn-primary" data-toggle="modal" data-target="#md" id="studentAdd">Add Student Record</button>
             <button class="btn-xs btn-primary" data-toggle="modal" data-target="#myModal"id="openForm">Add Course</button>
           
             <select class="selector" id="selector_action">

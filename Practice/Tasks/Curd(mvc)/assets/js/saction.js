@@ -1,6 +1,22 @@
+function std(){
+    var val = $("#selector").val(); 
+    $("#success-alert").hide();
+    $("#danger-alert").hide();
+    $.ajax({
+        url:"../controller/crcontroller.php",
+        method:"POST",
+        data:{a:'student',sel:val},
+        dataType:"json",
+        success:function(a){
+            da(a);
+        }
+  
+    });
+
+}
 function da(a){
 
-    $('#course_content').html("");
+    $('#student_content').html("");
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
     var sf = parseInt(a[1]['start_from'])
@@ -54,7 +70,7 @@ function da(a){
         +'<td>'+ a[i].bdate + '</td>'
         +'<td>'+ a[i].created_date + '</td>'
         +'<td>'+ a[i].update_date + '</td>'
-        +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
+        +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#md" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
         ' <button id="Delete" class="btn btn-danger delete" did='+a[i].id+ ' dname='+a[i].fname+'> Delete</button></td></tr>');
         $('#student_content').append(row);
     }
@@ -119,7 +135,7 @@ function validate(fname,lname,m,mail,bdate){
      
     
      //if(m !== ""){
-     if(k.test(m) == false||m>10){
+     if(k.test(m) == false){
          $("#m").focus();
          //alert("Invalid Phone Number");
          $("#merr").html("<b>Only 10 digits are allowed</b>");
@@ -228,18 +244,8 @@ function del_sel(){
 
 
 $(document).ready(function(){
-
-    var val = $("#selector").val(); 
-    $.ajax({
-        url:"../controller/crcontroller.php",
-        method:"POST",
-        data:{a:'student',sel:val},
-        dataType:"json",
-        success:function(a){
-            da(a);
-        }
-  
-    });
+std();
+ 
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#student_content tr").filter(function() {
@@ -249,15 +255,8 @@ $(document).ready(function(){
     $("#selector").change(function(e){
         e.preventDefault();
         var val = $(this).val();
-        $.ajax({
-            url:"../controller/crcontroller.php",
-            method:"POST",
-            dataType:"json",
-            data:{sel:val,a:'student'},
-            success:function(a){
-                da(a);
-            }
-        })
+        std();
+
     });
     $("#page").on("click",".btn",function(e){
         e.preventDefault();
@@ -333,9 +332,14 @@ $(document).ready(function(){
                 url:"../controller/crcontroller.php",
                 method:"POST", 
                 data:{a:btn,c:cid}, 
-                success:function(dataabc){ 
-                    alert("Record Deleted from Database");
-                    location.reload();
+                success:function(){ 
+                    std();
+                    $("#dsa").html("<b> Data Deleted from database");
+               
+                    $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#danger-alert").slideUp(500);
+                       
+                    });
                 }});
         }
 
@@ -348,7 +352,7 @@ $(document).ready(function(){
         var cid = $(this).attr("did");
 
         
-
+        // $('#md').modal('show');
         $("#add1").hide();
 
         $("#upd").show();
@@ -383,7 +387,7 @@ $(document).ready(function(){
 
     $(".container").on("click","#studentAdd",function(e){
         e.preventDefault();
-        $(".studentForm").show();
+        // $(".studentForm").show();
         $("#add1").show();
         // $("#main").hide();
         $("#ferr").html("");
@@ -444,9 +448,10 @@ $(document).ready(function(){
                 method:"POST", 
                 data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate,i:id}, 
                 success:function(){ 
-                    alert("Data has been Updated to Database");
-                    location.reload();
-                    $("#upd").hide();
+                    // alert("Data has been Updated to Database");
+                    // $('#myModal').modal('hide');
+                    // location.reload();
+                    // $("#upd").hide();
 
                                     
                     
@@ -457,7 +462,7 @@ $(document).ready(function(){
     });
 
 
-    $("#add1").click(function(e){
+    $("#md").on("click","#add1",function(e){
         e.preventDefault();
 
         var today = new Date();
@@ -495,8 +500,17 @@ $(document).ready(function(){
                 data:{a:'addstd',b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
                 success:function(a){ 
                     
-                    location.reload();
+                    // location.reload();
                     if (a==0){
+                        $('#md').modal('hide');
+                        std();
+                   
+                        
+                        $("#ssa").html("<b>"+fname+" Added to database");
+                        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                            $("#success-alert").slideUp(500);
+                           
+                        });
                         // alert(fname + " Added to Database");
                     }
                     else{

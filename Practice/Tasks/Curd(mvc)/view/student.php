@@ -9,10 +9,11 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
         <script src="../assets/js/jquery.js"></script>
-        <script src="../assets/js/saction.js"></script>
+
         <script src="../assets/js/bootstrap.js"></script>
         <script src="../assets/js/popper.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="../assets/js/saction.js"></script>
 
         <!-- <script src="../assets/js/craction.js"></script> -->
     </head>
@@ -56,7 +57,7 @@
  
     </section>
     <section id ="student_form" class="container mt-5">
-    <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal fade" id="md" role="dialog">
         <div class="modal-dialog">
     
             <!-- Modal content-->
@@ -70,8 +71,8 @@
                     <?php include 'addstd.php';?> 
                 </div>
                 <div class="modal-footer">
-                    <button id ="upd" class="btn btn-info" placeholder="update" value="update1">Update</button>
-                    <button id="add1" class="btn btn-primary" value = "add1">Add</button>
+                    <button type="button"  id ="upd" class="btn btn-info" placeholder="update" value="update1">Update</button>
+                    <button type="button" id="add1" class="btn btn-primary" value = "add1">Add</button>
                     
                 </div>
             </div>
