@@ -55,6 +55,9 @@ error_reporting(E_ALL);
                     break;	
                 case 'course':
                     $this->course();
+                    break;
+                case 'student':
+                    $this->student();
                     break;				
 				default:
                     $this->student();
@@ -64,8 +67,25 @@ error_reporting(E_ALL);
         
         public function student()
         {
-            $result=$this->objcm->select_studentRecord(0);
-            // $result[1] = ;
+            if (isset($_POST['page'])) {    
+                $page  = $_POST['page'];    
+            }    
+            else {    
+              $page=1;    
+            } 
+            if (isset($_POST['sel'])){
+                $per_page_record = $_POST['sel']; 
+            }
+            
+            else{$per_page_record = 10;}
+
+            $start_from = ($page-1) * $per_page_record;   
+            $result=$this->objcm->select_studentRecord(0,$start_from,$per_page_record);
+            $result[1]['page']= $page;
+            $result[1]['record']=$per_page_record;  
+            $result[1]['start_from'];
+            // $result=$this->objcm->select_studentRecord(0);
+            // // $result[1] = ;
             
             echo json_encode($result);    
         }
@@ -121,9 +141,9 @@ error_reporting(E_ALL);
                     fputcsv($output, array('First Name','Last Name','Email','Mobile no.','Course', 'B.date','Created_Date','Updated_Date'));
                     foreach ($ids as $id)
                     {
-                        $result=$this->objcm->select_studentRecord($id); 
+                        $result=$this->objcm->select_studentRecord($id,0,1); 
                        
-                        fputcsv($output,$result[0]);
+                        fputcsv($output,$result[0][0]);
                         
                     }
                     
@@ -244,8 +264,9 @@ error_reporting(E_ALL);
 		{
             try
             {
+                
                 $id = $_POST['c'];
-                $result=$this->objcm->select_studentRecord($id);
+                $result=$this->objcm->select_studentRecord($id,0,10);
                 $c=$this->objcm->select_courseRecord(0,0,10);
                 $result[1] = $c;
                 // print_r ($result);

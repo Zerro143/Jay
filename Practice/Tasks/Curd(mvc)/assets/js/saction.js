@@ -1,30 +1,61 @@
-function student_data(){
-    $.ajax({
-        url:"../controller/crcontroller.php",
-        method:"POST",
-        dataType:"json",
-        success:function(a){
-            for (var i=0; i<a.length; i++) {
-                var row = $('<tr>'
-                +'<td><input type="checkbox" class="sil" id="checkbox" value='+a[i].id+'></td>'
-                +'<td>' + a[i].id+ '</td>'
-                +'<td>'+ a[i].fname +'</td>'
-                +'<td>'+ a[i].lname + '</td>'
-                +'<td>'+ a[i].email + '</td>'
-                +'<td>'+ a[i].m + '</td>'
-                +'<td>'+ a[i].course + '</td>'
-                +'<td>'+ a[i].bdate + '</td>'
-                +'<td>'+ a[i].created_date + '</td>'
-                +'<td>'+ a[i].update_date + '</td>'
-                +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
-                ' <button id="Delete" class="btn btn-danger delete" did='+a[i].id+ ' dname='+a[i].fname+'> Delete</button></td></tr>');
-                $('#student_content').append(row);
+function da(a){
+
+    $('#course_content').html("");
+    var tp = a[1]['tt'];
+    var page = parseInt(a[1]['page']);
+    var sf = parseInt(a[1]['start_from'])
+    var record = a[1]['record'];
+    var tr = a[1]['tr'];
+    $("#selector").val(record);
+    $('#student_content').empty();
+    $("#page").empty();
+    $("#entries").empty();
+    $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+    
+    if(page>=2){
+        $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
+    }
+    for(var i=1;i<tp;i++){
+        if(i==page){
+            $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
+        }
+        else{
+            if(i==(page-1)){
+                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+            }
+            if(i==(page+1)){
+                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
             }
         }
-  
-    });
+    }
 
+    if(page<tp){
+        $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+        
+    }
+
+
+    var a = a[0];
+    for (var i=0; i<a.length; i++) {
+        var row = $('<tr>'
+        +'<td><input type="checkbox" class="sil" id="checkbox" value='+a[i].id+'></td>'
+        +'<td>' + a[i].id+ '</td>'
+        +'<td>'+ a[i].fname +'</td>'
+        +'<td>'+ a[i].lname + '</td>'
+        +'<td>'+ a[i].email + '</td>'
+        +'<td>'+ a[i].m + '</td>'
+        +'<td>'+ a[i].course + '</td>'
+        +'<td>'+ a[i].bdate + '</td>'
+        +'<td>'+ a[i].created_date + '</td>'
+        +'<td>'+ a[i].update_date + '</td>'
+        +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].id+ ' dname ='+a[i].fname+'>Edit</button>'+ 
+        ' <button id="Delete" class="btn btn-danger delete" did='+a[i].id+ ' dname='+a[i].fname+'> Delete</button></td></tr>');
+        $('#student_content').append(row);
+    }
 }
+
+
+
 
 
 
@@ -191,7 +222,48 @@ function del_sel(){
 
 
 $(document).ready(function(){
-    student_data();
+
+    var val = $("#selector").val(); 
+    $.ajax({
+        url:"../controller/crcontroller.php",
+        method:"POST",
+        data:{a:'student',sel:val},
+        dataType:"json",
+        success:function(a){
+            da(a);
+        }
+  
+    });
+    $("#selector").change(function(e){
+        e.preventDefault();
+        var val = $(this).val();
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            dataType:"json",
+            data:{sel:val,a:'student'},
+            success:function(a){
+                da(a);
+            }
+        })
+    });
+    $("#page").on("click",".btn",function(e){
+        e.preventDefault();
+        var page = $(this).attr("value");
+        var val = $("#selector").val();
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{page:page,sel:val,a:'student'},
+            dataType:"json",
+            success:function(a){
+                // alert(a);
+                da(a);
+            }
+        });
+    });
+
+
     $("#selector_action").on("click",function(e){
         e.preventDefault();
        
@@ -277,11 +349,11 @@ $(document).ready(function(){
             dataType:"json",
             success:function(data){
                 // $("#did").val(data[0].id);
-                $("#fname").val(data[0].fname);
-                $("#lname").val(data[0].lname);
-                $("#bdate").val(data[0].bdate);
-                $("#m").val(data[0].m);
-                $("#mail").val(data[0].email);
+                $("#fname").val(data[0][0].fname);
+                $("#lname").val(data[0][0].lname);
+                $("#bdate").val(data[0][0].bdate);
+                $("#m").val(data[0][0].m);
+                $("#mail").val(data[0][0].email);
 
                 var dt = data[1][0];
                 for (var i=0; i<dt.length; i++) {

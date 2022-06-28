@@ -35,7 +35,7 @@ error_reporting(E_ALL);
 
         // select record     
 
-		public function select_studentRecord($id)
+		public function select_studentRecord($id,$start_from,$per_page_record)
 		{
 			try
 			{
@@ -46,14 +46,25 @@ error_reporting(E_ALL);
 				
 				}
                 else
-                {$query=$this->condb->prepare("SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id");	}		
+                {
+					$q1=$this->condb->prepare("SELECT * FROM student ");
+					$q1->execute();
+					$rs=$q1->get_result();
+					// $q1->close_db();
+					$a = $rs->num_rows;
+					// $q1->close_db();
+					$tt = ceil($a/$per_page_record);
+					$data[1]['tt'] = $tt;
+					$data[1]['start_from']=$start_from;
+					$data[1]['tr']=$a;
+					$query=$this->condb->prepare("SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id LIMIT $start_from, $per_page_record");	}		
 				
 				$query->execute();
 				$res=$query->get_result();	
 				$query->close();				
 				$this->close_db();
 				while($row = mysqli_fetch_assoc($res)){
-                    $data[]=$row;
+					$data[0][]=$row;
                 }                
                 return $data;
 			}

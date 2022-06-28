@@ -17,29 +17,8 @@
     <body>
     <section id ="nav">
         <?php include 'btn.php';?>
-        
     </section>
-    <section>
-        <br/>
-    <div class="container justify-content-center">
-      <div class="row">
-          <div class="col">
-            
-                <select class="selector" id="selector">
-                    <option value='5'>5</option>
-                    <option value='10' selected>10</option>
-                    <option value='25'>25</option>
-                </select>
-            </div>
-            <!-- <div class="col ">
-                <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="searchbtn">Search</button>
-            </div> -->
-        </div>
 
-    </div>
-
-    </section>
     <section id = "main">
         <div class="container" id="dta">
             <table class="table" id="tda">
