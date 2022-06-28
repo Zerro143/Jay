@@ -1,22 +1,6 @@
-function std(){
-    var val = $("#selector").val(); 
-    $("#success-alert").hide();
-    $("#danger-alert").hide();
-    $.ajax({
-        url:"../controller/crcontroller.php",
-        method:"POST",
-        data:{a:'student',sel:val},
-        dataType:"json",
-        success:function(a){
-            da(a);
-        }
-  
-    });
-
-}
 function da(a){
 
-    $('#student_content').html("");
+    $('#student_content').empty();
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
     var sf = parseInt(a[1]['start_from'])
@@ -75,6 +59,23 @@ function da(a){
         $('#student_content').append(row);
     }
 }
+function std(){
+    var val = $("#selector").val(); 
+    $("#success-alert").hide();
+    $("#danger-alert").hide();
+    $.ajax({
+        url:"../controller/crcontroller.php",
+        method:"POST",
+        data:{a:'student',sel:val},
+        dataType:"json",
+        success:function(a){
+            da(a);
+        }
+  
+    });
+
+}
+
 
 
 
@@ -463,6 +464,7 @@ std();
 
 
     $("#md").on("click","#add1",function(e){
+   
         e.preventDefault();
 
         var today = new Date();
