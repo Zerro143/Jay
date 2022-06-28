@@ -1,4 +1,9 @@
 <html>
+    <style>
+        #sr{
+            float: right;
+        }
+    </style>
     <head></head>
     <body>
         <div class="container" >
@@ -15,6 +20,10 @@
                     <option id="exp" value='exp'>Export Selected</option>
                     <!-- <option value='25'>25</option> -->
             </select>
+            <div class="col" id="sr">
+                <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <button type="button" class="searchbtn">Search</button>
+            </div>
           
             <!-- <button class="btn-xs btn-primary" id="delsel">Delete Selected</button>
             <button class="btn-xs btn-primary" id="exp">Export Selected</button> -->
@@ -30,10 +39,7 @@
             
 
             </div>
-            <!-- <div class="col ">
-                <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="searchbtn">Search</button>
-            </div> -->
+
         </div>
 
     </div>
