@@ -35,13 +35,13 @@
 
                 </tbody>
             </table>
-
-        </div>
-
-    </section>
     <section id="pagination">
         <?php include 'pagination.php';?>
     </section>
+        </div>
+
+    </section>
+
     <section id = "course_form" class="container mt-5" >
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
