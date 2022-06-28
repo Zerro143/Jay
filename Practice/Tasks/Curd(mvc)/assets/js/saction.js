@@ -231,6 +231,7 @@ function del_sel(){
                 data: {c:allVals,a:btn},
                 success: function(a)  
                 {   
+                    std();
                     $("#dsa").html("<b> Data Deleted from database");
                
                     $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
