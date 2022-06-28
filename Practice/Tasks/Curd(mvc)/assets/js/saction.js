@@ -119,7 +119,7 @@ function validate(fname,lname,m,mail,bdate){
      
     
      //if(m !== ""){
-     if(k.test(m) == false){
+     if(k.test(m) == false||m>10){
          $("#m").focus();
          //alert("Invalid Phone Number");
          $("#merr").html("<b>Only 10 digits are allowed</b>");
