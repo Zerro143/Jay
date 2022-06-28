@@ -26,7 +26,7 @@
                     <option value='25'>25</option>
                 </select>
             <div class="col" id="sr">
-                <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+                <input type="search" class="search" id="myInput"placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <!-- <button type="button" class="searchbtn">Search</button> -->
             </div>
           

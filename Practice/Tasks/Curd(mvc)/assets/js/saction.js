@@ -240,6 +240,12 @@ $(document).ready(function(){
         }
   
     });
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#student_content tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
     $("#selector").change(function(e){
         e.preventDefault();
         var val = $(this).val();

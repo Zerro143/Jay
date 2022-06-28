@@ -136,6 +136,13 @@ $(document).ready(function(){
   
     });
 
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#course_content tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
     $("#page").on("click",".btn",function(e){
         e.preventDefault();
         var page = $(this).attr("value");
