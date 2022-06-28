@@ -238,7 +238,7 @@ function del_sel(){
                         $("#danger-alert").slideUp(500);
                        
                     });
-                    std();
+                    // std();
                     // alert ("Selected data deleted");
                     // location.reload();
                     // $("#datatable").load("students.php #datatable")                  

@@ -18,6 +18,12 @@ function del_sel(){
                 success: function(a)  
                 {   
                     da();
+                    $("#dsa").html("<b> Data Deleted from database");
+               
+                    $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#danger-alert").slideUp(500);
+                       
+                    });
                     // $("#datatable").load("students.php #datatable")                  
                 }   
             });
