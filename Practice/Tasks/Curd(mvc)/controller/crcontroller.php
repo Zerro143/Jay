@@ -106,19 +106,12 @@ error_reporting(E_ALL);
                         $result=$this->objcm->select_courseRecord($id,'a','b');  
                         // print_r($result);
                          $course[]= $result[0][0];
-                        // print_r($course);
-                        // echo $result[0][0]['course']."<br>";
-                        // fwrite($output,$result[0][0]['course']);
-                        // fputcsv($output,$course);
+ 
                         fputcsv($output,array($result[0][0]['course']));
 
                         
                     }
-                    //  fputcsv($output,$course);
-                //    foreach($course as $cr ){
-                //     echo $cr['course'];
-                //    }
-                    
+
                     
 
                     break;
