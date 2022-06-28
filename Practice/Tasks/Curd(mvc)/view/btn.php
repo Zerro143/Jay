@@ -20,6 +20,11 @@
                     <option id="exp" value='exp'>Export Selected</option>
                     <!-- <option value='25'>25</option> -->
             </select>
+            <select class="selector" id="selector">
+                    <option value='5'>5</option>
+                    <option value='10' selected>10</option>
+                    <option value='25'>25</option>
+                </select>
             <div class="col" id="sr">
                 <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
                 <button type="button" class="searchbtn">Search</button>
