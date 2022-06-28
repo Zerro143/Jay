@@ -118,7 +118,7 @@ error_reporting(E_ALL);
 
                     break;
                 case 'student': 
-                    fputcsv($output, array('fname','lname','email','m','course', 'bdate','created_date','update_date'));
+                    fputcsv($output, array('First Name','Last Name','Email','Mobile no.','Course', 'B.date','Created_Date','Updated_Date'));
                     foreach ($ids as $id)
                     {
                         $result=$this->objcm->select_studentRecord($id); 
