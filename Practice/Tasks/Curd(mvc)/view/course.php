@@ -16,6 +16,7 @@
     </head>
     <body>
     <section id ="nav">
+        <?php include 'nav.php';?>
         <?php include 'btn.php';?>
     </section>
 

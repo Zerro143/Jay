@@ -18,6 +18,8 @@
     </head>
     <body>
     <section id ="nav">
+        <?php include 'nav.php';?>
+        <br>
         <?php include 'btn.php';?>
     </section>
     <section id = "main">
