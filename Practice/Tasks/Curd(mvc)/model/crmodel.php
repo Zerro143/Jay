@@ -84,6 +84,7 @@ error_reporting(E_ALL);
 					// $q1->close_db();
 					$tt = ceil($a/$per_page_record);
 					$data[1]['tt'] = $tt;
+					$data[1]['start_from']=$start_from;
 					
 					$query=$this->condb->prepare("SELECT * FROM course LIMIT $start_from, $per_page_record");
 					// echo $query;	
