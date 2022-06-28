@@ -69,7 +69,8 @@ function da(a){
     // alert(a[0].length);
     $('#course_content').html("");
     var tp = a[1]['tt'];
-    var page = a[1]['page'];
+    var page = parseInt(a[1]['page']);
+    // console.log(Typeof ,page);
     var record = a[1]['record'];
     $("#selector").val(record);
     $("#page").empty();
@@ -180,55 +181,7 @@ $(document).ready(function(){
                 break; 
         }
 
-        // alert(val);
-        // $(".sil:checked").each(function(){
-        //     allVals.push($(this).attr("value"));
-        // });
-        // if(allVals.length == 0){  
-        //         alert("Please select row.");  
-        // }else{
-        //     switch (val){
-        //         case delsel:
-        //             if(confirm("Are you sure u want to delete")){
-        //                 var join_selected_values = allVals.join(","); 
-        //                 var btn= "del_course";
-        //                 $.ajax({   
-        //                     url:"../controller/crcontroller.php",
-        //                     type: "POST",  
-        //                     data: {c:allVals,a:val},
-        //                     success: function(a)  
-        //                     {   
-                                
-        //                         location.reload();
-        //                         // $("#datatable").load("students.php #datatable")                  
-        //                     }   
-        //                 });
-        //             }
-        //             else{
-        //                 $(".sil").prop('checked',false)
-        //                 $("#master").prop("checked", false);
-        //             }
-        //             break;
-        //         case exp:
-        //                 $.ajax({   
-		// 		        type: "POST",  
-		// 			    url:"../controller/crcontroller.php",
-		// 			    data: {ids:allVals,a:btn,c:'course'},
-		// 			    success: function()  
-		// 			{   
-        //                 window.location.href='../export/output.csv';
-        //                 $(".sil").prop('checked',false)
-        //                 $("#master").prop('checked',false)
-		// 			}   
-		// 		});
-
-                
-
-
-        //     }
-            
-
-        // }
+  
     });
 
 
