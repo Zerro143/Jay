@@ -76,7 +76,7 @@ function da(a){
     $("#selector").val(record);
     $("#page").empty();
     $("#entries").empty();
-    $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr)
+    $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
     
     if(page>=2){
         $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")

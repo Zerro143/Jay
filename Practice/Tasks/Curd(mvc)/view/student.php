@@ -50,6 +50,9 @@
         <!-- <?php include 'addcr.php';?> -->
       
     </section>
+    <section id="pagination">
+        <?php include 'pagination.php';?>
+    </section>
     <section id ="student_form" class="container mt-5">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
