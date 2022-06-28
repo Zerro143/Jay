@@ -137,7 +137,8 @@ function da(){
         data:{a:'course',sel:val},
         dataType:"json",
         beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-            $('#preloader').removeClass('hidden')
+            // $('#preloader').removeClass('hidden')
+            $("#preloader").fadeOut(3000);
         },
         success:function(a){
             cr(a);
@@ -145,7 +146,7 @@ function da(){
 
         },
         complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-            $('#preloader').addClass('hidden')
+            // $('#preloader').addClass('hidden')
         }
         
     });
@@ -352,8 +353,10 @@ $(document).ready(function(){
             data:{a:'edit_course',c:cid},
             dataType:"json",
             beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-                $('#mdload').removeClass('hidden');
-                $('#myModal').css({"filter":"blur(2px)"})
+                // $('#mdload').removeClass('hidden');
+                // $("#mdload").fadeOut(3000);
+              
+                // $('#myModal').css({"filter":"blur(2px)"})
             },
             success:function(data){
             
@@ -362,8 +365,9 @@ $(document).ready(function(){
                 
             },
             complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-                $('#mdload').addClass('hidden')
-                $('#myModal').css({"filter":"blur(0px)"})
+                $("#mdload").fadeOut(3000);
+                // $('#mdload').addClass('hidden')
+                // $('#myModal').css({"filter":"blur(0px)"})
             }
 
         })

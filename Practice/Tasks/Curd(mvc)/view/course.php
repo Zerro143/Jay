@@ -1,7 +1,7 @@
 <html>
 <style>
            /*Hidden class for adding and removing*/
-           .preloader {
+.loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -100,7 +100,7 @@
                     <h4 class="modal-title text-center"><b>Course</b></h4>
                 </div>
                 <div class="modal-body">
-                <div class="loader"id="mdload"></div>
+                <div class="loader "id="mdload"></div>
                     <?php include 'addcr.php';?>
                 </div>
                 <div class="modal-footer">
