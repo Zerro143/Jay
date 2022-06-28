@@ -260,6 +260,7 @@ $(document).ready(function(){
                         if (a==0){
                             da();                            
                             $('#myModal').modal('hide');
+                            
                             $("#ssa").html("<b>"+course+" Added to database");
                             $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
                                 $("#success-alert").slideUp(500);
@@ -339,6 +340,7 @@ $(document).ready(function(){
             data:{a:'edit_course',c:cid},
             dataType:"json",
             success:function(data){
+            
                $("#course").val(data[0][0].course);
                $("#cid").val(data[0][0].course_id);
                 
