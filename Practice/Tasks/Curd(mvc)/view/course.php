@@ -19,7 +19,7 @@
         <?php include 'nav.php';?>
         <?php include 'btn.php';?>
     </section>
-
+    
     <section id = "main">
         <div class="container" id="dta">
             <table class="table" id="tda">

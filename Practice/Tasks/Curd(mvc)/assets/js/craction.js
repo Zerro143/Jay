@@ -17,8 +17,7 @@ function del_sel(){
                 data: {c:allVals,a:btn},
                 success: function(a)  
                 {   
-                    alert ("Selected data deleted");
-                    location.reload();
+                    da();
                     // $("#datatable").load("students.php #datatable")                  
                 }   
             });
@@ -64,10 +63,9 @@ function exp(){
     }
 
 }
-function da(a){
-    // console.log(a[0]);
-    // alert(a[0].length);
-    $('#course_content').html("");
+function cr(a){
+
+    $('#course_content').empty();
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
     var sf = parseInt(a[1]['start_from'])
@@ -119,22 +117,35 @@ function da(a){
         
     }
 }
-
-
-$(document).ready(function(){
-
-
+function da(){
     var val = $("#selector").val(); 
+    $("#expall").hide();
+    $("#studentAdd").hide();
+    $("#success-alert").hide();
+    $("#danger-alert").hide();
+
+    var page = $("#page").attr("value");
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
         data:{a:'course',sel:val},
         dataType:"json",
         success:function(a){
-            da(a);
+            cr(a);
+
+
         }
   
     });
+
+}
+
+
+$(document).ready(function(){
+
+
+
+    da();
 
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -144,6 +155,7 @@ $(document).ready(function(){
       });
 
     $("#page").on("click",".btn",function(e){
+        // alert();
         e.preventDefault();
         var page = $(this).attr("value");
         var val = $("#selector").val();
@@ -153,14 +165,14 @@ $(document).ready(function(){
             data:{page:page,sel:val,a:'course'},
             dataType:"json",
             success:function(a){
-                // alert(a);
-                da(a);
+              
+                cr(a);
             }
         });
     });
 
-    $("#studentAdd").hide();
-    $("#expall").hide();
+   
+   
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)
@@ -228,7 +240,8 @@ $(document).ready(function(){
 
 
 
-    $("#add").click(function(e){
+    $("#myModal").on("click","#add",function(e){
+        // alert();
         e.preventDefault();
        
         
@@ -242,12 +255,22 @@ $(document).ready(function(){
                 $.ajax({
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
-                    data:{a:btn,b:course}, 
+                    data:{a:btn,b:course},
                     success:function(a){ 
                         if (a==0){
-                            // alert(course + " Added to Database");
+                            da();                            
+                            $('#myModal').modal('hide');
+                            $("#ssa").html("<b>"+course+" Added to database");
+                            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                                $("#success-alert").slideUp(500);
+                               
+                            });
+                           
+                            //   $("#success-alert p").empty();
 
-                            location.reload();
+
+                            // location.reload();
+                            // da();
                         }
                         else{
                             $("#crerr").html("<b>Course already exist</b>");
@@ -282,10 +305,18 @@ $(document).ready(function(){
                 url:"../controller/crcontroller.php",
                     method:"POST", 
                     data:{a:btn,c:cid}, 
-                    success:function(dataabc){ 
-                        //$("#main").load("index.php #dta");
-                        alert(course + " Deleted from Database");
-                        location.reload();
+                    dataType:"json",
+                    success:function(){ 
+                        
+                        $("#dsa").html("<b>"+course+" Deleted from database");
+                        da();
+                        $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+                            $("#danger-alert").slideUp(500);
+                           
+                        });
+                              
+                        
+                        
                     }});
         }
 
@@ -331,12 +362,13 @@ $(document).ready(function(){
                     method:"POST", 
                     data:{a:btn,b:course,c:cid}, 
                     success:function(){ 
-                        location.reload();
-                        $("#myForm").hide();
-                        alert(course + " Updated in Database");
-                        $("#course").val("");
-                        $("#did").val("");
-                        $("#crerr").html("");
+                        da();                            
+                        $('#myModal').modal('hide');
+                        $("#ssa").html("<b>"+course+" Added to database");
+                        $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                            $("#success-alert").slideUp(500);
+                           
+                        });
                     }});
             }
             else{

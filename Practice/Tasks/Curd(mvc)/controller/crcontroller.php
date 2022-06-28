@@ -225,13 +225,14 @@ error_reporting(E_ALL);
                         foreach ($ids as $id)
                         {
                             $res=$this->objcm->delete_courseRecord($id);      
-                            echo $id;
+                            // echo $id;
                             
                         }
                     }else{
                         $res=$this->objcm->delete_courseRecord($ids);
                         echo $ids;
                     }
+                //    $this->course();
      
             }
             catch (Exception $e) 
