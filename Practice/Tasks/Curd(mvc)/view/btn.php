@@ -27,7 +27,7 @@
                 </select>
             <div class="col" id="sr">
                 <input type="search" class="search " placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-                <button type="button" class="searchbtn">Search</button>
+                <!-- <button type="button" class="searchbtn">Search</button> -->
             </div>
           
             <!-- <button class="btn-xs btn-primary" id="delsel">Delete Selected</button>
