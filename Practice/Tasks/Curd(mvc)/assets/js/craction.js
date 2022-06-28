@@ -70,10 +70,13 @@ function da(a){
     $('#course_content').html("");
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
-    // console.log(Typeof ,page);
+    var sf = parseInt(a[1]['start_from'])
     var record = a[1]['record'];
+    var tr = a[1]['tr'];
     $("#selector").val(record);
     $("#page").empty();
+    $("#entries").empty();
+    $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr)
     
     if(page>=2){
         $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
