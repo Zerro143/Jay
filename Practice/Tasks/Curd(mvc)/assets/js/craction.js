@@ -289,7 +289,6 @@ $(document).ready(function(){
             //alert("Please enter the Course");
             $("#crerr").html("<b>Please Enter the Course</b>")
         }
-    
     });
 
     $("#course_content").on("click",".delete",function(e){
@@ -380,7 +379,4 @@ $(document).ready(function(){
         }
 
     });
-            
-
-    
 });
