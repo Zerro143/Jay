@@ -1,4 +1,5 @@
 function da(a){
+    $("#master").prop('checked',false)
     $("#openForm").hide();
     // $(".studentForm").hide();
     $("#expall").hide();
@@ -195,7 +196,7 @@ function exp(){
     {  
         alert("Please select row.");  
     }else{
-
+            var l ='../export/output.csv';
         var join_selected_values = allVals.join(","); 
         var btn= "exp";
         $.ajax({   
@@ -203,13 +204,19 @@ function exp(){
             type: "POST",  
             url:"../controller/crcontroller.php",
             data: {ids:allVals,a:btn,c:'student'},
-            success: function()  
+            success: function(a)  
             {   
                 //alert ("Selected data deleted");
-                
-                window.open('../export/output.csv');
-                $(".sil").prop('checked',false)
-                $("#master").prop('checked',false)
+                var a = $("<a />");
+                a.attr("download", "output");
+                a.attr("href",l);
+                $("body").append(a);
+                a[0].click();
+                $("body").remove(a);
+                // window.open(l,'_blank');
+                // window.open("www.google.com");
+                // $(".sil").prop('checked',false)
+                // $("#master").prop('checked',false)
             }   
         });
     }

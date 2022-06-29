@@ -43,7 +43,7 @@ function exp(){
     {  
         alert("Please select row.");  
     }else{
-
+        var l ='../export/output.csv';
         var join_selected_values = allVals.join(","); 
         var btn= "exp";
          $.ajax({   
@@ -51,18 +51,24 @@ function exp(){
             type: "POST",  
             url:"../controller/crcontroller.php",
             data: {ids:allVals,a:btn,c:'course'},
-            success: function()  
-            {                      
-                window.open('../export/output.csv');
-                $(".sil").prop('checked',false)
-                $("#master").prop('checked',false)
+            success: function(a)  
+            {                    
+                 
+                var a = $("<a />");
+                a.attr("download", "output");
+                a.attr("href",l);
+                $("body").append(a);
+                a[0].click();
+                $("body").remove(a);
+                // $(".sil").prop('checked',false)
+                // $("#master").prop('checked',false)
             }   
         });
     }
 }
 
 function cr(a){
-
+    $("#master").prop('checked',false)
     $('#course_content').empty();
     var tp = a[1]['tt'];
     var page = parseInt(a[1]['page']);
@@ -161,12 +167,13 @@ $(document).ready(function(){
             success:function(a){
               
                 cr(a);
+                
+               
             }
         });
     });
 
-   
-   
+
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)
