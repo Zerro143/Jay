@@ -3,7 +3,6 @@ function del_sel(){
     $(".sil:checked").each(function(){
         allVals.push($(this).attr("value"));
     });
-    //alert(allVals.length); 
     if(allVals.length == 0)  
     {  
         alert("Please select row.");  
@@ -23,8 +22,7 @@ function del_sel(){
                     $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
                         $("#danger-alert").slideUp(500);
                        
-                    });
-                    // $("#datatable").load("students.php #datatable")                  
+                    });             
                 }   
             });
         }else{
@@ -56,9 +54,7 @@ function exp(){
                 url:"../controller/crcontroller.php",
                 data: {ids:allVals,a:btn,c:'course'},
                 success: function()  
-                {   
-                    //alert ("Selected data deleted");
-                    
+                {                      
                     window.location.href='../export/output.csv';
                     $(".sil").prop('checked',false)
                     $("#master").prop('checked',false)
@@ -155,8 +151,6 @@ function da(){
     });
 
 }
-
-
 $(document).ready(function(){
 
 
@@ -242,7 +236,6 @@ $(document).ready(function(){
         })
     });
 
-    
     const f = /^[a-zA-Z]*$/;
     const k = /(7|8|9)\d{9}/;
     $("#openForm").click(function(){
@@ -252,10 +245,6 @@ $(document).ready(function(){
         $("#course").val("");
         $("#crerr").html("");
     });
-
-
-
-
     $("#myModal").on("click","#add",function(e){
         // alert();
         e.preventDefault();
@@ -267,15 +256,11 @@ $(document).ready(function(){
         //alert(course + "Added to Database")
         if(course !== ""){
             if(f.test(course) == true){
-
+                $('#preloader').removeClass('hidden')
                 $.ajax({
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
                     data:{a:btn,b:course},
-                    beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-                        $('#preloader').removeClass('hidden')
-                      
-                    },
                     success:function(a){ 
                         if (a==0){
                             da();                            
@@ -286,21 +271,15 @@ $(document).ready(function(){
                                 $("#success-alert").slideUp(500);
                                
                             });
-
+                            $("#preloader").fadeOut(3000,function(){
+                                $(this).addClass('hidden')
+                             });
                         }
                         else{
-                            $("#crerr").html("<b>Course already exist</b>");
-                           
+                            $("#crerr").html("<b>Course already exist</b>");  
                         }
-                    
-                    },
-                    complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-                        $("#preloader").fadeOut(3000,function(){
-                           $(this).addClass('hidden')
-                        });
-                    }
+                    } 
                 });
-
             }
             else{
                 $("#crerr").html("<b>Only Alphabets are allowed</b>")
@@ -325,24 +304,20 @@ $(document).ready(function(){
             
             $.ajax({
                 url:"../controller/crcontroller.php",
-                    method:"POST", 
-                    data:{a:btn,c:cid}, 
-                    dataType:"json",
-                    success:function(){ 
-                        
-                        $("#dsa").html("<b>"+course+" Deleted from database");
-                        da();
-                        $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
-                            $("#danger-alert").slideUp(500);
-                           
-                        });
-                              
-                        
-                        
-                    }});
+                method:"POST", 
+                data:{a:btn,c:cid}, 
+                dataType:"json",
+                success:function(){ 
+                    
+                    $("#dsa").html("<b>"+course+" Deleted from database");
+                    da();
+                    $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+                        $("#danger-alert").slideUp(500);
+                       
+                    });  
+                }
+            });
         }
-
-
     });
     
     $("#course_content").on("click",".edit",function(e){
@@ -371,13 +346,8 @@ $(document).ready(function(){
                $("#mdload").fadeOut(3000);
                $("#mdata").show();   
                 
-            },
-
-
+            }
         })
-
-        
-       
     });
 
     $("#update").click(function(e){
@@ -413,4 +383,4 @@ $(document).ready(function(){
             
 
     
-});  
+});
