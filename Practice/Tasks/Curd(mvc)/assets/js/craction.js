@@ -346,7 +346,7 @@ $(document).ready(function(){
                $("#mdata").show();   
                 
             }
-        })
+        });
     });
 
     $("#update").click(function(e){
@@ -368,7 +368,8 @@ $(document).ready(function(){
                             $("#success-alert").slideUp(500);
                            
                         });
-                    }});
+                    }
+                });
             }
             else{
                 $("#crerr").html("<b>Only Alphabets are allowed</b>")
