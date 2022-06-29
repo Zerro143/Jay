@@ -116,8 +116,8 @@
                     <h4 class="modal-title text-center"><b>Student</b></h4>
                 </div>
                 <div class="modal-body">
-                <div class="loader hidden"id="mdload"></div>
-                    <?php include 'addstd.php';?> 
+                <div class="loader"id="mload"></div>
+                    <div id="mdata"><?php include 'addstd.php';?> </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  id ="upd" class="btn btn-info" placeholder="update" value="update1">Update</button>

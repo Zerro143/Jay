@@ -268,7 +268,7 @@ error_reporting(E_ALL);
                 
                 $id = $_POST['c'];
                 $result=$this->objcm->select_studentRecord($id,0,10);
-                $c=$this->objcm->select_courseRecord(0,0,10);
+                $c=$this->objcm->select_courseRecord(0,0,100);
                 $result[1] = $c;
                 // print_r ($result);
                 echo json_encode($result);

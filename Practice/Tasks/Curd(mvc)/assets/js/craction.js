@@ -160,7 +160,7 @@ function da(){
 $(document).ready(function(){
 
 
-
+    $("#mdload").hide();
     da();
 
     $("#myInput").on("keyup", function() {
@@ -353,6 +353,8 @@ $(document).ready(function(){
         $("#add").hide();
         $("#update").show();
         $("#cid").val(cid);
+        $("#mdata").hide();
+        $("#mdload").fadeIn();
         
          $.ajax({
     
@@ -360,25 +362,17 @@ $(document).ready(function(){
             method:"POST",
             data:{a:'edit_course',c:cid},
             dataType:"json",
-            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-                $('#mdload').removeClass('hidden');
-                // $("#mdload").fadeOut(3000);
-              
-                // $('#myModal').css({"filter":"blur(2px)"})
-            },
+
             success:function(data){
             
                $("#course").val(data[0][0].course);
                $("#cid").val(data[0][0].course_id);
                 
+               $("#mdload").fadeOut(3000);
+               $("#mdata").show();   
+                
             },
-            complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-                $("#mdload").fadeOut(3000,function(){
-                    $(this).addClass('hidden');
-                });
-                // $('#mdload').addClass('hidden')
-                // $('#myModal').css({"filter":"blur(0px)"})
-            }
+
 
         })
 

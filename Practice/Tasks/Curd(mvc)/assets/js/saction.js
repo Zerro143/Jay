@@ -65,6 +65,7 @@ function std(){
     var val = $("#selector").val(); 
     $("#success-alert").hide();
     $("#danger-alert").hide();
+   
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
@@ -265,6 +266,7 @@ function del_sel(){
 
 $(document).ready(function(){
 std();
+$("#mload").hide();
  
     $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
@@ -366,7 +368,7 @@ std();
 
     $("#student_content").on("click",".edit",function(e){
         e.preventDefault();
-
+        $('#course1').empty();
         var cid = $(this).attr("did");
 
         
@@ -375,20 +377,20 @@ std();
 
         $("#upd").show();
         $("#did").val(cid);
+        $("#mdata").hide();
+        $("#mload").fadeIn();
+        // alert();
          $.ajax({
     
             url:"../controller/crcontroller.php",
             method:"POST",
             data:{a:'edit_std',c:cid},
             dataType:"json",
-            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-                $('#mdload').removeClass('hidden');
-                // $("#mdload").fadeOut(3000);
-              
-                // $('#myModal').css({"filter":"blur(2px)"})
-            },
+
             success:function(data){
                 // $("#did").val(data[0].id);
+                $("#mload").fadeOut(3000);
+                $("#mdata").show(); 
                 $("#fname").val(data[0][0].fname);
                 $("#lname").val(data[0][0].lname);
                 $("#bdate").val(data[0][0].bdate);
@@ -400,7 +402,7 @@ std();
                     var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
                     $('#course1').append(row);
                 }
-                
+   
             }
             ,
             complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
@@ -420,6 +422,7 @@ std();
     $("#btn").on("click","#studentAdd",function(e){
         e.preventDefault();
         // $(".studentForm").show();
+        $('#course1').empty();
         $("#add1").show();
         // $("#main").hide();
         $("#ferr").html("");

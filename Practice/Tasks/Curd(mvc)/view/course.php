@@ -103,8 +103,9 @@
                     <h4 class="modal-title text-center"><b>Course</b></h4>
                 </div>
                 <div class="modal-body">
-                <div class="loader hidden"id="mdload"></div>
-                    <?php include 'addcr.php';?>
+                <div class="loader"id="mdload"></div>
+                  <div id="mdata"><?php include 'addcr.php';?></div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="update" class="btn btn-info"  placeholder="update" value="update">Update</button>
