@@ -53,7 +53,7 @@ function exp(){
             data: {ids:allVals,a:btn,c:'course'},
             success: function()  
             {                      
-                window.location.href='../export/output.csv';
+                window.open('../export/output.csv');
                 $(".sil").prop('checked',false)
                 $("#master").prop('checked',false)
             }   
