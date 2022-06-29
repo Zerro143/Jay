@@ -29,9 +29,7 @@ function del_sel(){
             $(".sil").prop('checked',false)
             $("#master").prop("checked", false);
         }
-
     }
-
 }
 
 function exp(){
@@ -46,25 +44,23 @@ function exp(){
         alert("Please select row.");  
     }else{
 
-           var join_selected_values = allVals.join(","); 
-           var btn= "exp";
-            $.ajax({   
-              
-                type: "POST",  
-                url:"../controller/crcontroller.php",
-                data: {ids:allVals,a:btn,c:'course'},
-                success: function()  
-                {                      
-                    window.location.href='../export/output.csv';
-                    $(".sil").prop('checked',false)
-                    $("#master").prop('checked',false)
-                }   
-            });
-
-
+        var join_selected_values = allVals.join(","); 
+        var btn= "exp";
+         $.ajax({   
+           
+            type: "POST",  
+            url:"../controller/crcontroller.php",
+            data: {ids:allVals,a:btn,c:'course'},
+            success: function()  
+            {                      
+                window.location.href='../export/output.csv';
+                $(".sil").prop('checked',false)
+                $("#master").prop('checked',false)
+            }   
+        });
     }
-
 }
+
 function cr(a){
 
     $('#course_content').empty();
@@ -104,9 +100,6 @@ function cr(a){
         $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
         
     }
-
-
-    
     
     for (var i=0; i<a[0].length; i++) {
         var row = $('<tr>'+
@@ -119,38 +112,29 @@ function cr(a){
         
     }
 }
+
 function da(){
     var val = $("#selector").val(); 
     $("#expall").hide();
     $("#studentAdd").hide();
     $("#success-alert").hide();
     $("#danger-alert").hide();
-
+    $('#preloader').removeClass('hidden')
     var page = $("#page").attr("value");
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
         data:{a:'course',sel:val},
         dataType:"json",
-        beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-            $('#preloader').removeClass('hidden')
-          
-        },
         success:function(a){
             cr(a);
-
-
-        },
-        complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
             $("#preloader").fadeOut(3000,function(){
-               $(this).addClass('hidden')
+                $(this).addClass('hidden')
             });
-            // $('#preloader')
         }
-        
     });
-
 }
+
 $(document).ready(function(){
 
 
@@ -217,8 +201,6 @@ $(document).ready(function(){
                 del_sel();
                 break; 
         }
-
-  
     });
 
 
@@ -245,11 +227,11 @@ $(document).ready(function(){
         $("#course").val("");
         $("#crerr").html("");
     });
+
     $("#myModal").on("click","#add",function(e){
         // alert();
         e.preventDefault();
-       
-        
+
         var btn = 'add_course';
         var course = $("#course").val();
         
@@ -284,7 +266,6 @@ $(document).ready(function(){
             else{
                 $("#crerr").html("<b>Only Alphabets are allowed</b>")
             }
-
         }else{
             //alert("Please enter the Course");
             $("#crerr").html("<b>Please Enter the Course</b>")
