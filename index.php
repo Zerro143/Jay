@@ -1,6 +1,7 @@
 <head>
     <title>Game Mania</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://localhost/Jay/Practice/JS/calc.js"></script>
     
 </head>
 <body>
