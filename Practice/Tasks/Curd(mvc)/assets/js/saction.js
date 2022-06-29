@@ -213,10 +213,7 @@ function exp(){
                 $("body").append(a);
                 a[0].click();
                 $("body").remove(a);
-                // window.open(l,'_blank');
-                // window.open("www.google.com");
-                // $(".sil").prop('checked',false)
-                // $("#master").prop('checked',false)
+
             }   
         });
     }
@@ -284,7 +281,6 @@ $("#mload").hide();
             data:{page:page,sel:val,a:'student'},
             dataType:"json",
             success:function(a){
-                // alert(a);
                 da(a);
             }
         });
@@ -361,7 +357,21 @@ $("#mload").hide();
         $('#course1').empty();
         var cid = $(this).attr("did");
 
-        
+        $('#course1').empty();
+        $("#add1").show();
+        // $("#main").hide();
+        $("#ferr").html("");
+        $("#lerr").html("");
+        $("#merr").html("");
+        $("#bderr").html("");
+        $("#mailerr").html("");
+        $("#upd").hide();
+        $("#did").val("");
+        $("#fname").val("");
+        $("#lname").val("");
+        $("#bdate").val("");
+        $("#m").val("");
+        $("#mail").val("");
         // $('#md').modal('show');
         $("#add1").hide();
 

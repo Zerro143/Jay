@@ -60,8 +60,7 @@ function exp(){
                 $("body").append(a);
                 a[0].click();
                 $("body").remove(a);
-                // $(".sil").prop('checked',false)
-                // $("#master").prop('checked',false)
+
             }   
         });
     }
@@ -311,7 +310,7 @@ $(document).ready(function(){
         e.preventDefault();
 
         var cid = $(this).attr("did");
-
+        $("#crerr").empty();  
         $("#add").hide();
         $("#update").show();
         $("#cid").val(cid);
