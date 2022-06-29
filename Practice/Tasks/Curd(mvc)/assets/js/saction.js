@@ -65,35 +65,21 @@ function std(){
     var val = $("#selector").val(); 
     $("#success-alert").hide();
     $("#danger-alert").hide();
-   
+    $('#preloader').removeClass('hidden')
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
         data:{a:'student',sel:val},
         dataType:"json",
-        beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-            $('#preloader').removeClass('hidden')
-          
-        },
         success:function(a){
             da(a);
-        },
-        complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
             $("#preloader").fadeOut(3000,function(){
-               $(this).addClass('hidden')
-            });
-        }
-  
+                $(this).addClass('hidden')
+             });
+        },
     });
 
 }
-
-
-
-
-
-
-
 //var errcode = 0;
 
 function validate(fname,lname,m,mail,bdate){
@@ -263,7 +249,6 @@ function del_sel(){
 
 }
 
-
 $(document).ready(function(){
 std();
 $("#mload").hide();
@@ -316,10 +301,6 @@ $("#mload").hide();
 
 
     });
-
-
-
-
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)
@@ -513,11 +494,6 @@ $("#mload").hide();
         var mm = String(1 + today.getMonth()).padStart(2, '0');
         var d = String(1 + today.getDay()).padStart(2, '0');
 
-              
-       
-   
-        
-      
       var btn = $("#add1").attr("value");
       var fname = $("#fname").val();
       var lname = $("#lname").val();
@@ -526,15 +502,9 @@ $("#mload").hide();
       var mail = $("#mail").val();
       var course = $("#course1").val();
       var cdate = y +"-"+ mm +"-"+ d; //$("#cdate").val();
-     
-       
-      
 
        errcode = validate(fname,lname,m,mail,bdate);
-       
 
-      
-      
         if(errcode == 0){
            
             $.ajax({
@@ -560,14 +530,10 @@ $("#mload").hide();
                         $("#mailerr").html("<b> Email already exist ");
                         // alert("Email already exist ");
                        
-                    }
-             
-                                    
+                    }                 
         
                 }
-            });
-            
-            
+            }); 
         }
 
     });
