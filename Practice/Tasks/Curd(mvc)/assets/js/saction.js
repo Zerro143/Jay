@@ -61,6 +61,7 @@ function da(a){
         $('#student_content').append(row);
     }
 }
+
 function std(){
     var val = $("#selector").val(); 
     $("#success-alert").hide();
@@ -83,98 +84,106 @@ function std(){
 //var errcode = 0;
 
 function validate(fname,lname,m,mail,bdate){
-     errcode = 0 ;
-     var f = /^[a-zA-Z]*$/;
-     var k = /(6|7|8|9)\d{9}/;
-     var q = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
-     var dtCurrent = new Date();
-     var dtdob = new Date(bdate);
-     var aa = (dtCurrent.getFullYear() - dtdob.getFullYear())
+    errcode = 0 ;
+    var f = /^[a-zA-Z]*$/;
+    var k = /(6|7|8|9)\d{9}/;
+    var q = /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
+    var dtCurrent = new Date();
+    var dtdob = new Date(bdate);
+    var aa = (dtCurrent.getFullYear() - dtdob.getFullYear())
      
      
 
      
-     if(fname == ""){
-         $("#fname").focus();
-         $("#ferr").html("<b>Please Enter you name</b>");
-         //alert("enter name");
-         errcode = 1;
+    if(fname == ""){
+        $("#fname").focus();
+        $("#ferr").html("<b>Please Enter you name</b>");
+        //alert("enter name");
+        errcode = 1;
             
-     } else{
-         //console.log("1")
-         $("#ferr").html("");
-         //$("#ferr").hide();
-         
+    } 
 
-     }
-     if (f.test(fname) == false){
-         $("#fname").focus();
-         //alert("Only char ");
-         $("#ferr").html("<b>Only Alphabets are allowed</b>");
-         errcode = 1;
-     } 
+    else{
+        //console.log("1")
+        $("#ferr").html("");
+        //$("#ferr").hide();
+        
+
+    }
+
+    if (f.test(fname) == false){
+        $("#fname").focus();
+        //alert("Only char ");
+        $("#ferr").html("<b>Only Alphabets are allowed</b>");
+        errcode = 1;
+    } 
                                                                                                                                                                                                         
                                                                                                                                                                                                         
-     if(lname == ""){
-         $("#lname").focus();
-         $("#lerr").html("<b>Please Enter your Last name</b>");
-         //alert("enter lname");
-         errcode = 1;
+    if(lname == ""){
+        $("#lname").focus();
+        $("#lerr").html("<b>Please Enter your Last name</b>");
+        //alert("enter lname");
+        errcode = 1;
          
-     }
-     else{
-         $("#lerr").html("");
-     }
-     if (f.test(lname) == false){
-         $("#lname").focus();
-         //alert("Only char ");
-         $("#lerr").html("<b>Only Alphabets are allowed</b>");
-         errcode = 1;
-     }
+    }
+
+    else{
+        $("#lerr").html("");
+    }
+    
+    if (f.test(lname) == false){
+        $("#lname").focus();
+        //alert("Only char ");
+        $("#lerr").html("<b>Only Alphabets are allowed</b>");
+        errcode = 1;
+    }
      
     
-     //if(m !== ""){
-     if(k.test(m) == false){
-         $("#m").focus();
-         //alert("Invalid Phone Number");
-         $("#merr").html("<b>Only 10 digits are allowed</b>");
-         errcode = 1;
+    
+    if(k.test(m) == false){
+        $("#m").focus();
+        //alert("Invalid Phone Number");
+        $("#merr").html("<b>Only 10 digits are allowed</b>");
+        errcode = 1;
  
-     }
-     else{
-         $("#merr").html("");
-     }
+    }
+    
+    else{
+        $("#merr").html("");
+    }
    
+    if (q.test(mail) == false){
+        $("#mailerr").html("<b> Please enter a valid email id");
+        errcode = 1;
 
-     if (q.test(mail) == false){
-         $("#mailerr").html("<b> Please enter a valid email id");
-         errcode = 1;
+    }
+    
+    else{
+        $("#mailerr").html("");
+    }
 
-     }
-     else{
-         $("#mailerr").html("");
-     }
-     if(bdate == ""){
+    if(bdate == ""){
         $("#bderr").html("<b> Please select the valid date");
         
         errocode = 1;
+   
+    }
 
-       
-     }else{
+    else{
          
-    if (aa < 10) {
-        errcode = 1;
+        if (aa < 10) {
+            errcode = 1;
 
-        $("#bderr").html("<b> Only for age 10 and above");
-    }else{
-        $("#bderr").html("");
+            $("#bderr").html("<b> Only for age 10 and above");
+        }
+        
+        else{
+            $("#bderr").html("");
+        }
     }
-    }
-
     return errcode
-
-    
 }
+
 function exp(){
    
     var allVals = [];  
@@ -187,27 +196,25 @@ function exp(){
         alert("Please select row.");  
     }else{
 
-           var join_selected_values = allVals.join(","); 
-           var btn= "exp";
-            $.ajax({   
-              
-                type: "POST",  
-                url:"../controller/crcontroller.php",
-                data: {ids:allVals,a:btn,c:'student'},
-                success: function()  
-                {   
-                    //alert ("Selected data deleted");
-                    
-                    window.location.href='../export/output.csv';
-                    $(".sil").prop('checked',false)
-                    $("#master").prop('checked',false)
-                }   
-            });
-
-
+        var join_selected_values = allVals.join(","); 
+        var btn= "exp";
+        $.ajax({   
+           
+            type: "POST",  
+            url:"../controller/crcontroller.php",
+            data: {ids:allVals,a:btn,c:'student'},
+            success: function()  
+            {   
+                //alert ("Selected data deleted");
+                
+                window.location.href='../export/output.csv';
+                $(".sil").prop('checked',false)
+                $("#master").prop('checked',false)
+            }   
+        });
     }
-
 }
+
 function del_sel(){
     var allVals = [];  
     $(".sil:checked").each(function(){
@@ -233,20 +240,14 @@ function del_sel(){
                     $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
                         $("#danger-alert").slideUp(500);
                        
-                    });
-                    // std();
-                    // alert ("Selected data deleted");
-                    // location.reload();
-                    // $("#datatable").load("students.php #datatable")                  
+                    });          
                 }   
             });
         }else{
             $(".sil").prop('checked',false)
             $("#master").prop("checked", false);
         }
-
     }
-
 }
 
 $(document).ready(function(){
@@ -265,6 +266,7 @@ $("#mload").hide();
         std();
 
     });
+
     $("#page").on("click",".btn",function(e){
         e.preventDefault();
         var page = $(this).attr("value");
@@ -301,15 +303,16 @@ $("#mload").hide();
 
 
     });
+
     $("#main").on("click","#master",function(){
         if($("#master").is(':checked',true)){
             $(".sil").prop('checked',true)
         }
         else{
             $(".sil").prop('checked',false)
-        }
-        
+        }  
     })
+
     $("#main").on("click",".sil",function(){
     
         if($(".sil").length == $(".sil:checked").length) {
@@ -341,10 +344,9 @@ $("#mload").hide();
                         $("#danger-alert").slideUp(500);
                        
                     });
-                }});
+                }
+            });
         }
-
-
     });
 
     $("#student_content").on("click",".edit",function(e){
@@ -383,21 +385,8 @@ $("#mload").hide();
                     var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
                     $('#course1').append(row);
                 }
-   
             }
-            ,
-            complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-                $("#mdload").fadeOut(3000,function(){
-                    $(this).addClass('hidden');
-                });
-                // $('#mdload').addClass('hidden')
-                // $('#myModal').css({"filter":"blur(0px)"})
-            }
-
         })
-
-        
-       
     });
 
     $("#btn").on("click","#studentAdd",function(e){
@@ -433,8 +422,6 @@ $("#mload").hide();
         });
     });
 
-
-
     $("#upd").on("click",function(e){
         e.preventDefault();
 
@@ -442,9 +429,6 @@ $("#mload").hide();
         var y = String(today.getFullYear());
         var mm = String(1 + today.getMonth()).padStart(2, '0');
         var d = String(1 + today.getDay()).padStart(2, '0');
-
-      
-        
         var btn = "update_std";
         var id = $("#did").val();
         var fname = $("#fname").val();
@@ -471,16 +455,8 @@ $("#mload").hide();
                         $("#success-alert").slideUp(500);
                        
                     });
-                    // alert("Data has been Updated to Database");
-                    // $('#myModal').modal('hide');
-                    // location.reload();
-                    // $("#upd").hide();
-
-                                    
-                    
-                }});
-            
-            
+                }
+            });
         }
     });
 
@@ -512,8 +488,6 @@ $("#mload").hide();
                 method:"POST", 
                 data:{a:'addstd',b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
                 success:function(a){ 
-                    
-                    // location.reload();
                     if (a==0){
                     
                         std();
@@ -524,18 +498,13 @@ $("#mload").hide();
                             $("#success-alert").slideUp(500);
                            
                         });
-                        // alert(fname + " Added to Database");
                     }
                     else{
-                        $("#mailerr").html("<b> Email already exist ");
-                        // alert("Email already exist ");
-                       
-                    }                 
-        
+                        $("#mailerr").html("<b> Email already exist ");                       
+                    }            
                 }
             }); 
         }
-
     });
 
 });
