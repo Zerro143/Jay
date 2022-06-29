@@ -72,12 +72,15 @@ function std(){
         dataType:"json",
         beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
             $('#preloader').removeClass('hidden')
+          
         },
         success:function(a){
             da(a);
         },
         complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-            $('#preloader').addClass('hidden')
+            $("#preloader").fadeOut(3000,function(){
+               $(this).addClass('hidden')
+            });
         }
   
     });
@@ -378,6 +381,12 @@ std();
             method:"POST",
             data:{a:'edit_std',c:cid},
             dataType:"json",
+            beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                $('#mdload').removeClass('hidden');
+                // $("#mdload").fadeOut(3000);
+              
+                // $('#myModal').css({"filter":"blur(2px)"})
+            },
             success:function(data){
                 // $("#did").val(data[0].id);
                 $("#fname").val(data[0][0].fname);
@@ -392,6 +401,14 @@ std();
                     $('#course1').append(row);
                 }
                 
+            }
+            ,
+            complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                $("#mdload").fadeOut(3000,function(){
+                    $(this).addClass('hidden');
+                });
+                // $('#mdload').addClass('hidden')
+                // $('#myModal').css({"filter":"blur(0px)"})
             }
 
         })

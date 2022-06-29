@@ -1,7 +1,10 @@
 <html>
 <style>
            /*Hidden class for adding and removing*/
-           .preloader {
+.hidden{
+  display: none;
+}
+.loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -113,7 +116,7 @@
                     <h4 class="modal-title text-center"><b>Student</b></h4>
                 </div>
                 <div class="modal-body">
-                   
+                <div class="loader hidden"id="mdload"></div>
                     <?php include 'addstd.php';?> 
                 </div>
                 <div class="modal-footer">

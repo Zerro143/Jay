@@ -137,8 +137,8 @@ function da(){
         data:{a:'course',sel:val},
         dataType:"json",
         beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-            // $('#preloader').removeClass('hidden')
-            $("#preloader").fadeOut(3000);
+            $('#preloader').removeClass('hidden')
+          
         },
         success:function(a){
             cr(a);
@@ -146,7 +146,10 @@ function da(){
 
         },
         complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-            // $('#preloader').addClass('hidden')
+            $("#preloader").fadeOut(3000,function(){
+               $(this).addClass('hidden')
+            });
+            // $('#preloader')
         }
         
     });
@@ -269,6 +272,10 @@ $(document).ready(function(){
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
                     data:{a:btn,b:course},
+                    beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
+                        $('#preloader').removeClass('hidden')
+                      
+                    },
                     success:function(a){ 
                         if (a==0){
                             da();                            
@@ -279,19 +286,20 @@ $(document).ready(function(){
                                 $("#success-alert").slideUp(500);
                                
                             });
-                           
-                            //   $("#success-alert p").empty();
 
-
-                            // location.reload();
-                            // da();
                         }
                         else{
                             $("#crerr").html("<b>Course already exist</b>");
                            
                         }
                     
-                    }});
+                    },
+                    complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
+                        $("#preloader").fadeOut(3000,function(){
+                           $(this).addClass('hidden')
+                        });
+                    }
+                });
 
             }
             else{
@@ -353,7 +361,7 @@ $(document).ready(function(){
             data:{a:'edit_course',c:cid},
             dataType:"json",
             beforeSend: function () { // Before we send the request, remove the .hidden class from the spinner and default to inline-block.
-                // $('#mdload').removeClass('hidden');
+                $('#mdload').removeClass('hidden');
                 // $("#mdload").fadeOut(3000);
               
                 // $('#myModal').css({"filter":"blur(2px)"})
@@ -365,7 +373,9 @@ $(document).ready(function(){
                 
             },
             complete: function () { // Set our complete callback, adding the .hidden class and hiding the spinner.
-                $("#mdload").fadeOut(3000);
+                $("#mdload").fadeOut(3000,function(){
+                    $(this).addClass('hidden');
+                });
                 // $('#mdload').addClass('hidden')
                 // $('#myModal').css({"filter":"blur(0px)"})
             }
