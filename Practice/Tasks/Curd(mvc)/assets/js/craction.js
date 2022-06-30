@@ -261,9 +261,9 @@ $(document).ready(function(){
                     dataType:"json",
                     data:{a:btn,b:course},
                     success:function(a){ 
-
-                        if (a['Status']=='success'){
-
+                        
+                        if (a['status']=='Success'){
+                            alert('2');
                             da();                            
                             $('#myModal').modal('hide');
                             
@@ -275,8 +275,9 @@ $(document).ready(function(){
                             $("#preloader").fadeOut(3000,function(){
                                 $(this).addClass('hidden')
                              });
-                        }else{
+                        }else if(a['Status']=='Error'){
                             $("#crerr").html(a['msg']);
+                            alert('1');
                             // alert(a['msg']);
                         }
                     } 

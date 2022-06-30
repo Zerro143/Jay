@@ -191,10 +191,10 @@ error_reporting(E_ALL);
                     $course = $_POST['b'];
                     $tr =$this->objcm->insert_courseRecord($course);
                     if($tr==0){
-                        echo json_encode(['Status'=>'Success','msg'=>"$course Added to database"]);
+                        echo json_encode(['status'=>'Success','msg'=>"$course Added to database"]);
                     }
                     else{
-                        echo json_encode(['Status'=>'Error','msg'=>"<b> $course Already Exist </b>"]);
+                        echo json_encode(['status'=>'Error','msg'=>"<b> $course Already Exist </b>"]);
                     }
                 }
             }catch (Exception $e) 
