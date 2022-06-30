@@ -200,7 +200,7 @@ error_reporting(E_ALL);
             }catch (Exception $e) 
             {   
                 // if(empty($result[0])){
-                    $data['Status']="Error";
+                    $data['status']="Error";
                     $data['msg']="System Failure Call System admin";
                     echo json_encode($data);    
                 // }

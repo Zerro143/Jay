@@ -135,7 +135,7 @@ function da(){
        
         success:function(a){
             // $("body").html(a);
-            if(a['Status']=='Error'){
+            if(a['status']=='Error'){
                 $("body").html("<center><h1>"+a['msg']+"</h1>");
             }else{
 
@@ -176,7 +176,7 @@ $(document).ready(function(){
             data:{page:page,sel:val,a:'course'},
             dataType:"json",
             success:function(a){
-                if(a['Status']=='Error'){
+                if(a['status']=='Error'){
                     $("body").html("<center><h1>"+a['msg']+"</h1>");
                 }else{
     
@@ -275,7 +275,7 @@ $(document).ready(function(){
                             $("#preloader").fadeOut(3000,function(){
                                 $(this).addClass('hidden')
                              });
-                        }else if(a['Status']=='Error'){
+                        }else if(a['status']=='Error'){
                             $("#crerr").html(a['msg']);
                             alert('1');
                             // alert(a['msg']);
