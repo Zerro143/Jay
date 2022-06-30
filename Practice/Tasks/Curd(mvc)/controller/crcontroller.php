@@ -167,8 +167,7 @@ error_reporting(E_ALL);
             echo $result;
         }
 		public function insert_course()
-		{
-            
+		{    
             try{
 
                 if (isset($_POST['b'])) 
