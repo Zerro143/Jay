@@ -119,6 +119,6 @@
 
     </section>
 
-    <div class="loader hidden"id="preloader"></div>
+    <div class="loader "id="preloader"></div>
     </body>
 </html>

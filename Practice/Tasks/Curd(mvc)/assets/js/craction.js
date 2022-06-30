@@ -126,22 +126,28 @@ function da(){
     $("#danger-alert").hide();
     // $('#preloader').removeClass('hidden')
     var page = $("#page").attr("value");
+    $("#preloader").fadeIn();
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
         data:{a:'course',sel:val},
         dataType:"json",
+       
         success:function(a){
-            if(a['Status']=='success'){
+            // $("body").html(a);
+            if(a['Status']=='Error'){
+                $("body").html("<center><h1>"+a['msg']+"</h1>");
+            }else{
+
                 var data = a['data'];
                 cr(data);
-            }else{
-                $("body").html("<center><h1>"+a['msg']+"</h1>");
-            }
 
             $("#preloader").fadeOut(3000,function(){
                 $(this).addClass('hidden')
             });
+            }
+      
+
         }
     });
 }

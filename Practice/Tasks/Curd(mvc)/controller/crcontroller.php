@@ -114,7 +114,7 @@ error_reporting(E_ALL);
                 $result[1]['page']= $page;
                 $result[1]['record']=$per_page_record;  
                 $result[1]['start_from'];
-                $data['Status']="succes";
+                $data['Status']="success";
                 $data['data']=$result;
             }
            
