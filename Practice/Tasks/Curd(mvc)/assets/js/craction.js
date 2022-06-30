@@ -258,13 +258,16 @@ $(document).ready(function(){
                 $.ajax({
                     url:"../controller/crcontroller.php", 
                     method:"POST", 
+                    dataType:"json",
                     data:{a:btn,b:course},
                     success:function(a){ 
-                        if (a==0){
+
+                        if (a['Status']=='success'){
+
                             da();                            
                             $('#myModal').modal('hide');
                             
-                            $("#ssa").html("<b>"+course+" Added to database");
+                            $("#ssa").html(a['msg']);
                             $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
                                 $("#success-alert").slideUp(500);
                                
@@ -272,9 +275,9 @@ $(document).ready(function(){
                             $("#preloader").fadeOut(3000,function(){
                                 $(this).addClass('hidden')
                              });
-                        }
-                        else{
-                            $("#crerr").html("<b>Course already exist</b>");  
+                        }else{
+                            $("#crerr").html(a['msg']);
+                            // alert(a['msg']);
                         }
                     } 
                 });

@@ -86,19 +86,16 @@ error_reporting(E_ALL);
             $result[1]['record']=$per_page_record;  
             $result[1]['start_from'];
             if(empty($result[0])){
-                $data['Status']="Error";
-                $data['msg']="404 Data Not Found";
-                // echo json_encode($data);    
+                echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  
             }else{
                 $result[1]['page']= $page;
                 $result[1]['record']=$per_page_record;  
                 $result[1]['start_from'];
-                $data['Status']="success";
-                $data['data']=$result;
+                echo json_encode(["Status"=>"success","data"=>$result]);  
             }
            
           
-            echo json_encode($data); 
+               
         }
 
         public function course()
@@ -118,19 +115,16 @@ error_reporting(E_ALL);
             $start_from = ($page-1) * $per_page_record;   
             $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
             if(empty($result[0])){
-                $data['Status']="Error";
-                $data['msg']="404 Data Not Found";
-                // echo json_encode($data);    
+                echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  
             }else{
                 $result[1]['page']= $page;
                 $result[1]['record']=$per_page_record;  
                 $result[1]['start_from'];
-                $data['Status']="success";
-                $data['data']=$result;
+                echo json_encode(["Status"=>"success","data"=>$result]);    
             }
            
           
-            echo json_encode($data);          
+      
         }
         //export to csv
 
@@ -196,11 +190,22 @@ error_reporting(E_ALL);
                 { 
                     $course = $_POST['b'];
                     $tr =$this->objcm->insert_courseRecord($course);
-                    echo $tr;
+                    if($tr==0){
+                        echo json_encode(['Status'=>'Success','msg'=>"$course Added to database"]);
+                    }
+                    else{
+                        echo json_encode(['Status'=>'Error','msg'=>"<b> $course Already Exist </b>"]);
+                    }
                 }
             }catch (Exception $e) 
-            {
-                throw $e;
+            {   
+                // if(empty($result[0])){
+                    $data['Status']="Error";
+                    $data['msg']="System Failure Call System admin";
+                    echo json_encode($data);    
+                // }
+                // throw $e;
+                // echo $e;
             }
         }
 
