@@ -51,7 +51,7 @@ error_reporting(E_ALL);
                     $this->del_std();
                     break;				
 				case 'del_course' :					
-                    $this -> delete_course();
+                    $this ->delete_course();
 					break;		
                 case 'course':
                     $this->course();
