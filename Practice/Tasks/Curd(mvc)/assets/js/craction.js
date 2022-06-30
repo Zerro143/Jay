@@ -154,7 +154,6 @@ $(document).ready(function(){
       });
 
     $("#page").on("click",".btn",function(e){
-        // alert();
         e.preventDefault();
         var page = $(this).attr("value");
         var val = $("#selector").val();
@@ -166,8 +165,6 @@ $(document).ready(function(){
             success:function(a){
               
                 cr(a);
-                
-               
             }
         });
     });
@@ -195,15 +192,11 @@ $(document).ready(function(){
         e.preventDefault();
        
         var val= $(this).val();
-        // alert(val);
-        // var allVals = []; 
         switch (val){
             case 'exp':
-                // alert(val);
                 exp();
                 break;
             case 'delsel':
-                // alert(val);
                 del_sel();
                 break; 
         }
