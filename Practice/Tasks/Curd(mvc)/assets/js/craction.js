@@ -132,7 +132,8 @@ function da(){
         data:{a:'course',sel:val},
         dataType:"json",
         success:function(a){
-            cr(a);
+            var data = a['data'];
+            cr(data);
             $("#preloader").fadeOut(3000,function(){
                 $(this).addClass('hidden')
             });
@@ -179,14 +180,14 @@ $(document).ready(function(){
         }
         
     })
-    $("#main").on("click",".sil",function(){
+    // $("#main").on("click",".sil",function(){
     
         if($(".sil").length == $(".sil:checked").length) {
             $("#master").prop("checked", true);
         } else {
             $("#master").prop("checked", false);
         }
-    })
+    // })
 
     $("#selector_action").on("click",function(e){
         e.preventDefault();
