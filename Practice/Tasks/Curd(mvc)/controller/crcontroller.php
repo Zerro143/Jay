@@ -86,12 +86,12 @@ error_reporting(E_ALL);
             $result[1]['record']=$per_page_record;  
             $result[1]['start_from'];
             if(empty($result[0])){
-                echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  
+                echo json_encode(["status"=>"Error","msg"=>"404 Data Not Found"]);  
             }else{
                 $result[1]['page']= $page;
                 $result[1]['record']=$per_page_record;  
                 $result[1]['start_from'];
-                echo json_encode(["Status"=>"success","data"=>$result]);  
+                echo json_encode(["status"=>"Success","data"=>$result]);  
             }
            
           
