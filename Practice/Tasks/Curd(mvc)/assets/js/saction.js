@@ -84,7 +84,7 @@ function std(){
 }
 //var errcode = 0;
 
-function validate(fname,lname,m,mail,bdate){
+function validate(){
     errcode = 0 ;
     var f = /^[a-zA-Z]*$/;
     var k = /(6|7|8|9)\d{9}/;
@@ -92,6 +92,11 @@ function validate(fname,lname,m,mail,bdate){
     var dtCurrent = new Date();
     var dtdob = new Date(bdate);
     var aa = (dtCurrent.getFullYear() - dtdob.getFullYear())
+    var fname = $("#fname").val();
+    var lname = $("#lname").val();
+    var bdate = $("#bdate").val();
+    var m = $("#m").val();
+    var mail = $("#mail").val();
      
      
 
@@ -440,30 +445,23 @@ $("#mload").hide();
     });
 
     $("#upd").on("click",function(e){
-        e.preventDefault();
+        e.preventDefault();   
+        var fname = $("#fname").val();     
+        var form = $('#student_reg')[0];
+        var data = new FormData(form);
 
-        var today = new Date();
-        var y = String(today.getFullYear());
-        var mm = String(1 + today.getMonth()).padStart(2, '0');
-        var d = String(1 + today.getDay()).padStart(2, '0');
-        var btn = "update_std";
-        var id = $("#did").val();
-        var fname = $("#fname").val();
-        var lname = $("#lname").val();
-        var bdate = $("#bdate").val();
-        var m = $("#m").val();
-        var mail = $("#mail").val();
-        var course = $("#course1").val();
-        var cdate = y +"-"+ mm +"-"+ d; //$("#cdate").val();
+        data.append("a", "update_std"); 
     
-        errcode = validate(fname,lname,m,mail,bdate);
+        errcode = validate();
         
         if(errcode == 0){
            
             $.ajax({
                 url:"../controller/crcontroller.php",
                 method:"POST", 
-                data:{a:btn,b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate,i:id}, 
+                contentType: false,
+                processData: false,
+                data:data,
                 success:function(){ 
                     $("#mdcl").click();
                     std();
@@ -481,29 +479,23 @@ $("#mload").hide();
     $("#md").on("click","#add1",function(e){
      
         e.preventDefault();
+        var fname = $("#fname").val();
+      
+        var form = $('#student_reg')[0];
+        var data = new FormData(form);
 
-        var today = new Date();
-        var y = String(today.getFullYear());
-        var mm = String(1 + today.getMonth()).padStart(2, '0');
-        var d = String(1 + today.getDay()).padStart(2, '0');
+        data.append("a", "addstd"); 
+      
+        errcode = validate();
 
-      var btn = $("#add1").attr("value");
-      var fname = $("#fname").val();
-      var lname = $("#lname").val();
-      var bdate = $("#bdate").val();
-      var m = $("#m").val();
-      var mail = $("#mail").val();
-      var course = $("#course1").val();
-      var cdate = y +"-"+ mm +"-"+ d; //$("#cdate").val();
-
-       errcode = validate(fname,lname,m,mail,bdate);
-
-        if(errcode == 0){
+        if(errcode==0){
            
             $.ajax({
                 url:"../controller/crcontroller.php", 
                 method:"POST", 
-                data:{a:'addstd',b:fname,c:lname,d:bdate,e:m,f:mail,g:course,h:cdate}, 
+                contentType: false,
+                processData: false,
+                data: data,
                 success:function(a){ 
                     if (a==0){
                     
@@ -517,7 +509,8 @@ $("#mload").hide();
                         });
                     }
                     else{
-                        $("#mailerr").html("<b> Email already exist ");                       
+                        $("#mailerr").html("<b> Email already exist ");   
+                                          
                     }            
                 }
             }); 

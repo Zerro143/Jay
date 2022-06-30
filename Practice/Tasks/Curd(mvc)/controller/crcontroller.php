@@ -84,8 +84,6 @@ error_reporting(E_ALL);
             $result[1]['page']= $page;
             $result[1]['record']=$per_page_record;  
             $result[1]['start_from'];
-            // $result=$this->objcm->select_studentRecord(0);
-            // // $result[1] = ;
             
             echo json_encode($result);    
         }
@@ -125,8 +123,7 @@ error_reporting(E_ALL);
                     fputcsv($output, array('Course'));
                     foreach ($ids as $id)
                     {
-                        $result=$this->objcm->select_courseRecord($id,'a','b');  
-                        // print_r($result);
+                        $result=$this->objcm->select_courseRecord($id,'a','b');
                          $course[]= $result[0][0];
  
                         fputcsv($output,array($result[0][0]['course']));
@@ -159,16 +156,17 @@ error_reporting(E_ALL);
 
         public function add_std()
         {
+            
             $student = new student();
 
-            $student->fname=($_POST['b']);
-            $student->lname=($_POST['c']);
-            $student->bdate=($_POST['d']);
-            $student->m=($_POST['e']);
-            $student->mail=($_POST['f']);
-            $student->course_id=($_POST['g']);
-            $student->cdate=($_POST['h']);
-            $student->udate=($_POST['h']);
+            $student->fname=($_POST['fname']);
+            $student->lname=($_POST['lname']);
+            $student->bdate=($_POST['bdate']);
+            $student->m=($_POST['m']);
+            $student->mail=($_POST['mail']);
+            $student->course_id=($_POST['course']);
+            $student->cdate=date("Y-m-d");
+            $student->udate=date("Y-m-d");
             $result=$this->objcm->insert_student($student);
             echo $result;
         }
@@ -287,14 +285,15 @@ error_reporting(E_ALL);
             try
             {
 
-                $id = $_POST['i'];
-                $fname = $_POST['b'];
-                $lname = $_POST['c'];
-                $email = $_POST['f'];
-                $m = $_POST['e'];
-                $course_id =$_POST['g'];
-                $bdate= $_POST['d'];
-                $cdate= $_POST['h'];
+                $fname=($_POST['fname']);
+                $lname=($_POST['lname']);
+                $bdate=($_POST['bdate']);
+                $m=($_POST['m']);
+                $email=($_POST['mail']);
+                $course_id=($_POST['course']);
+                $cdate=date("Y-m-d");
+                $id=$_POST['id'];
+                // $udate=date("Y-m-d");
                 
                 $result=$this->objcm->update_studentRecord($fname,$lname,$email,$m,$course_id,$bdate,$cdate,$id);
                 echo $result;

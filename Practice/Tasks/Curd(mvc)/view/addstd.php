@@ -30,7 +30,7 @@
     <body>
         <div class="container">
             <div class="studentForm">
-                <form name="student" method="post">
+                <form name="student" method="post" id="student_reg">
           
             <div class="row">
             <input id= "did"type="hidden" name="id" value="">
