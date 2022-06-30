@@ -142,10 +142,11 @@ function da(){
                 var data = a['data'];
                 cr(data);
 
+            }
+
             $("#preloader").fadeOut(3000,function(){
                 $(this).addClass('hidden')
             });
-            }
       
 
         }
@@ -175,8 +176,14 @@ $(document).ready(function(){
             data:{page:page,sel:val,a:'course'},
             dataType:"json",
             success:function(a){
-              var data = a['data'];
-                cr(data);
+                if(a['Status']=='Error'){
+                    $("body").html("<center><h1>"+a['msg']+"</h1>");
+                }else{
+    
+                    var data = a['data'];
+                    cr(data);
+    
+                }
             }
         });
     });

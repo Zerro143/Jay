@@ -85,9 +85,20 @@ error_reporting(E_ALL);
             $result[1]['page']= $page;
             $result[1]['record']=$per_page_record;  
             $result[1]['start_from'];
-        
-
-            echo json_encode($result);    
+            if(empty($result[0])){
+                $data['Status']="Error";
+                $data['msg']="404 Data Not Found";
+                // echo json_encode($data);    
+            }else{
+                $result[1]['page']= $page;
+                $result[1]['record']=$per_page_record;  
+                $result[1]['start_from'];
+                $data['Status']="success";
+                $data['data']=$result;
+            }
+           
+          
+            echo json_encode($data); 
         }
 
         public function course()

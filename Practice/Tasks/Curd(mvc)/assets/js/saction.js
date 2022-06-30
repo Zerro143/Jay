@@ -67,14 +67,22 @@ function std(){
     var val = $("#selector").val(); 
     $("#success-alert").hide();
     $("#danger-alert").hide();
-    $('#preloader').removeClass('hidden')
+    $('#preloader').fadeIn();
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
         data:{a:'student',sel:val},
         dataType:"json",
         success:function(a){
-            da(a);
+            
+            if(a['Status']=='Error'){
+                $("body").html("<center><h1>"+a['msg']+"</h1>");
+            }else{
+
+                var data = a['data'];
+                da(data);
+
+            }
             $("#preloader").fadeOut(3000,function(){
                 $(this).addClass('hidden')
              });
@@ -286,7 +294,14 @@ $("#mload").hide();
             data:{page:page,sel:val,a:'student'},
             dataType:"json",
             success:function(a){
-                da(a);
+                if(a['Status']=='Error'){
+                    $("body").html("<center><h1>"+a['msg']+"</h1>");
+                }else{
+    
+                    var data = a['data'];
+                    da(data);
+    
+                }
             }
         });
     });
