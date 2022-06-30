@@ -60,7 +60,8 @@ error_reporting(E_ALL);
                     $this->student();
                     break;				
 				default:
-                    $this->student();
+                    // $this->student();
+                    $this->course();
 			}
 		}		
 
@@ -105,11 +106,19 @@ error_reporting(E_ALL);
 
             $start_from = ($page-1) * $per_page_record;   
             $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
-            $result[1]['page']= $page;
-            $result[1]['record']=$per_page_record;  
-            $result[1]['start_from'];
-            $data['data']=$result;
-            $data['status']="success";
+            if(empty($result[0])){
+                $data['Status']="Error";
+                $data['msg']="404 Data Not Found";
+                // echo json_encode($data);    
+            }else{
+                $result[1]['page']= $page;
+                $result[1]['record']=$per_page_record;  
+                $result[1]['start_from'];
+                $data['Status']="succes";
+                $data['data']=$result;
+            }
+           
+          
             echo json_encode($data);          
         }
         //export to csv

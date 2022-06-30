@@ -124,7 +124,7 @@ function da(){
     $("#studentAdd").hide();
     $("#success-alert").hide();
     $("#danger-alert").hide();
-    $('#preloader').removeClass('hidden')
+    // $('#preloader').removeClass('hidden')
     var page = $("#page").attr("value");
     $.ajax({
         url:"../controller/crcontroller.php",
@@ -132,8 +132,13 @@ function da(){
         data:{a:'course',sel:val},
         dataType:"json",
         success:function(a){
-            var data = a['data'];
-            cr(data);
+            if(a['Status']=='success'){
+                var data = a['data'];
+                cr(data);
+            }else{
+                $("body").html("<center><h1>"+a['msg']+"</h1>");
+            }
+
             $("#preloader").fadeOut(3000,function(){
                 $(this).addClass('hidden')
             });
