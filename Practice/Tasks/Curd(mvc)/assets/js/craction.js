@@ -164,8 +164,8 @@ $(document).ready(function(){
             data:{page:page,sel:val,a:'course'},
             dataType:"json",
             success:function(a){
-              
-                cr(a);
+              var data = a['data'];
+                cr(data);
             }
         });
     });

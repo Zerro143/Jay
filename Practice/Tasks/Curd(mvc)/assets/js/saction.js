@@ -383,6 +383,7 @@ $("#mload").hide();
             dataType:"json",
 
             success:function(data){
+                // var data=a['data'];
                 // $("#did").val(data[0].id);
                 $("#mload").fadeOut(3000);
                 $("#mdata").show(); 
@@ -391,7 +392,7 @@ $("#mload").hide();
                 $("#bdate").val(data[0][0].bdate);
                 $("#m").val(data[0][0].m);
                 $("#mail").val(data[0][0].email);
-
+               
                 var dt = data[1][0];
                 for (var i=0; i<dt.length; i++) {
                     var row = $('<option value = '+dt[i].course_id+'>'+dt[i].course+'</option>');
@@ -424,8 +425,9 @@ $("#mload").hide();
             method:"POST", 
             data:{a:'course'},
             dataType:"json",
-            success:function(data){
-                console.log(data);
+            success:function(a){
+                // console.log(data);
+                var data =a['data']
                 for (var i=0; i<data[0].length; i++) {
                     var row = $('<option value = '+data[0][i].course_id+'>'+data[0][i].course+'</option>');
                     $('#course1').append(row);
