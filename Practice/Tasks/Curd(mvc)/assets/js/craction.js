@@ -263,7 +263,7 @@ $(document).ready(function(){
                     success:function(a){ 
                         
                         if (a['status']=='Success'){
-                            alert('2');
+                            // alert('2');
                             da();                            
                             $('#myModal').modal('hide');
                             
@@ -277,7 +277,7 @@ $(document).ready(function(){
                              });
                         }else if(a['status']=='Error'){
                             $("#crerr").html(a['msg']);
-                            alert('1');
+                            // alert('1');
                             // alert(a['msg']);
                         }
                     } 
