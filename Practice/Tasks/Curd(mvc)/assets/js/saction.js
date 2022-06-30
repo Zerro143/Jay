@@ -296,20 +296,11 @@ $("#mload").hide();
         e.preventDefault();
        
         var val= $(this).val();
-        // alert(val);
-        // var allVals = []; 
-        switch (val){
-            case 'exp':
-                // alert(val);
-                exp();
-                break;
-            case 'delsel':
-                // alert(val);
-                del_sel();
-                break; 
+        if(val == 'delsel'){
+            del_sel();
+        }else if(val =='exp'){
+            exp();
         }
-
-
     });
 
     $("#main").on("click","#master",function(){

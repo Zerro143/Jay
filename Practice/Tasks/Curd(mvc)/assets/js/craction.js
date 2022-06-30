@@ -192,15 +192,13 @@ $(document).ready(function(){
         e.preventDefault();
        
         var val= $(this).val();
-        switch (val){
-            case 'exp':
-                exp();
-                break;
-            case 'delsel':
-                del_sel();
-                break; 
+        if(val == 'delsel'){
+            del_sel();
+        }else if(val =='exp'){
+            exp();
         }
     });
+
 
 
     $("#selector").change(function(e){
