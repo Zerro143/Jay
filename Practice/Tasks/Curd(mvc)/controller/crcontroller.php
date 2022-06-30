@@ -28,31 +28,31 @@ error_reporting(E_ALL);
 			{   
                 case 'update_std':
 					$this->upd_std();
-					break;	
+					break;
+                case 'update_course':
+                    $this->update_course();	
+                    break;		
                 case'exp':
                     $this->exp();
                     break;
                 case 'edit_std':
 					$this->edit_std();
-					break;	
+					break;
+                case 'edit_course':
+                    $this->edit_course();
+                    break;	
                 case 'addstd':
                     $this->add_std();
                     break;
-                case 'del_std':
-                    $this->del_std();
-                    break;
                 case 'add_course' :   
                     $this->insert_course();
-					break;						
-				case 'edit_course':
-					$this->edit_course();
-					break;				
+                    break;
+                case 'del_std':
+                    $this->del_std();
+                    break;				
 				case 'del_course' :					
                     $this -> delete_course();
 					break;		
-                case 'update_course':
-                    $this->update_course();	
-                    break;	
                 case 'course':
                     $this->course();
                     break;
