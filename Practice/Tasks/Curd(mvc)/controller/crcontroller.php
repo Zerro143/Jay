@@ -130,9 +130,6 @@ error_reporting(E_ALL);
 
                         
                     }
-
-                    
-
                     break;
                 case 'student': 
                     fputcsv($output, array('First Name','Last Name','Email','Mobile no.','Course', 'B.date','Created_Date','Updated_Date'));
@@ -140,8 +137,7 @@ error_reporting(E_ALL);
                     {
                         $result=$this->objcm->select_studentRecord($id,0,1); 
                        
-                        fputcsv($output,$result[0][0]);
-                        
+                        fputcsv($output,$result[0][0]);   
                     }
                     
                     break;
