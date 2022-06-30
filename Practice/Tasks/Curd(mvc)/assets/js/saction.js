@@ -354,7 +354,6 @@ $("#mload").hide();
         var cid = $(this).attr("did");
 
         $('#course1').empty();
-        $("#add1").show();
         // $("#main").hide();
         $("#ferr").html("");
         $("#lerr").html("");
@@ -507,5 +506,4 @@ $("#mload").hide();
             }); 
         }
     });
-
 });
