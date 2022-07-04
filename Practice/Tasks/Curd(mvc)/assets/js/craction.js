@@ -217,7 +217,7 @@ function da(){
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
-        data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
+        data:{a:'course',order:order,sortby:sortby,sel:val},
         dataType:"json",
        
         success:function(a){

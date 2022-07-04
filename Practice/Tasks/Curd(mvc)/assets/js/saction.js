@@ -67,11 +67,14 @@ function std(){
     var val = $("#selector").val(); 
     $("#success-alert").hide();
     $("#danger-alert").hide();
+    var order= $("#sortby").attr("order");
+    var sortby=$("#sortby").attr("dt")
     $('#preloader').fadeIn();
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
-        data:{a:'student',sel:val},
+        // data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
+        data:{a:'student',sel:val,sortby:sortby,order:order},
         dataType:"json",
         success:function(a){
             

@@ -78,9 +78,21 @@ error_reporting(E_ALL);
                 $per_page_record = $_POST['sel']; 
             }
             else{$per_page_record = 10;}
+            if(isset($_POST['sortby'])){
+                $sortby = $_POST['sortby'];
+            }
+            else{
+                $sortby = 'id';
+            }
+            if(isset($_POST['order'])){
+                $order = $_POST['order'];
+            }
+            else{
+                $order = 'ASC';
+            }
 
             $start_from = ($page-1) * $per_page_record;   
-            $result=$this->objcm->select_studentRecord(0,$start_from,$per_page_record);
+            $result=$this->objcm->select_studentRecord(0,$start_from,$per_page_record,$sortby,$order);
             $result[1]['page']= $page;
             $result[1]['record']=$per_page_record;  
             $result[1]['start_from'];
@@ -295,7 +307,7 @@ error_reporting(E_ALL);
             {
                 
                 $id = $_POST['c'];
-                $result=$this->objcm->select_studentRecord($id,0,10);
+                $result=$this->objcm->select_studentRecord($id,0,10,0,0);
                 
                 $c=$this->objcm->select_courseRecord(0,0,100,"course_id","asc");
                 $result[1] = $c;

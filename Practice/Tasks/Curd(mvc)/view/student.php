@@ -73,6 +73,7 @@
         <?php include 'btn.php';?>
     </section>
     <section id = "main">
+    <input type="hidden" id="sortby"dt="id" order="ASC"/>
         <div class="container" id="dta">
             <table class="table" id="tda">
                 <thead>

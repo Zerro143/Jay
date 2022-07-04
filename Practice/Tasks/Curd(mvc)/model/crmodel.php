@@ -35,7 +35,7 @@ error_reporting(E_ALL);
 
         // select record     
 
-		public function select_studentRecord($id,$start_from,$per_page_record)
+		public function select_studentRecord($id,$start_from,$per_page_record,$sortby,$order)
 		{
 			try
 			{
@@ -57,8 +57,10 @@ error_reporting(E_ALL);
 					$data[1]['tt'] = $tt;
 					$data[1]['start_from']=$start_from;
 					$data[1]['tr']=$a;
+					$data[1]['sortby']=$sortby;
+					$data[1]['order']=$order;
 					// $query=$this->condb->prepare("SELECT * FROM reg");
-					$query=$this->condb->prepare("SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id LIMIT $start_from, $per_page_record");
+					$query=$this->condb->prepare("SELECT * FROM student INNER JOIN course ON student.course_id = course.course_id ORDER BY $sortby $order LIMIT $start_from, $per_page_record");
 				}		
 				
 				$query->execute();
