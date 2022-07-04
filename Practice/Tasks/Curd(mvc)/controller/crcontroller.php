@@ -106,7 +106,7 @@ error_reporting(E_ALL);
                 $per_page_record = $_POST['sel']; 
             }
             
-            else{$per_page_record = 10;}
+            else{$per_page_record = 100;}
             if(isset($_POST['sortby'])){
                 $sortby = $_POST['sortby'];
             }
@@ -276,7 +276,7 @@ error_reporting(E_ALL);
             try
             {
                 $id = $_POST['c'];
-                $result=$this->objcm->select_courseRecord($id,0,1);
+                $result=$this->objcm->select_courseRecord($id,0,1,0,1);
   
                 echo json_encode($result);     
   
@@ -296,7 +296,8 @@ error_reporting(E_ALL);
                 
                 $id = $_POST['c'];
                 $result=$this->objcm->select_studentRecord($id,0,10);
-                $c=$this->objcm->select_courseRecord(0,0,100);
+                
+                $c=$this->objcm->select_courseRecord(0,0,100,"course_id","asc");
                 $result[1] = $c;
                 // print_r ($result);
                 echo json_encode($result);
