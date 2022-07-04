@@ -304,62 +304,6 @@ $(document).ready(function(){
         });
 
     });
-    // $("#cr_name").on("click",function(e){
-    //     e.preventDefault();
-    //     $("#sortby").attr("dt","course")
-    //     var val = $("#selector").val();
-    //     var page = $("#page").attr("value"); 
-    //     $.ajax({
-    //         url:"../controller/crcontroller.php",
-    //         method:"POST",
-    //         data:{page:page,sel:val,a:'course'},
-    //         dataType:"json",
-           
-    //         success:function(a){
-    //             // $("body").html(a);
-    //             if(a['status']=='Error'){
-    //                 $("body").html("<center><h1>"+a['msg']+"</h1>");
-    //             }else{
-    
-    //                 var data = a['data'];
-    //                 const  sorter = (a,b) => {
-    //                     return a.course - b.course;
-    //                 }
-    //                 if ($("#cr_name").is('.asc')){
-    //                     $("#cr_name").removeClass('asc');
-    //                     $("#cr_name").addClass('desc selected');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         arr.reverse();
-    //                     }
-    //                 }
-    //                 else{
-    //                     $("#cr_name").addClass('asc selected');
-    //                     $("#cr_name").removeClass('desc');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         // arr.reverse();
-    //                     }
-    //                 }
-    
-                   
-    //                sortbyid(data[0]);
-                    
-                    
-    //                 cr(data);
-    
-    //             }
-    
-    //             // $("#preloader").fadeOut(3000,function(){
-    //             //     $(this).addClass('hidden')
-    //             // });
-          
-    
-    //         }
-    //     });
-    // });
-
-    
 
     $("#mdload").hide();
     da();
