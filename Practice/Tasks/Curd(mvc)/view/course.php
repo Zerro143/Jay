@@ -74,13 +74,14 @@ th {
     </section>
     
     <section id = "main">
+    <input type="hidden" id="sortby"dt="course_id" order="ASC"/>
         <div class="container" id="dta">
             <table class="table" id="tda">
                 <thead>
                   <tr>
                     <th><input type="checkbox" name="" id="master"></th>
-                    <th id="cr_id">Course ID</th>
-                    <th id="cr_name">Course Name</th>
+                    <th id="cr_id" dt="course_id" order="">Course ID</th>
+                    <th id="cr_name" dt="course"order="">Course Name</th>
                     <th colspan="2">Action</th>
                   </tr>
                 </thead>

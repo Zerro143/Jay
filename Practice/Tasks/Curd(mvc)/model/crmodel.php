@@ -77,7 +77,7 @@ error_reporting(E_ALL);
 			}
 			
 		}
-		public function select_courseRecord($id,$start_from,$per_page_record)
+		public function select_courseRecord($id,$start_from,$per_page_record,$sortby,$order)
 		{
 			try
 			{
@@ -99,8 +99,11 @@ error_reporting(E_ALL);
 					$data[1]['tt'] = $tt;
 					$data[1]['start_from']=$start_from;
 					$data[1]['tr']=$a;
+					$data[1]['sortby']=$sortby;
+					$data[1]['order']=$order;
+
 					// $query=$this->condb->prepare("SELECT * FROM reg");
-					$query=$this->condb->prepare("SELECT * FROM course LIMIT $start_from, $per_page_record");
+					$query=$this->condb->prepare("SELECT * FROM course ORDER BY $sortby $order LIMIT $start_from, $per_page_record");
 					// echo $query;	
 				}		
 				

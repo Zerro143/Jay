@@ -77,8 +77,7 @@ error_reporting(E_ALL);
             if (isset($_POST['sel'])){
                 $per_page_record = $_POST['sel']; 
             }
-            
-            else{$per_page_record = 100;}
+            else{$per_page_record = 10;}
 
             $start_from = ($page-1) * $per_page_record;   
             $result=$this->objcm->select_studentRecord(0,$start_from,$per_page_record);
@@ -92,10 +91,7 @@ error_reporting(E_ALL);
                 $result[1]['record']=$per_page_record;  
                 $result[1]['start_from'];
                 echo json_encode(["status"=>"Success","data"=>$result]);  
-            }
-           
-          
-               
+            }   
         }
 
         public function course()
@@ -111,9 +107,21 @@ error_reporting(E_ALL);
             }
             
             else{$per_page_record = 10;}
+            if(isset($_POST['sortby'])){
+                $sortby = $_POST['sortby'];
+            }
+            else{
+                $sortby = 'course_id';
+            }
+            if(isset($_POST['order'])){
+                $order = $_POST['order'];
+            }
+            else{
+                $order = 'ASC';
+            }
 
             $start_from = ($page-1) * $per_page_record;   
-            $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
+            $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record,$sortby,$order);
             if(empty($result[0])){
                 echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  
             }else{

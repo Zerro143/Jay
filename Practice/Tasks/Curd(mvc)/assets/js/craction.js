@@ -240,63 +240,73 @@ function da(){
 
 $(document).ready(function(){
 
-    // $("#cr_id").on("click",function(e){
-    //     e.preventDefault();
+    $("#cr_id").on("click",function(e){
+        e.preventDefault();
+        var order = "";
+        $("#sortby").attr("dt","course_id")
+        var val = $("#selector").val(); 
+        if ($("#cr_id").is('.asc')){
+            $("#cr_id").removeClass('asc');
+            $("#cr_id").addClass('desc selected');
+            order = "DESC";
+            $("#sortby").attr("order","DESC");
+        }
+        else{
+            $("#cr_id").addClass('asc selected');
+            $("#cr_id").removeClass('desc');
+            order = "ASC";
+            $("#sortby").attr("order","ASC");
+        }
         
-    //     var val = $("#selector").val(); 
-        
-    //     $.ajax({
-    //         url:"../controller/crcontroller.php",
-    //         method:"POST",
-    //         data:{page:page,sel:val,a:'course'},
-    //         dataType:"json",
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{sortby:'course_id',sel:val,a:'course',order:order},
+            dataType:"json",
            
-    //         success:function(a){
-    //             // $("body").html(a);
-    //             if(a['status']=='Error'){
-    //                 $("body").html("<center><h1>"+a['msg']+"</h1>");
-    //             }else{
+            success:function(a){
+                var data = a['data'];
+                cr(data);
     
-    //                 var data = a['data'];
-    //                 const  sorter = (a,b) => {
-    //                     return a.course_id - b.course_id;
-    //                 }
-    //                 if ($("#cr_id").is('.asc')){
-    //                     $("#cr_id").removeClass('asc');
-    //                     $("#cr_id").addClass('desc selected');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         arr.reverse();
-    //                     }
-    //                 }
-    //                 else{
-    //                     $("#cr_id").addClass('asc selected');
-    //                     $("#cr_id").removeClass('desc');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         // arr.reverse();
-    //                     }
-    //                 }
-    
-                   
-    //                sortbyid(data[0]);
-                    
-                    
-    //                 cr(data);
-    
-    //             }
-    
-    //             // $("#preloader").fadeOut(3000,function(){
-    //             //     $(this).addClass('hidden')
-    //             // });
-          
-    
-    //         }
-    //     });
+            }
+        });
 
-    // });
+    });
+    $("#cr_name").on("click",function(e){
+        e.preventDefault();
+        var order = "";
+        $("#sortby").attr("dt","course")
+        var val = $("#selector").val(); 
+        if ($("#cr_name").is('.asc')){
+            $("#cr_name").removeClass('asc');
+            $("#cr_name").addClass('desc selected');
+            order = "DESC";
+            $("#sortby").attr("order","DESC");
+        }
+        else{
+            $("#cr_id").addClass('asc selected');
+            $("#cr_id").removeClass('desc');
+            order = "ASC";
+            $("#sortby").attr("order","ASC");
+        }
+        
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{sortby:'course',sel:val,a:'course',order:order},
+            dataType:"json",
+           
+            success:function(a){
+                var data = a['data'];
+                cr(data);
+    
+            }
+        });
+
+    });
     // $("#cr_name").on("click",function(e){
     //     e.preventDefault();
+    //     $("#sortby").attr("dt","course")
     //     var val = $("#selector").val();
     //     var page = $("#page").attr("value"); 
     //     $.ajax({
@@ -365,10 +375,13 @@ $(document).ready(function(){
         e.preventDefault();
         var page = $(this).attr("value");
         var val = $("#selector").val();
+        var order= $("#sortby").attr("order");
+        var sortby=$("#sortby").attr("dt")
         $.ajax({
             url:"../controller/crcontroller.php",
             method:"POST",
-            data:{page:page,sel:val,a:'course'},
+            // data:{sortby:'course_id',sel:val,a:'course',order:order},
+            data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
             dataType:"json",
             success:function(a){
                 if(a['status']=='Error'){
@@ -418,13 +431,16 @@ $(document).ready(function(){
     $("#selector").change(function(e){
         e.preventDefault();
         var val = $(this).val();
+        var order= $("#sortby").attr("order");
+        var sortby=$("#sortby").attr("dt")
         $.ajax({
             url:"../controller/crcontroller.php",
             method:"POST",
             dataType:"json",
-            data:{sel:val,a:'course'},
+            data:{sortby:sortby,a:'course',order:order,sel:val},
             success:function(a){
-                da(a);
+                var data = a['data'];
+                cr(data);
             }
         })
     });
