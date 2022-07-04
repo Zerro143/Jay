@@ -47,6 +47,9 @@
     transform: rotate(360deg);
   }
 }
+th {
+      cursor: pointer;
+    }
     </style>
     <?php 
     ini_set('display_errors', 1);
@@ -76,8 +79,8 @@
                 <thead>
                   <tr>
                     <th><input type="checkbox" name="" id="master"></th>
-                    <th>Course ID</th>
-                    <th>Course Name</th>
+                    <th id="cr_id">Course ID</th>
+                    <th id="cr_name">Course Name</th>
                     <th colspan="2">Action</th>
                   </tr>
                 </thead>

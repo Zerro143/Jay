@@ -78,7 +78,7 @@ error_reporting(E_ALL);
                 $per_page_record = $_POST['sel']; 
             }
             
-            else{$per_page_record = 10;}
+            else{$per_page_record = 100;}
 
             $start_from = ($page-1) * $per_page_record;   
             $result=$this->objcm->select_studentRecord(0,$start_from,$per_page_record);
