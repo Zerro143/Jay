@@ -209,13 +209,15 @@ function da(){
     $("#studentAdd").hide();
     $("#success-alert").hide();
     $("#danger-alert").hide();
+    var order= $("#sortby").attr("order");
+    var sortby=$("#sortby").attr("dt")
     // $('#preloader').removeClass('hidden')
     var page = $("#page").attr("value");
     $("#preloader").fadeIn();
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
-        data:{a:'course',sel:val},
+        data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
         dataType:"json",
        
         success:function(a){
@@ -257,19 +259,19 @@ $(document).ready(function(){
             order = "ASC";
             $("#sortby").attr("order","ASC");
         }
-        
-        $.ajax({
-            url:"../controller/crcontroller.php",
-            method:"POST",
-            data:{sortby:'course_id',sel:val,a:'course',order:order},
-            dataType:"json",
+        da();
+        // $.ajax({
+        //     url:"../controller/crcontroller.php",
+        //     method:"POST",
+        //     data:{sortby:'course_id',sel:val,a:'course',order:order},
+        //     dataType:"json",
            
-            success:function(a){
-                var data = a['data'];
-                cr(data);
+        //     success:function(a){
+        //         var data = a['data'];
+        //         cr(data);
     
-            }
-        });
+        //     }
+        // });
 
     });
     $("#cr_name").on("click",function(e){
@@ -289,19 +291,19 @@ $(document).ready(function(){
             order = "ASC";
             $("#sortby").attr("order","ASC");
         }
-        
-        $.ajax({
-            url:"../controller/crcontroller.php",
-            method:"POST",
-            data:{sortby:'course',sel:val,a:'course',order:order},
-            dataType:"json",
+        da();
+        // $.ajax({
+        //     url:"../controller/crcontroller.php",
+        //     method:"POST",
+        //     data:{sortby:'course',sel:val,a:'course',order:order},
+        //     dataType:"json",
            
-            success:function(a){
-                var data = a['data'];
-                cr(data);
+        //     success:function(a){
+        //         var data = a['data'];
+        //         cr(data);
     
-            }
-        });
+        //     }
+        // });
 
     });
 
