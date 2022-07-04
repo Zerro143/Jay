@@ -272,6 +272,128 @@ function del_sel(){
 
 $(document).ready(function(){
 std();
+
+$("#stid").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","id")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+$("#fn").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","fname")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+$("#ln").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","lname")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+$("#bd").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","bdate")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+$("#crd").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","created_date")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+$("#uprd").on("click",function(e){
+    e.preventDefault();
+    var order = "";
+    $("#sortby").attr("dt","update_date")
+    var val = $("#selector").val(); 
+    if ($(this).is('.asc')){
+        $(this).removeClass('asc');
+        $(this).addClass('desc selected');
+        order = "DESC";
+        $("#sortby").attr("order","DESC");
+    }
+    else{
+        $(this).addClass('asc selected');
+        $(this).removeClass('desc');
+        order = "ASC";
+        $("#sortby").attr("order","ASC");
+    }
+    std();
+});
+
+
 $("#mload").hide();
  
     $("#myInput").on("keyup", function() {
