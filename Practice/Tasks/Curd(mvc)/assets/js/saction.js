@@ -291,10 +291,12 @@ $("#mload").hide();
         e.preventDefault();
         var page = $(this).attr("value");
         var val = $("#selector").val();
+        var order= $("#sortby").attr("order");
+        var sortby=$("#sortby").attr("dt")
         $.ajax({
             url:"../controller/crcontroller.php",
             method:"POST",
-            data:{page:page,sel:val,a:'student'},
+            data:{page:page,sel:val,a:'student',order:order,sortby:sortby},
             dataType:"json",
             success:function(a){
                 if(a['Status']=='Error'){
