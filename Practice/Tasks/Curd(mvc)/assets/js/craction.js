@@ -157,36 +157,42 @@ function da(){
 
 $(document).ready(function(){
 
-    $(function(){
-        $("body").on("click",".load-more",function(e){
-            e.preventDefault();
-            var val = $("#selector").val();
-            var order= $("#sortby").attr("order");
-            var sortby=$("#sortby").attr("dt")
-            var page = $("#page").children(".active").attr("value");
-            page++;
-            // alert(page);
+    $(document).on("scroll", function (e) {
+        var order= $("#sortby").attr("order");
+        var sortby=$("#sortby").attr("dt")
+        var page = $("#page").children(".active").attr("value");
+        page++;
+    })
+    // $(function(){
+    //     $("body").on("click",".load-more",function(e){
+    //         e.preventDefault();
+    //         // var val = $("#selector").val();
+    //         var order= $("#sortby").attr("order");
+    //         var sortby=$("#sortby").attr("dt")
+    //         var page = $("#page").children(".active").attr("value");
+    //         page++;
+    //         // alert(page);
 
-            $.ajax({
-                url:"../controller/crcontroller.php",
-                method:"POST",
-                // data:{sortby:'course_id',sel:val,a:'course',order:order},
-                data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
-                dataType:"json",
-                success:function(a){
-                    if(a['status']=='Error'){
-                        $("body").html("<center><h1>"+a['msg']+"</h1>");
-                    }else{
+    //         $.ajax({
+    //             url:"../controller/crcontroller.php",
+    //             method:"POST",
+    //             // data:{sortby:'course_id',sel:val,a:'course',order:order},
+    //             data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
+    //             dataType:"json",
+    //             success:function(a){
+    //                 if(a['status']=='Error'){
+    //                     $("body").html("<center><h1>"+a['msg']+"</h1>");
+    //                 }else{
         
-                        var data = a['data'];
-                        cr(data);
+    //                     var data = a['data'];
+    //                     cr(data);
         
-                    }
-                }
-            });
+    //                 }
+    //             }
+    //         });
 
-        });
-    });
+    //     });
+    // });
     $("#cr_id").on("click",function(e){
         e.preventDefault();
         var order = "";
@@ -219,8 +225,8 @@ $(document).ready(function(){
             $("#sortby").attr("order","DESC");
         }
         else{
-            $("#cr_id").addClass('asc selected');
-            $("#cr_id").removeClass('desc');
+            $("#cr_name").addClass('asc selected');
+            $("#cr_name").removeClass('desc');
             order = "ASC";
             $("#sortby").attr("order","ASC");
         }

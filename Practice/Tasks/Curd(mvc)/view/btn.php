@@ -21,8 +21,9 @@
                     <!-- <option value='25'>25</option> -->
             </select>
             <select class="selector" id="selector">
+                    <option type="hidden" value="15" selected></option>
                     <option value='5'>5</option>
-                    <option value='10' selected>10</option>
+                    <option value='10'>10</option>
                     <option value='25'>25</option>
                 </select>
             <div class="col" id="sr">

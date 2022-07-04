@@ -1,6 +1,8 @@
 <?php 
 //https://docs.google.com/spreadsheets/d/1qEejf4ESD1P00_H0G0KnDyTpxX8jlWKm90XM71vk9XM/edit#gid=1146114837
 //https://stackoverflow.com/questions/46382109/limit-the-number-of-visible-pages-in-pagination
+// https://codepen.io/Palestinian/pen/rNYPqR
+// https://stackoverflow.com/questions/4670834/capturing-the-scroll-down-event
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -119,7 +121,7 @@ error_reporting(E_ALL);
                 $per_page_record = $_POST['sel']; 
             }
             
-            else{$per_page_record = 100;}
+            else{$per_page_record = '15';}
             if(isset($_POST['sortby'])){
                 $sortby = $_POST['sortby'];
             }
