@@ -82,15 +82,15 @@ th {
                 <thead>
                     <tr>
                         <th><input type="checkbox" name="" id="master"></th>
-                        <th>Student ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
+                        <th id="stid">Student ID</th>
+                        <th id="fn">First Name</th>
+                        <th id="ln">Last Name</th>
                         <th>Email</th>
                         <th>Mobile No.</th>
                         <th>Course</th>
-                        <th>B.Date</th>
-                        <th>Created_Date</th>
-                        <th>Updated_Date</th>
+                        <th id="bd" >B.Date</th>
+                        <th id="crd">Created_Date</th>
+                        <th id="uprd">Updated_Date</th>
                         <th colspan="2">Action</th>
                     </tr>
                 </thead>
