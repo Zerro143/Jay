@@ -154,50 +154,50 @@ function exp(){
 function cr(a){
     $("#master").prop('checked',false)
     $('#course_content').empty();
-    var tp = a[1]['tt'];
-    var page = parseInt(a[1]['page']);
-    var sf = parseInt(a[1]['start_from'])
-    var record = a[1]['record'];
-    var tr = a[1]['tr'];
-    $("#selector").val(record);
-    $("#page").empty();
-    $("#entries").empty();
-    if(record>=tr){
-        $("#entries").append(a[0].length+" Enteries")
-    }
-    else{
-        $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
-    }
+    // var tp = a[1]['tt'];
+    // var page = parseInt(a[1]['page']);
+    // var sf = parseInt(a[1]['start_from'])
+    // var record = a[1]['record'];
+    // var tr = a[1]['tr'];
+    // $("#selector").val(record);
+    // $("#page").empty();
+    // $("#entries").empty();
+    // if(record>=tr){
+    //     $("#entries").append(a[0].length+" Enteries")
+    // }
+    // else{
+    //     $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+    // }
     
-    if(page>=2){
-        $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
-    }
-    for(var i=1;i<tp;i++){
-        if(i==page){
-            $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
-        }
-        else{
-            if(i==(page-1)){
-                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
-            }
-            if(i==(page+1)){
-                $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
-            }
-        }
-    }
+    // if(page>=2){
+    //     $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
+    // }
+    // for(var i=1;i<tp;i++){
+    //     if(i==page){
+    //         $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
+    //     }
+    //     else{
+    //         if(i==(page-1)){
+    //             $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+    //         }
+    //         if(i==(page+1)){
+    //             $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+    //         }
+    //     }
+    // }
 
-    if(page<tp){
-        $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+    // if(page<tp){
+    //     $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
         
-    }
+    // }
     
-    for (var i=0; i<a[0].length; i++) {
+    for (var i=0; i<a.length; i++) {
         var row = $('<tr>'+
-        '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[0][i].course_id+ '></td>'
-        +'<td>' + a[0][i].course_id+ '</td>'+
-        '<td>'+ a[0][i].course + '</td>'
-        +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[0][i].course_id+ ' dname ='+a[0][i].course+'>Edit</button>'+ 
-        ' <button id="Delete" class="btn btn-danger delete" did='+a[0][i].course_id+ ' dname='+a[0][i].course+'> Delete</button></td></tr>');
+        '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[i].course_id+ '></td>'
+        +'<td>' + a[i].course_id+ '</td>'+
+        '<td>'+ a[i].course + '</td>'
+        +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[i].course_id+ ' dname ='+a[i].course+'>Edit</button>'+ 
+        ' <button id="Delete" class="btn btn-danger delete" did='+a[i].course_id+ ' dname='+a[i].course+'> Delete</button></td></tr>');
         $('#course_content').append(row);
         
     }

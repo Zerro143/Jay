@@ -66,8 +66,8 @@ function active($currect_page){
 <div class="header">
   <div class="header-right">
 
-    <a class="<?php active('student.php');?>"href="http://192.168.3.122/Jay/Practice/Tasks/Curd(mvc)/view/student.php">Student</a>
-    <a class="<?php active('course.php');?>"href="http://192.168.3.122/Jay/Practice/Tasks/Curd(mvc)/view/course.php">Course</a>
+    <a class="<?php active('student.php');?>"href="http://192.168.3.122/Jay/Practice/Tasks/Curd(mvc)array/view/student.php">Student</a>
+    <a class="<?php active('course.php');?>"href="http://192.168.3.122/Jay/Practice/Tasks/Curd(mvc)array/view/course.php">Course</a>
 
   </div>
 </div>

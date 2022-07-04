@@ -100,26 +100,26 @@ error_reporting(E_ALL);
 
         public function course()
         {
-            if (isset($_POST['page'])) {    
-                $page  = $_POST['page'];    
-            }    
-            else {    
-              $page=1;    
-            } 
-            if (isset($_POST['sel'])){
-                $per_page_record = $_POST['sel']; 
-            }
+            // if (isset($_POST['page'])) {    
+            //     $page  = $_POST['page'];    
+            // }    
+            // else {    
+            //   $page=1;    
+            // } 
+            // if (isset($_POST['sel'])){
+            //     $per_page_record = $_POST['sel']; 
+            // }
             
-            else{$per_page_record = 10;}
+            // else{$per_page_record = 10;}
 
-            $start_from = ($page-1) * $per_page_record;   
-            $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record);
+            // $start_from = ($page-1) * $per_page_record;   
+            $result=$this->objcm->select_courseRecord(0);
             if(empty($result[0])){
                 echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  
             }else{
-                $result[1]['page']= $page;
-                $result[1]['record']=$per_page_record;  
-                $result[1]['start_from'];
+                // $result[1]['page']= $page;
+                // $result[1]['record']=$per_page_record;  
+                // $result[1]['start_from'];
                 echo json_encode(["Status"=>"success","data"=>$result]);    
             }
            

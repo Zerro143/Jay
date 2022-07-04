@@ -77,7 +77,7 @@ error_reporting(E_ALL);
 			}
 			
 		}
-		public function select_courseRecord($id,$start_from,$per_page_record)
+		public function select_courseRecord($id)
 		{
 			try
 			{
@@ -89,18 +89,18 @@ error_reporting(E_ALL);
 				}
                 else
                 {
-					$q1=$this->condb->prepare("SELECT * FROM course ");
-					$q1->execute();
-					$rs=$q1->get_result();
-					// $q1->close_db();
-					$a = $rs->num_rows;
-					// $q1->close_db();
-					$tt = ceil($a/$per_page_record);
-					$data[1]['tt'] = $tt;
-					$data[1]['start_from']=$start_from;
-					$data[1]['tr']=$a;
+				// 	$q1=$this->condb->prepare("SELECT * FROM course ");
+				// 	$q1->execute();
+				// 	$rs=$q1->get_result();
+				// 	// $q1->close_db();
+				// 	$a = $rs->num_rows;
+				// 	// $q1->close_db();
+				// 	$tt = ceil($a/$per_page_record);
+				// 	$data[1]['tt'] = $tt;
+				// 	$data[1]['start_from']=$start_from;
+				// 	$data[1]['tr']=$a;
 					// $query=$this->condb->prepare("SELECT * FROM reg");
-					$query=$this->condb->prepare("SELECT * FROM course LIMIT $start_from, $per_page_record");
+					$query=$this->condb->prepare("SELECT * FROM course");
 					// echo $query;	
 				}		
 				
@@ -108,7 +108,7 @@ error_reporting(E_ALL);
 				$res=$query->get_result();	
 
 				while($row = mysqli_fetch_assoc($res)){
-                    $data[0][]=$row;
+                    $data[]=$row;
                 }            
 				$query->close();				
 				$this->close_db();    
