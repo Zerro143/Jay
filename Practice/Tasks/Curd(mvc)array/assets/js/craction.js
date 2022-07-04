@@ -240,114 +240,114 @@ function da(){
 
 $(document).ready(function(){
 
-    // $("#cr_id").on("click",function(e){
-    //     e.preventDefault();
+    $("#cr_id").on("click",function(e){
+        e.preventDefault();
         
-    //     var val = $("#selector").val(); 
+        // var val = $("#selector").val(); 
         
-    //     $.ajax({
-    //         url:"../controller/crcontroller.php",
-    //         method:"POST",
-    //         data:{page:page,sel:val,a:'course'},
-    //         dataType:"json",
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{a:'course'},
+            dataType:"json",
            
-    //         success:function(a){
-    //             // $("body").html(a);
-    //             if(a['status']=='Error'){
-    //                 $("body").html("<center><h1>"+a['msg']+"</h1>");
-    //             }else{
+            success:function(a){
+                // $("body").html(a);
+                if(a['status']=='Error'){
+                    $("body").html("<center><h1>"+a['msg']+"</h1>");
+                }else{
     
-    //                 var data = a['data'];
-    //                 const  sorter = (a,b) => {
-    //                     return a.course_id - b.course_id;
-    //                 }
-    //                 if ($("#cr_id").is('.asc')){
-    //                     $("#cr_id").removeClass('asc');
-    //                     $("#cr_id").addClass('desc selected');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         arr.reverse();
-    //                     }
-    //                 }
-    //                 else{
-    //                     $("#cr_id").addClass('asc selected');
-    //                     $("#cr_id").removeClass('desc');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         // arr.reverse();
-    //                     }
-    //                 }
+                    var data = a['data'];
+                    const  sorter = (a,b) => {
+                        return a.course_id - b.course_id;
+                    }
+                    if ($("#cr_id").is('.asc')){
+                        $("#cr_id").removeClass('asc');
+                        $("#cr_id").addClass('desc selected');
+                        var sortbyid = arr =>{
+                            arr.sort(sorter);
+                            arr.reverse();
+                        }
+                    }
+                    else{
+                        $("#cr_id").addClass('asc selected');
+                        $("#cr_id").removeClass('desc');
+                        var sortbyid = arr =>{
+                            arr.sort(sorter);
+                            // arr.reverse();
+                        }
+                    }
     
                    
-    //                sortbyid(data[0]);
+                   sortbyid(data);
                     
                     
-    //                 cr(data);
+                    cr(data);
     
-    //             }
+                }
     
-    //             // $("#preloader").fadeOut(3000,function(){
-    //             //     $(this).addClass('hidden')
-    //             // });
+                $("#preloader").fadeOut(3000,function(){
+                    $(this).addClass('hidden')
+                });
           
     
-    //         }
-    //     });
+            }
+        });
 
-    // });
-    // $("#cr_name").on("click",function(e){
-    //     e.preventDefault();
-    //     var val = $("#selector").val();
-    //     var page = $("#page").attr("value"); 
-    //     $.ajax({
-    //         url:"../controller/crcontroller.php",
-    //         method:"POST",
-    //         data:{page:page,sel:val,a:'course'},
-    //         dataType:"json",
+    });
+    $("#cr_name").on("click",function(e){
+        e.preventDefault();
+        // var val = $("#selector").val();
+        // var page = $("#page").attr("value"); 
+        $.ajax({
+            url:"../controller/crcontroller.php",
+            method:"POST",
+            data:{a:'course'},
+            dataType:"json",
            
-    //         success:function(a){
-    //             // $("body").html(a);
-    //             if(a['status']=='Error'){
-    //                 $("body").html("<center><h1>"+a['msg']+"</h1>");
-    //             }else{
+            success:function(a){
+                // $("body").html(a);
+                if(a['status']=='Error'){
+                    $("body").html("<center><h1>"+a['msg']+"</h1>");
+                }else{
     
-    //                 var data = a['data'];
-    //                 const  sorter = (a,b) => {
-    //                     return a.course - b.course;
-    //                 }
-    //                 if ($("#cr_name").is('.asc')){
-    //                     $("#cr_name").removeClass('asc');
-    //                     $("#cr_name").addClass('desc selected');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         arr.reverse();
-    //                     }
-    //                 }
-    //                 else{
-    //                     $("#cr_name").addClass('asc selected');
-    //                     $("#cr_name").removeClass('desc');
-    //                     var sortbyid = arr =>{
-    //                         arr.sort(sorter);
-    //                         // arr.reverse();
-    //                     }
-    //                 }
+                    var data = a['data'];
+                    const  sorter = (a,b) => {
+                        return a.course - b.course;
+                    }
+                    if ($("#cr_name").is('.asc')){
+                        $("#cr_name").removeClass('asc');
+                        $("#cr_name").addClass('desc selected');
+                        var sortbyid = arr =>{
+                            arr.sort(sorter);
+                            arr.reverse();
+                        }
+                    }
+                    else{
+                        $("#cr_name").addClass('asc selected');
+                        $("#cr_name").removeClass('desc');
+                        var sortbyid = arr =>{
+                            arr.sort(sorter);
+                            // arr.reverse();
+                        }
+                    }
     
                    
-    //                sortbyid(data[0]);
+                   sortbyid(data);
                     
                     
-    //                 cr(data);
+                    cr(data);
     
-    //             }
+                }
     
-    //             // $("#preloader").fadeOut(3000,function(){
-    //             //     $(this).addClass('hidden')
-    //             // });
+                // $("#preloader").fadeOut(3000,function(){
+                //     $(this).addClass('hidden')
+                // });
           
     
-    //         }
-    //     });
-    // });
+            }
+        });
+    });
 
     
 
