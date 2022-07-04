@@ -1,5 +1,6 @@
 <?php 
 //https://docs.google.com/spreadsheets/d/1qEejf4ESD1P00_H0G0KnDyTpxX8jlWKm90XM71vk9XM/edit#gid=1146114837
+//https://stackoverflow.com/questions/46382109/limit-the-number-of-visible-pages-in-pagination
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
