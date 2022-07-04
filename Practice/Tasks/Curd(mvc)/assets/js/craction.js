@@ -260,20 +260,8 @@ $(document).ready(function(){
             $("#sortby").attr("order","ASC");
         }
         da();
-        // $.ajax({
-        //     url:"../controller/crcontroller.php",
-        //     method:"POST",
-        //     data:{sortby:'course_id',sel:val,a:'course',order:order},
-        //     dataType:"json",
-           
-        //     success:function(a){
-        //         var data = a['data'];
-        //         cr(data);
-    
-        //     }
-        // });
-
     });
+    
     $("#cr_name").on("click",function(e){
         e.preventDefault();
         var order = "";
@@ -292,19 +280,6 @@ $(document).ready(function(){
             $("#sortby").attr("order","ASC");
         }
         da();
-        // $.ajax({
-        //     url:"../controller/crcontroller.php",
-        //     method:"POST",
-        //     data:{sortby:'course',sel:val,a:'course',order:order},
-        //     dataType:"json",
-           
-        //     success:function(a){
-        //         var data = a['data'];
-        //         cr(data);
-    
-        //     }
-        // });
-
     });
 
     $("#mdload").hide();

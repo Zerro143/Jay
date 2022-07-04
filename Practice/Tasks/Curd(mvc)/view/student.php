@@ -47,6 +47,9 @@
     transform: rotate(360deg);
   }
 }
+th {
+      cursor: pointer;
+    }
     </style>
     <?php 
     ini_set('display_errors', 1);
