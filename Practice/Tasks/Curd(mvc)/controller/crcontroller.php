@@ -134,8 +134,13 @@ error_reporting(E_ALL);
             else{
                 $order = 'ASC';
             }
+            if(isset($_POST['startfrom'])){
+                $start_from = $_POST['startfrom'];
+            }else{
 
-            $start_from = ($page-1) * $per_page_record;   
+                $start_from = ($page-1) * $per_page_record;   
+            }
+
             $result=$this->objcm->select_courseRecord(0,$start_from,$per_page_record,$sortby,$order);
             if(empty($result[0])){
                 echo json_encode(["Status"=>"Error","msg"=>"404 Data Not Found"]);  

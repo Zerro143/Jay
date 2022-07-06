@@ -132,7 +132,7 @@ function da(){
     $.ajax({
         url:"../controller/crcontroller.php",
         method:"POST",
-        data:{a:'course',order:order,sortby:sortby,sel:val},
+        data:{a:'course',order:order,sortby:sortby,sel:val,page:page},
         dataType:"json",
        
         success:function(a){
@@ -157,12 +157,100 @@ function da(){
 
 $(document).ready(function(){
 
-    $(document).on("scroll", function (e) {
-        var order= $("#sortby").attr("order");
-        var sortby=$("#sortby").attr("dt")
-        var page = $("#page").children(".active").attr("value");
-        page++;
-    })
+    // $(document).on("scroll", function () {
+        
+
+
+    //     if($(document).height() - $(window).height() <50){
+    //         var order= $("#sortby").attr("order");
+    //         var val = $("#selector").val(); 
+    //         var sortby=$("#sortby").attr("dt")
+    //         var page = parseInt($("#page").children(".active").attr("value"));
+    //         var startfrom = $("#course_content").children('tr').length;
+            
+    //         page++;
+          
+    //         $.ajax({
+    //             url:"../controller/crcontroller.php",
+    //             method:"POST",
+    //             data:{a:'course',order:order,sortby:sortby,sel:'5',page:page,startfrom:startfrom},
+    //             dataType:"json",
+               
+    //             success:function(a){
+    //                 // $("body").html(a);
+                    
+    //                 // page=page-2;
+    //                 if(a['status']=='Error'){
+    //                     $("body").html("<center><h1>"+a['msg']+"</h1>");
+    //                 }else{
+        
+    //                     var a = a['data'];
+    //                     // cr(a);
+    //                     $("#master").prop('checked',false)
+    //                     // $('#course_content').empty();
+    //                     var tp = a[1]['tt'];
+    //                     var page = parseInt(a[1]['page']);
+    //                     var sf = parseInt(a[1]['start_from'])
+    //                     var record = a[1]['record'];
+    //                     var tr = a[1]['tr'];
+    //                     // $("#selector").val(record);
+    //                     $("#page").empty();
+    //                     $("#entries").empty();
+    //                     if(record>=tr){
+    //                         $("#entries").append(a[0].length+" Enteries")
+    //                     }
+    //                     else{
+    //                         $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+    //                     }
+                        
+    //                     if(page>=2){
+    //                         $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
+    //                     }
+    //                     for(var i=1;i<tp;i++){
+    //                         if(i==page){
+    //                             $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
+    //                         }
+    //                         else{
+    //                             if(i==(page-1)){
+    //                                 $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+    //                             }
+    //                             if(i==(page+1)){
+    //                                 $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+    //                             }
+    //                         }
+    //                     }
+                    
+    //                     if(page<tp){
+    //                         $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                            
+    //                     }
+                        
+    //                     for (var i=0; i<a[0].length; i++) {
+    //                         var row = $('<tr>'+
+    //                         '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[0][i].course_id+ '></td>'
+    //                         +'<td>' + a[0][i].course_id+ '</td>'+
+    //                         '<td>'+ a[0][i].course + '</td>'
+    //                         +'<td><button id="edit" class="btn btn-info edit" data-toggle="modal" data-target="#myModal" did='+a[0][i].course_id+ ' dname ='+a[0][i].course+'>Edit</button>'+ 
+    //                         ' <button id="Delete" class="btn btn-danger delete" did='+a[0][i].course_id+ ' dname='+a[0][i].course+'> Delete</button></td></tr>');
+    //                         $('#course_content').append(row);
+                            
+    //                     }
+                   
+        
+    //                 }
+        
+    //                 $("#preloader").fadeOut(3000,function(){
+    //                     $(this).addClass('hidden')
+    //                 });
+              
+        
+    //             }
+    //         });
+           
+    //     }
+
+
+    // })
     // $(function(){
     //     $("body").on("click",".load-more",function(e){
     //         e.preventDefault();
