@@ -251,36 +251,7 @@ $(document).ready(function(){
 
 
     // })
-    // $(function(){
-    //     $("body").on("click",".load-more",function(e){
-    //         e.preventDefault();
-    //         // var val = $("#selector").val();
-    //         var order= $("#sortby").attr("order");
-    //         var sortby=$("#sortby").attr("dt")
-    //         var page = $("#page").children(".active").attr("value");
-    //         page++;
-    //         // alert(page);
 
-    //         $.ajax({
-    //             url:"../controller/crcontroller.php",
-    //             method:"POST",
-    //             // data:{sortby:'course_id',sel:val,a:'course',order:order},
-    //             data:{sortby:sortby,a:'course',order:order,page:page,sel:val},
-    //             dataType:"json",
-    //             success:function(a){
-    //                 if(a['status']=='Error'){
-    //                     $("body").html("<center><h1>"+a['msg']+"</h1>");
-    //                 }else{
-        
-    //                     var data = a['data'];
-    //                     cr(data);
-        
-    //                 }
-    //             }
-    //         });
-
-    //     });
-    // });
     $("#cr_id").on("click",function(e){
         e.preventDefault();
         var order = "";
