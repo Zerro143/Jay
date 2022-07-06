@@ -260,12 +260,16 @@ $(document).ready(function(){
         if ($("#cr_id").is('.asc')){
             $("#cr_id").removeClass('asc');
             $("#cr_id").addClass('desc selected');
+            $("#cr_name").removeClass('asc');
+            $("#cr_name").removeClass('desc');
             order = "DESC";
             $("#sortby").attr("order","DESC");
         }
         else{
             $("#cr_id").addClass('asc selected');
             $("#cr_id").removeClass('desc');
+            $("#cr_name").removeClass('asc');
+            $("#cr_name").removeClass('desc');
             order = "ASC";
             $("#sortby").attr("order","ASC");
         }
@@ -279,12 +283,16 @@ $(document).ready(function(){
         var val = $("#selector").val(); 
         if ($("#cr_name").is('.asc')){
             $("#cr_name").removeClass('asc');
+            $("#cr_id").removeClass('desc');
+            $("#cr_id").removeClass('asc');
             $("#cr_name").addClass('desc selected');
             order = "DESC";
             $("#sortby").attr("order","DESC");
         }
         else{
             $("#cr_name").addClass('asc selected');
+            $("#cr_id").removeClass('desc');
+            $("#cr_id").removeClass('asc');
             $("#cr_name").removeClass('desc');
             order = "ASC";
             $("#sortby").attr("order","ASC");
