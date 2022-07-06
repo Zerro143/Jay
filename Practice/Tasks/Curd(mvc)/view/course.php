@@ -94,7 +94,7 @@ th {
                 </tbody>
             </table>
 
-            <center><a href="" class="load-more">Load More</a></center>
+            
     <section id="pagination">
         <?php include 'pagination.php';?>
       
