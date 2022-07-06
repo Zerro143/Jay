@@ -187,9 +187,9 @@ $(document).ready(function(){
                     }else{
         
                         var a = a['data'];
+                        // cr(a);
                         $("#master").prop('checked',false)
 
-                        
                         for (var i=0; i<a[0].length; i++) {
                             var row = $('<tr>'+
                             '<td><input type="checkbox" class="sil" id="checkbox" value=' + a[0][i].course_id+ '></td>'
