@@ -47,10 +47,7 @@
     transform: rotate(360deg);
   }
 }
-tbody
-{
-    overflow:scroll;
-}
+
 th {
       cursor: pointer;
     }
