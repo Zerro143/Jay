@@ -157,20 +157,22 @@ function da(){
 
 $(document).ready(function(){
 
-    $(window).on("scroll", function () {
-        
+    $(document).on("scroll", function (e) {
+        var x=$('#dta').prop("scrollHeight");
+        console.log($(document).height(),x);
 
-
-        if($(window).scrollTop() + $(window).height() == $(document).height()){
-        
+        if($(document).height() - $("#course_form").offset().top + 69 < $(window).scrollTop()){
+            // $(document).on("wheel", function (e) {
+            // if(e.originalEvent.deltaY > 0){
+            // wheeled up
+            // console.log($(window).height(),$("#course_form").offset().top ,e.originalEvent.deltaY );
             var order= $("#sortby").attr("order");
             // var val = $("#selector").val(); 
-            var sortby=$("#sortby").attr("dt")
+            var sortby=$("#sortby").attr("dt");
             var page = parseInt($("#page").children(".active").attr("value"));
             var startfrom = $("#course_content").children('tr').length;
             // $("#selector").hide(); 
             $("#pagination").hide();     
-
             page++;
             $("#preloader").fadeIn();
             $.ajax({
@@ -182,7 +184,7 @@ $(document).ready(function(){
                 success:function(a){
                     // $("body").html(a);
                     
-                    // page=page-2;
+                    page=page-2;
                     if(a['status']=='Error'){
                         $("body").html("<center><h1>"+a['msg']+"</h1>");
                     }else{
@@ -248,14 +250,13 @@ $(document).ready(function(){
         
                 }
             });
-           
         }
 
-
-    })
+    });
 
     $("#cr_id").on("click",function(e){
         e.preventDefault();
+        $("#pagination").show();   
         var order = "";
         $("#sortby").attr("dt","course_id")
         var val = $("#selector").val(); 
@@ -280,6 +281,7 @@ $(document).ready(function(){
 
     $("#cr_name").on("click",function(e){
         e.preventDefault();
+        $("#pagination").show();   
         var order = "";
         $("#sortby").attr("dt","course")
         var val = $("#selector").val(); 
