@@ -47,10 +47,10 @@
     transform: rotate(360deg);
   }
 }
-/* tbody
+tbody
 {
     overflow:scroll;
-} */
+}
 th {
       cursor: pointer;
     }

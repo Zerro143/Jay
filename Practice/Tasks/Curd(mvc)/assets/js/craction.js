@@ -157,21 +157,22 @@ function da(){
 
 $(document).ready(function(){
 
-    $(document).on("scroll", function () {
+    $(window).on("scroll", function () {
         
 
 
-        if($(document).height() - $(window).height() <50){
+        if($(window).scrollTop() + $(window).height() == $(document).height()){
+        
             var order= $("#sortby").attr("order");
-            var val = $("#selector").val(); 
+            // var val = $("#selector").val(); 
             var sortby=$("#sortby").attr("dt")
             var page = parseInt($("#page").children(".active").attr("value"));
             var startfrom = $("#course_content").children('tr').length;
             // $("#selector").hide(); 
-            $("#pagination").hide(); 
+            $("#pagination").hide();     
 
             page++;
-          
+            $("#preloader").fadeIn();
             $.ajax({
                 url:"../controller/crcontroller.php",
                 method:"POST",
@@ -189,6 +190,42 @@ $(document).ready(function(){
                         var a = a['data'];
                         // cr(a);
                         $("#master").prop('checked',false)
+                        var tp = a[1]['tt'];
+                        var page = parseInt(a[1]['page']);
+                        var sf = parseInt(a[1]['start_from'])
+                        var record = a[1]['record'];
+                        var tr = a[1]['tr'];
+                        // $("#selector").val(record);
+                        $("#page").empty();
+                        $("#entries").empty();
+                        if(record>=tr){
+                            $("#entries").append(a[0].length+" Enteries")
+                        }
+                        else{
+                            $("#entries").append("Showing "+(sf+1)+" to "+(a[0].length + sf)+" of "+tr+" Enteries ")
+                        }
+                        
+                        if(page>=2){
+                            $("#page").append("<button class='btn' value="+(page-1)+"> Prev </button>")
+                        }
+                        for(var i=1;i<tp;i++){
+                            if(i==page){
+                                $("#page").append("<a class='btn active' value="+i+"> "+i+ "</button>")
+                            }
+                            else{
+                                if(i==(page-1)){
+                                    $("#page").append("<a class = 'btn ' value ="+i+"> "+i+"</a>")
+                                }
+                                if(i==(page+1)){
+                                    $("#page").append("<a class = 'btn ' value ="+i+"> "+i+" </a>")
+                                }
+                            }
+                        }
+                    
+                        if(page<tp){
+                            $("#page").append("<a class = 'btn' value ="+(page+1)+">Next</a>")
+                            
+                        }
 
                         for (var i=0; i<a[0].length; i++) {
                             var row = $('<tr>'+
