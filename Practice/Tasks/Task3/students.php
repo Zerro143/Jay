@@ -62,8 +62,8 @@
     <div class="container" >
            
             
-            <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
-            <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course Data</button>
+            <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Applicant Record</button>
+            <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Job Roles</button>
             <?php /*
             <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
         </div> 
@@ -76,12 +76,12 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>Student ID</th>
+                  <th>Sr No</th>
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th>Email</th>
                   <th>Mobile No.</th>
-                  <th>Course</th>
+                  <th>Job Role</th>
                   <th>Birthdate</th>
                   <th>Created Date</th>
                   <th>Updated Date</th>

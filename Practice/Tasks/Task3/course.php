@@ -1,5 +1,8 @@
 <?php  
 session_start();
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
 include 'conn.php';
 //$course="";
 //if (isset($_GET['edit'])){
@@ -11,8 +14,8 @@ include 'conn.php';
 //  //$_SESSION['course']=$row['course'];
 //  $course=$row['course'];    
 //}
-$id="";
-mysqli_query($conn, $sql);
+// $id="";
+// mysqli_query($conn, $sql);
 ?>
 
 <style>
@@ -86,8 +89,8 @@ function closeForm() {
         <table class="table">
           <thead>
             <tr>
-              <th>Course ID</th>
-              <th>Course Name</th>
+              <th>Job ID</th>
+              <th>Job Position</th>
               <th colspan="2">Action</th>
             </tr>
           </thead>
@@ -119,7 +122,7 @@ function closeForm() {
               <form action="upcr.php" class="form-container" method="POST">
                 <input type="hidden" name="id" value="<?php echo $id = $_SESSION['cid'];?>">
                 <div class="row">
-                  <label for="course"><b>Couse Name</b></label>
+                  <label for="course"><b>Job Position</b></label>
                   <input type="text" placeholder="Enter course" name="course" value="<?php echo /*$course;*/$_SESSION['course'];  unset($_SESSION['course']);?>" >
                 </div>
                 <?php

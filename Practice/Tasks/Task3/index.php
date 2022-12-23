@@ -13,8 +13,8 @@ include 'conn.php';?>
         <div class="container" >
            
             
-            <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
-            <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Students Record</button>
+            <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Applicants Record</button>
+            <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Applicant Record</button>
             <?php /*
             <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
         </div>            
@@ -25,7 +25,7 @@ include 'conn.php';?>
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Student ID</th>
+                    <th>Sr No.</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>

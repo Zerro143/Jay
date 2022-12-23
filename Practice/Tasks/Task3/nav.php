@@ -31,10 +31,10 @@
           <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="students.php">Students Data</a>
+          <a class="nav-link" href="students.php">Applicant Data</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="course.php">Course</a>
+          <a class="nav-link" href="course.php">Jobs Roles</a>
         </li>
       </ul>
     </div>
