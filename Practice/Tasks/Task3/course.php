@@ -77,15 +77,15 @@ function closeForm() {
     <div class="container" >
                
                 
-      <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Student Record</button>
-      <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Students Record</button>
+      <button class="btn-xs btn-primary" onclick="window.open('record.php','popup','width=600,height=600'); return false;">Create Applicant Record</button>
+      <button class="btn-xs btn-primary" onclick="location.href='students.php'">Show All Applicants Record</button>
       <?php /*
       <button class="btn-xs btn-primary" onclick="location.href='course.php'">Show Course</button>*/?>
     </div> 
 
     <div class="container">
 
-      <div class="row" justify-content-center>
+      <div class="row justify-content-center">
         <table class="table">
           <thead>
             <tr>
